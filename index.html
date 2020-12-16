@@ -22,7 +22,7 @@
 
 
       <!-- Welcome page when there is no profile saved  -->
-      <div data-view="welcome" class="hidden flex flex-column center-content full-height-and-width">
+      <div data-view="welcome" id="welcome" class="hidden flex flex-column center-content full-height-and-width">
         <div class="row">
           <div class="column-full flex center-content">
             <h1 class="heading-text">
@@ -42,7 +42,7 @@
         </div>
         <div class="row">
           <div class="column-full flex center-content">
-            <button class="submit">Join Now!</button>
+            <button id="joinNow" class="submit">Join Now!</button>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
 
       <!-- sign up form for new users -->
 
-      <div class="hidden flex flex-column center-content full-height-and-width" data-view="join">
+      <div id="signUp" class="hidden flex flex-column center-content full-height-and-width" data-view="join">
         <div class="row">
           <div class="column-full center-content flex">
             <h1 class="heading-text">
@@ -69,7 +69,7 @@
         </div>
         <div class="row center-content flex flex-column">
           <div class="column-full">
-            <form action="GET" class="sign-up" id="signUp">
+            <form action="GET" class="sign-up" id="signForm">
               <div class="center-content flex flex-column">
                 <label for="url"> Image URL</label>
                 <input type="url" name="url" id="url" required>
@@ -98,7 +98,7 @@
 
 
       <!-- this is the top bar  -->
-      <div data-view="top" class="top-bar">
+      <div id="topBar" data-view="top" class="top-bar hidden">
         <div class="hamburger-placeholder">
 
         </div>
@@ -109,7 +109,7 @@
 
 
       <!-- this is the bottom nav -->
-      <div class="bottom-bar" data-view="bottom">
+      <div id="bottomBar" class="bottom-bar hidden" data-view="bottom">
         <div class="row flex">
 
           <div class="column-thirds flex center-content">
@@ -139,7 +139,7 @@
 
       <!-- Explore Page here  -->
 
-      <div class="hidden padding-top" data-view="explore">
+      <div id="explore" class="hidden padding-top" data-view="explore">
 
 
         <!--
@@ -331,7 +331,7 @@ Examples that you will eventualy delete and replace with a dom that inserst them
 
       <!-- This is where the profile will go  -->
 
-      <div class="hidden profile flex flex-column" data-view="profile">
+      <div id="profile" class="hidden profile flex flex-column" data-view="profile">
 
         <div class="row flex margin-top-bottom margin-five">
           <div class="column-half content-padding">
@@ -459,7 +459,7 @@ Examples that you will eventualy delete and replace with a dom that inserst them
 
 <!-- This is where the plan my meal page will go -->
 
-<div class="hidden plan-my-meal margin-top-bottom flex flex-column" data-view="plan">
+<div id="planMeal" class="hidden plan-my-meal margin-top-bottom flex flex-column" data-view="plan">
   <div class="row">
     <div class="column-full flex center-content">
       <h1 class="heading-text"> Plan My Meal!</h1>
@@ -485,7 +485,7 @@ Examples that you will eventualy delete and replace with a dom that inserst them
 
 <!-- This is where the result of the page will go -->
 
-<div class="result margin-top-bottom" data-view="result">
+<div id="results" class="hidden result margin-top-bottom" data-view="result">
   <div class="row margin-five content-padding">
     <div class="column-full">
       <h1 class="heading-text">Tonight's Beer!</h1>
