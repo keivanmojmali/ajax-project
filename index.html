@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,136 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
   <header>
   </header>
   <main>
+
+
+    <div class="container">
+
+
+
+
+      <!-- Welcome page when there is no profile saved  -->
+      <div data-view="welcome" class="hidden flex flex-column center-content full-height-and-width">
+        <div class="row">
+          <div class="column-full flex center-content">
+            <h1 class="heading-text">
+              Welcome to <br>
+              Beer Name!
+            </h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full flex center-content">
+            <p class="body-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing <br>
+              elit. Suscipit quis, porro tempore est earum odio <br>
+              sapiente cumque molestias impedit.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full flex center-content">
+            <button class="submit">Join Now!</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- sign up form for new users -->
+
+      <div class="flex flex-column center-content full-height-and-width" data-view="join">
+        <div class="row">
+          <div class="column-full center-content flex">
+            <h1 class="heading-text">
+              Welcome!
+            </h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full center-content flex">
+            <p class="body-text">
+              Please Fill Out This Short <br>
+              Form Below To Register
+            </p>
+          </div>
+        </div>
+        <div class="row center-content flex flex-column">
+          <div class="column-full">
+            <form action="GET" class="sign-up" id="signUp">
+              <div class="center-content flex flex-column">
+                <label for="url"> Image URL</label>
+                <input type="url" name="url" id="url" required>
+              </div>
+              <div class="center-content flex flex-column">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" id="name" required maxlength="30">
+              </div>
+              <div class="center-content flex flex-column">
+                <label for="bio">A little About Yourself!</label>
+                <input type="text" name="bio" id="bio" required maxlength="140">
+              </div>
+              <div class="center-content flex flex-column">
+                <button type="submit" id="submit"> Sign Up Now!</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
