@@ -68,6 +68,11 @@
   padding-top: 37px;
 }
 
+.a-style{
+  text-decoration: none;
+  color: black;
+
+}
 
 
 /* adjust this css once top bar is fixed */
