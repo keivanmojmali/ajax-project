@@ -7,6 +7,10 @@
   display: flex;
 }
 
+.center-self {
+  align-self: center;
+}
+
 .flex-column {
   flex-direction: column;
 }
@@ -23,4 +27,60 @@
 
 .space-evenly {
   justify-content: space-evenly;
+}
+
+.column-thirds {
+  width: calc(100% / 3);
+}
+
+.top-bar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 8%;
+  background-color: tomato;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 14%;
+  background-color: tomato;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* adjust this css once top bar is fixed */
+
+.search-placeholder {
+  width: 200px;
+  height: 31px;
+  background-color: white;
+  align-self: center;
+  margin-left: 30px;
+}
+
+.hamburger-placeholder {
+  width: 51px;
+  height: 31px;
+  background-color: white;
+  align-self: center;
+  margin-left: 30px;
+}
+
+.circle-big {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.circle-small {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
 }
