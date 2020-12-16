@@ -7,14 +7,14 @@ var user = {
     imgUrl: '',
     bio: '',
   },
-  favorites = []
+  favorites: []
 };
 
 
-returningUser = localStorage.getItem('data');
+returningUser = localStorage.getItem('ajax');
 user = JSON.parse(returningUser);
 
 
 window.addEventListener('beforeunload', function(e){
-  localStorage.setItem('data',JSON.stringify(user));
+  localStorage.setItem('ajax',JSON.stringify(user));
 })
