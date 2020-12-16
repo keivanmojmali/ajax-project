@@ -3,7 +3,7 @@
 
 var user = {
   profile: {
-    username: '',
+    name: '',
     imgUrl: '',
     bio: '',
   },
@@ -11,9 +11,12 @@ var user = {
 };
 
 
-returningUser = localStorage.getItem('ajax');
-user = JSON.parse(returningUser);
 
+returningUser = localStorage.getItem('ajax');
+
+if(returningUser !== null) {
+user = JSON.parse(returningUser);
+}
 
 window.addEventListener('beforeunload', function(e){
   localStorage.setItem('ajax',JSON.stringify(user));
