@@ -8,7 +8,7 @@ var $planMeal = document.querySelector('#planMeal');
 var $results = document.querySelector('#results');
 var $joinNow = document.querySelector('#joinNow');
 var $signForm = document.querySelector('#signForm');
-
+var count = 0;
 
 
 
@@ -27,6 +27,39 @@ function view(e){
     $bottomBar.classList.remove('hidden');
   }
 }
+
+
+function domCreate(e) {
+
+
+}
+
+
+function randomBeers() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.punkapi.com/v2/beers/random');
+  xhr.responseType = 'json';
+  xhr.addEventListener('load',function(){
+  var toRender = xhr.response[0];
+  if(toRender.image_url !== null) {
+    return toRender;
+  } else {
+    randomBeers();
+  }
+  })
+  xhr.send();
+}
+
+function loadExplore(e){
+  if(count < 26) {
+    render(e);
+    count++
+    domCreate(randomBeers());
+  } else {
+    count = 0;
+  }
+}
+
 
 
 window.addEventListener('click', function(e){
