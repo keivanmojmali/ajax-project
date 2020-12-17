@@ -8,6 +8,9 @@ var $planMeal = document.querySelector('#planMeal');
 var $results = document.querySelector('#results');
 var $joinNow = document.querySelector('#joinNow');
 var $signForm = document.querySelector('#signForm');
+var $profileImage = document.querySelector('#profileImage');
+var $profileName = document.querySelector('#profileName');
+var $profileBio = document.querySelector('#profileBio');
 var random = [];
 var current = 0;
 
@@ -54,6 +57,18 @@ function randomBeers() {
   })
   xhr.send();
 }
+
+// this function loads the profile onto the profile page
+function profileLoad() {
+  $profileImage.src = user.profile.imgUrl;
+  $profileName.textContent = user.profile.name;
+  $profileBio.textContent = user.profile.bio;
+}
+
+
+
+
+
 
 
 // this function returns dom element to append
@@ -162,12 +177,12 @@ window.addEventListener('DOMContentLoaded', function (e) {
     view('explore');
   }
 
-  for (var i = 0; i < 199; i++) {
+  for (var i = 0; i < 50; i++) {
     randomBeers();
   }
 
   intervalId = setInterval(30000, function () {
-    for (var i = 0; i < 199; i++) {
+    for (var i = 0; i < 50; i++) {
       randomBeers();
     }
   });
