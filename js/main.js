@@ -28,13 +28,31 @@ function view(e){
   }
 }
 
-
+// this function returns dom element to append
 function domCreate(e) {
+  var main = document.createElement('div');
+  main.setAttribute('class','margin-top-bottom');
+  var col = document.createElement('div');
+  col.setAttribute('class','column-full flex center-content');
+  main.appendChild(col);
+  var image = document.createElement('img');
+  image.setAttribute('src',e.image_url);
+  image.setAttribute('alt',e.tagline);
+  col.appendChild(image);
+  var name = document.createElement('div');
+  name.setAttribute('class','column-full flex center-content');
+  main.appendChild(name);
+  var nameText = document.createElement('h1');
+  nameText.setAttribute('class','beer-name');
+  nameText.textContent = e.name;
+  name.appendChild(nameText);
+
+
 
 
 }
 
-
+// This function returns a random beer
 function randomBeers() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.punkapi.com/v2/beers/random');
@@ -50,11 +68,14 @@ function randomBeers() {
   xhr.send();
 }
 
+// FIX THIS BELOW
+// this function loads 25 beers with images into the explorer page
 function loadExplore(e){
   if(count < 26) {
-    render(e);
+
     count++
-    domCreate(randomBeers());
+    // put return of domCreate(randomBeers()); to append onto explore page
+
   } else {
     count = 0;
   }
