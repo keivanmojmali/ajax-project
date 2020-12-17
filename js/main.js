@@ -10,8 +10,7 @@ var $joinNow = document.querySelector('#joinNow');
 var $signForm = document.querySelector('#signForm');
 var count = 0;
 
-
-
+// This function changes the views
 function view(e){
   if(e === 'newUser') {
     $welcome.classList.remove('hidden');
@@ -77,10 +76,19 @@ function domCreate(e) {
   abv.setAttribute('class', 'margin-five text-center');
   abv.textContent = 'ABV: ' + e.abv;
   theInfoDiv.appendChild(abv);
-
-
-
-
+  var food = document.createElement('p');
+  food.setAttribute('class', 'margin-five text-center');
+  food.textContent = 'Food Pairing(s): ' + e.food_pairing[0];
+  theInfoDiv.appendChild(food);
+  var foodTwo = document.createElement('p');
+  foodTwo.setAttribute('class', 'margin-five text-center');
+  foodTwo.textContent = 'Food Pairing(s): ' + e.food_pairing[1];
+  theInfoDiv.appendChild(foodTwo);
+  var foodThree = document.createElement('p');
+  foodThree.setAttribute('class', 'margin-five text-center');
+  foodThree.textContent = 'Food Pairing(s): ' + e.food_pairing[2];
+  theInfoDiv.appendChild(foodThree);
+  return main;
 }
 
 // This function returns a random beer
@@ -91,7 +99,8 @@ function randomBeers() {
   xhr.addEventListener('load',function(){
   var toRender = xhr.response[0];
   if(toRender.image_url !== null) {
-    return toRender;
+    console.log(toRender.image_url);
+
   } else {
     randomBeers();
   }
@@ -99,14 +108,15 @@ function randomBeers() {
   xhr.send();
 }
 
-// FIX THIS BELOW
 // this function loads 25 beers with images into the explorer page
-function loadExplore(e){
+function loadExplore(){
+
   if(count < 26) {
-
     count++
-    // put return of domCreate(randomBeers()); to append onto explore page
 
+    console.log('value of randombeers',randomBeers());
+
+    loadExplore();
   } else {
     count = 0;
   }
