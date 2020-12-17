@@ -46,6 +46,37 @@ function domCreate(e) {
   nameText.setAttribute('class','beer-name');
   nameText.textContent = e.name;
   name.appendChild(nameText);
+  var tag = document.createElement('p');
+  tag.setAttribute('class', 'margin-five text-center');
+  tag.textContent = e.tagline;
+  name.appendChild(tag);
+  var more = document.createElement('div');
+  more.setAttribute('class','flex center-content');
+  main.appendChild(more);
+  var moreLink = document.createElement('a');
+  moreLink.setAttribute('class','a-style');
+  moreLink.setAttribute('href','#');
+  moreLink.textContent = 'More Information';
+  more.appendChild(moreLink);
+  var theInfoDiv = document.createElement('div');
+  theInfoDiv.setAttribute('class','hidden row flex flex-column center-content');
+  main.appendChild(theInfoDiv);
+  var hops = document.createElement('p');
+  hops.setAttribute('class','margin-five text-center');
+  hops.textContent = 'Hops: ' + e.hops.name;
+  theInfoDiv.appendChild(hops);
+  var taste = document.createElement('p');
+  taste.setAttribute('class', 'margin-five text-center');
+  taste.textContent = 'Taste: ' + e.hops.attribute;
+  theInfoDiv.appendChild(taste);
+  var yeast = document.createElement('p');
+  yeast.setAttribute('class', 'margin-five text-center');
+  yeast.textContent = 'Yeast: ' + e.yeast;
+  theInfoDiv.appendChild(yeast);
+  var abv = document.createElement('p');
+  abv.setAttribute('class', 'margin-five text-center');
+  abv.textContent = 'ABV: ' + e.abv;
+  theInfoDiv.appendChild(abv);
 
 
 
