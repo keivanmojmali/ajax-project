@@ -11,6 +11,7 @@ var $signForm = document.querySelector('#signForm');
 var $profileImage = document.querySelector('#profileImage');
 var $profileName = document.querySelector('#profileName');
 var $profileBio = document.querySelector('#profileBio');
+var $favPosition = document.querySelector('#favorites');
 var random = [];
 var current = 0;
 
@@ -57,17 +58,6 @@ function randomBeers() {
   })
   xhr.send();
 }
-
-// this function loads the profile onto the profile page
-function profileLoad() {
-  $profileImage.src = user.profile.imgUrl;
-  $profileName.textContent = user.profile.name;
-  $profileBio.textContent = user.profile.bio;
-}
-
-
-
-
 
 
 
@@ -156,6 +146,37 @@ function loadExplore() {
     current++
   }
 }
+
+
+
+// this function loads the profile onto the profile page
+function profileLoad() {
+  $profileImage.src = user.profile.imgUrl;
+  $profileName.textContent = user.profile.name;
+  $profileBio.textContent = user.profile.bio;
+  for (i = 0; i < user.favorites.length; i++) {
+    var append = domCreate(user.favorites[i]);
+    $favPosition.appendChild(append);
+  }
+}
+
+
+
+// delete this function later
+
+function testSave() {
+  for (i = 0; i < 4; i++) {
+    user.favorites.push(random[i]);
+  }
+  $profile.classList.remove('hidden');
+
+}
+
+
+
+
+
+
 
 
 
