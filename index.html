@@ -142,189 +142,92 @@
 
       <div id="explore" class="hidden padding-top" data-view="explore">
 
-        </div>
+      </div>
 
 
 
       <!-- This is where the profile will go  -->
 
-      <div id="profile" class="hidden profile flex flex-column" data-view="profile">
-
+      <div class="hidden profile flex flex-column" id="profile">
         <div class="row flex margin-top-bottom margin-five">
           <div class="column-half content-padding">
-            <div class="profile-img">
-
-            </div>
+            <img class="full-width" id="profileImage" src="" alt="">
           </div>
-          <div class="column-half flex flex-column margin-five space-evenly">
-            <h1 id="profileName">Username</h1>
+          <div class="column-half flex flex-column margin-five space-evenly text-center">
+            <h1 id="profileName"></h1>
             <p id="profileBio">
-              This is my Bio - this is about me - and who I am and things I like etc.
             </p>
           </div>
         </div>
 
         <div class="line"></div>
-
-        <div class="favorites flex-column flex center-content">
-          <div class="row">
-            <div class="column-full">
-              <h2 class="heading-text margin-five content-padding">
-                My Favorites!
-              </h2>
-            </div>
-          </div>
-
-
-          <!--
-          favorites to be added late using this template -->
-
-          <div class="row margin-top-bottom">
-            <div class="column-full flex center-content">
-              <div class="col-img">
-              </div>
-            </div>
-            <div class="column-full flex center-content">
-              <h1 id="beer-name">Name Goes Here</h1>
-            </div>
-            <div class="flex center-content">
-              <a href="#" class="a-style">More Info v</a>
-            </div>
-            <div data-view="beer-info" class="flex center-content">
-              <div class="row flex flex-column center-content">
-                <p class="margin-five text-center" id="beer-hops">
-                  Hops: This where hops information would go.
-                </p>
-                <p class="margin-five text-center" id="beer-abv">
-                  ABV: This is where the ABV information will go.
-                </p>
-                <p class="margin-five text-center" id="beer-yeast">
-                  Yeast: This is where the Yeast information will go.
-                </p>
-                <p class="margin-five text-center" id="beer-food">
-                  Food Pairing: This is where the Food pairing information will go.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row margin-top-bottom">
-            <div class="column-full flex center-content">
-              <div class="col-img">
-              </div>
-            </div>
-            <div class="column-full flex center-content">
-              <h1 id="beer-name">Name Goes Here</h1>
-            </div>
-            <div class="flex center-content">
-              <a href="#" class="a-style">More Info v</a>
-            </div>
-            <div data-view="beer-info" class="flex center-content">
-              <div class="row flex flex-column center-content">
-                <p class="margin-five text-center" id="beer-hops">
-                  Hops: This where hops information would go.
-                </p>
-                <p class="margin-five text-center" id="beer-abv">
-                  ABV: This is where the ABV information will go.
-                </p>
-                <p class="margin-five text-center" id="beer-yeast">
-                  Yeast: This is where the Yeast information will go.
-                </p>
-                <p class="margin-five text-center" id="beer-food">
-                  Food Pairing: This is where the Food pairing information will go.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row margin-top-bottom">
-            <div class="column-full flex center-content">
-              <div class="col-img">
-              </div>
-            </div>
-            <div class="column-full flex center-content">
-              <h1 id="beer-name">Name Goes Here</h1>
-            </div>
-            <div class="flex center-content">
-              <a href="#" class="a-style">More Info v</a>
-            </div>
-            <div data-view="beer-info" class="flex center-content">
-              <div class="row flex flex-column center-content">
-                <p class="margin-five text-center" id="beer-hops">
-                  Hops: This where hops information would go.
-                </p>
-                <p class="margin-five text-center" id="beer-abv">
-                  ABV: This is where the ABV information will go.
-                </p>
-                <p class="margin-five text-center" id="beer-yeast">
-                  Yeast: This is where the Yeast information will go.
-                </p>
-                <p class="margin-five text-center" id="beer-food">
-                  Food Pairing: This is where the Food pairing information will go.
-                </p>
-              </div>
-            </div>
+        <div class="row">
+          <div class="column-full">
+            <h2 class="heading-text margin-five content-padding">
+              My Favorites!
+            </h2>
           </div>
         </div>
-
+        <div class="flex flex-column" id="favorites">
+        </div>
       </div>
 
 
 
 
 
+      <!-- This is where the plan my meal page will go -->
 
-<!-- This is where the plan my meal page will go -->
-
-<div id="planMeal" class="hidden plan-my-meal margin-top-bottom flex flex-column" data-view="plan">
-  <div class="row">
-    <div class="column-full flex center-content">
-      <h1 class="heading-text"> Plan My Meal!</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="column-full flex center-content">
-      <h2 class="heading-text">
-        Our Beer and Food <br>
-        Algorithm will Match <br>
-        You with the Perfect <br>
-        Meal for Tonight!
-      </h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="column-full flex center-content">
-      <button class="submit">Let's Do It!</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- This is where the result of the page will go -->
-
-<div id="results" class="hidden result margin-top-bottom" data-view="result">
-  <div class="row margin-five content-padding">
-    <div class="column-full">
-      <h1 class="heading-text">Tonight's Beer!</h1>
-    </div>
-  </div>
-  <div class="row margin-five content-padding">
-    <div class="column-full text-center">
-        <div class="profile-img">
-
+      <div id="planMeal" class="hidden plan-my-meal margin-top-bottom flex flex-column" data-view="plan">
+        <div class="row">
+          <div class="column-full flex center-content">
+            <h1 class="heading-text"> Plan My Meal!</h1>
+          </div>
         </div>
-        <h1 class="heading-text" id="beerName">Beer Name</h1>
-    </div>
-  </div>
-  <div class="row margin-five content-padding">
-    <div class="column-full">
-      <h1 class="heading-text">
-        Paired With!
-      </h1>
-      <p>This is what the food will be paired with. probabely a steak and then this and then that and then eat this and then that</p>
-    </div>
-  </div>
-</div>
+        <div class="row">
+          <div class="column-full flex center-content">
+            <h2 class="heading-text">
+              Our Beer and Food <br>
+              Algorithm will Match <br>
+              You with the Perfect <br>
+              Meal for Tonight!
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full flex center-content">
+            <button class="submit">Let's Do It!</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- This is where the result of the page will go -->
+
+      <div id="results" class="hidden result margin-top-bottom" data-view="result">
+        <div class="row margin-five content-padding">
+          <div class="column-full">
+            <h1 class="heading-text">Tonight's Beer!</h1>
+          </div>
+        </div>
+        <div class="row margin-five content-padding">
+          <div class="column-full text-center">
+            <div class="profile-img">
+
+            </div>
+            <h1 class="heading-text" id="beerName">Beer Name</h1>
+          </div>
+        </div>
+        <div class="row margin-five content-padding">
+          <div class="column-full">
+            <h1 class="heading-text">
+              Paired With!
+            </h1>
+            <p>This is what the food will be paired with. probabely a steak and then this and then that and then eat
+              this and then that</p>
+          </div>
+        </div>
+      </div>
 
 
 

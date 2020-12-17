@@ -28,6 +28,9 @@
   text-align: center;
 }
 
+.full-width {
+  width: 100%;
+}
 
 .space-evenly {
   justify-content: space-evenly;

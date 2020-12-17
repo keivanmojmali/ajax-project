@@ -14,10 +14,10 @@ var user = {
 
 returningUser = localStorage.getItem('ajax');
 
-if(returningUser !== null) {
-user = JSON.parse(returningUser);
+if (returningUser !== null) {
+  user = JSON.parse(returningUser);
 }
 
-window.addEventListener('beforeunload', function(e){
-  localStorage.setItem('ajax',JSON.stringify(user));
+window.addEventListener('beforeunload', function (e) {
+  localStorage.setItem('ajax', JSON.stringify(user));
 })
