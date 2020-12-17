@@ -69,7 +69,7 @@ function domCreate(e) {
   image.setAttribute('alt', e.tagline);
   col.appendChild(image);
   var name = document.createElement('div');
-  name.setAttribute('class', 'column-full flex center-content');
+  name.setAttribute('class', 'column-full flex-column flex center-content');
   main.appendChild(name);
   var nameText = document.createElement('h1');
   nameText.setAttribute('class', 'beer-name');
@@ -79,6 +79,11 @@ function domCreate(e) {
   tag.setAttribute('class', 'margin-five text-center');
   tag.textContent = e.tagline;
   name.appendChild(tag);
+  var starDiv = document.createElement('div');
+  name.appendChild(starDiv);
+  var star = document.createElement('i');
+  star.setAttribute('class','far fa-star');
+  starDiv.appendChild(star);
   var more = document.createElement('div');
   more.setAttribute('class', 'flex center-content');
   main.appendChild(more);
