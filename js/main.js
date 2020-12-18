@@ -18,26 +18,90 @@ var $beerTonight = document.querySelector('#beerTonight');
 var random = [];
 var current = 0;
 
+
+
 // This function changes the views
 function view(e) {
   if (e === 'newUser') {
     $welcome.classList.remove('hidden');
+    $signup.classList.add('hidden');
+    $topBar.classList.add('hidden');
+    $bottomBar.classList.add('hidden');
+    $explore.classList.add('hidden');
+    $profile.classList.add('hidden');
+    $planMeal.classList.add('hidden');
+    $results.classList.add('hidden');
+    $joinNow.classList.remove('hidden');
+    $signForm.classList.add('hidden');
+
   }
   if (e === 'signUp') {
     $welcome.classList.add('hidden');
     $signup.classList.remove('hidden');
+    $topBar.classList.add('hidden');
+    $bottomBar.classList.add('hidden');
+    $explore.classList.add('hidden');
+    $profile.classList.add('hidden');
+    $planMeal.classList.add('hidden');
+    $results.classList.add('hidden');
+    $joinNow.classList.add('hidden');
+    $signForm.classList.remove('hidden');
   }
   if (e === 'explore') {
+    $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $explore.classList.remove('hidden');
     $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
+    $explore.classList.remove('hidden');
+    $profile.classList.add('hidden');
+    $planMeal.classList.add('hidden');
+    $results.classList.add('hidden');
+    $joinNow.classList.add('hidden');
+    $signForm.classList.add('hidden');
+    loadExplore();
+
   }
   if(e === 'results') {
-    $results.classList.remove('hidden');
+    $welcome.classList.add('hidden');
+    $signup.classList.add('hidden');
+    $topBar.classList.remove('hidden');
+    $bottomBar.classList.remove('hidden');
+    $explore.classList.add('hidden');
+    $profile.classList.add('hidden');
     $planMeal.classList.add('hidden');
+    $results.classList.remove('hidden');
+    $joinNow.classList.add('hidden');
+    $signForm.classList.add('hidden');
+    mealTonight();
+  }
+  if(e === 'plan') {
+    $welcome.classList.add('hidden');
+    $signup.classList.add('hidden');
+    $topBar.classList.remove('hidden');
+    $bottomBar.classList.remove('hidden');
+    $explore.classList.add('hidden');
+    $profile.classList.add('hidden');
+    $planMeal.classList.remove('hidden');
+    $results.classList.add('hidden');
+    $joinNow.classList.add('hidden');
+    $signForm.classList.add('hidden');
+  }
+  if(e === 'profile'){
+    $welcome.classList.add('hidden');
+    $signup.classList.add('hidden');
+    $topBar.classList.remove('hidden');
+    $bottomBar.classList.remove('hidden');
+    $explore.classList.add('hidden');
+    $profile.classList.remove('hidden');
+    $planMeal.classList.add('hidden');
+    $results.classList.add('hidden');
+    $joinNow.classList.add('hidden');
+    $signForm.classList.add('hidden');
+    profileLoad();
   }
 }
+
+
 
 
 // This function returns a random beer
@@ -70,7 +134,6 @@ function randomBeers() {
 
 // this function returns dom element to append
 function domCreate(e) {
-  console.log(e);
   var main = document.createElement('div');
   main.setAttribute('class', 'margin-top-bottom');
   var col = document.createElement('div');
@@ -139,19 +202,16 @@ function domCreate(e) {
 }
 
 
-function renderExplore(object) {
-  $explore.appendChild(object);
-}
 
 
 
 // this function loads 25 beers with ima s into the explorer page
 function loadExplore() {
-  for (i = current; i < 26; i++) {
+  for (i = 0; i < 26; i++) {
     var holdEl = domCreate(random[i])
-    renderExplore(holdEl);
-    current++
+    $explore.appendChild(holdEl);
   }
+  current = current + 25;
 }
 
 
@@ -171,15 +231,26 @@ function profileLoad() {
 
 
 window.addEventListener('click', function (e) {
-
+console.log(e.target);
   if (e.target.id === 'joinNow') {
     view('signUp')
   }
 
   if (e.target.id === 'eat') {
-    mealTonight();
     view('results');
   };
+
+  if(e.target.id === 'navProfile') {
+    view('profile')
+
+  }
+  if(e.target.id === 'navPlan') {
+    view('plan')
+
+  }
+  if(e.target.id === 'navExplore') {
+    view('explore')
+  }
 
 })
 
@@ -199,20 +270,21 @@ window.addEventListener('DOMContentLoaded', function (e) {
 
 document.addEventListener('submit', function (e) {
   e.preventDefault();
+  console.log(e.target.id);
   var imgUrl = $signForm.elements.url.value;
   var name = $signForm.elements.name.value;
   var bio = $signForm.elements.bio.value;
   user.profile = { name, imgUrl, bio };
-  if(e.target.id === 'explore') {
+  if(e.target.id === 'signForm') {
     view('explore');
   }
+
 
 })
 
 
 function mealTonight(){
-  var toRender = user.favorites[30];
-  console.log('HHHHHHHH',$imageTonight);
+  var toRender = random[30];
   $imageTonight.src = toRender.image;
   $imageTonight.alt = 'A random beer and food selection for tonight';
   $beerTonight.textContent = toRender.name;
