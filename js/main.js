@@ -26,7 +26,6 @@ function view(e) {
   if (e === 'newUser') {
     $welcome.classList.remove('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.add('hidden');
     $bottomBar.classList.add('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -39,7 +38,6 @@ function view(e) {
   if (e === 'signUp') {
     $welcome.classList.add('hidden');
     $signup.classList.remove('hidden');
-    $topBar.classList.add('hidden');
     $bottomBar.classList.add('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -55,7 +53,6 @@ function view(e) {
   if (e === 'explore') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.remove('hidden');
     $profile.classList.add('hidden');
@@ -69,7 +66,6 @@ function view(e) {
   if (e === 'results') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -82,7 +78,6 @@ function view(e) {
   if (e === 'plan') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -94,7 +89,6 @@ function view(e) {
   if (e === 'profile') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.remove('hidden');
@@ -125,7 +119,7 @@ function randomBeers() {
       var abv = toRender.abv;
       var food = toRender.food_pairing;
       var theId = beerId;
-      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId };
+      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes: '' };
       beerId++
       random.push(singleObject);
     } else {
@@ -163,8 +157,8 @@ function domCreate(e) {
   name.appendChild(starDiv);
   var star = document.createElement('i');
   star.setAttribute('class', 'far fa-star');
-  star.setAttribute('data-star','favorite');
-  star.setAttribute('data-fav',e.beerId);
+  star.setAttribute('data-star', 'favorite');
+  star.setAttribute('data-fav', e.beerId);
   starDiv.appendChild(star);
   var more = document.createElement('div');
   more.setAttribute('class', 'flex center-content');
@@ -227,13 +221,96 @@ function loadExplore() {
 
 
 
+function profileDom(e) {
+  var main = document.createElement('div');
+  main.setAttribute('class', 'margin-top-bottom');
+  var col = document.createElement('div');
+  col.setAttribute('class', 'column-full flex center-content');
+  main.appendChild(col);
+  var image = document.createElement('img');
+  image.setAttribute('src', e.image);
+  image.setAttribute('alt', e.tagline);
+  col.appendChild(image);
+  var name = document.createElement('div');
+  name.setAttribute('class', 'column-full flex-column flex center-content');
+  main.appendChild(name);
+  var nameText = document.createElement('h1');
+  nameText.setAttribute('class', 'beer-name');
+  nameText.textContent = e.name;
+  name.appendChild(nameText);
+  var tag = document.createElement('p');
+  tag.setAttribute('class', 'margin-five text-center');
+  tag.textContent = e.tagline;
+  name.appendChild(tag);
+  var more = document.createElement('div');
+  var theInfoDiv = document.createElement('div');
+  theInfoDiv.setAttribute('class', 'row flex flex-column center-content');
+  theInfoDiv.setAttribute('id', e.beerId);
+  theInfoDiv.setAttribute('data-boolean', 'false');
+  main.appendChild(theInfoDiv);
+  var hops = document.createElement('p');
+  hops.setAttribute('class', 'margin-five text-center');
+  hops.textContent = 'Hops: ' + e.hops;
+  theInfoDiv.appendChild(hops);
+  var yeast = document.createElement('p');
+  yeast.setAttribute('class', 'margin-five text-center');
+  yeast.textContent = 'Yeast: ' + e.yeast;
+  theInfoDiv.appendChild(yeast);
+  var abv = document.createElement('p');
+  abv.setAttribute('class', 'margin-five text-center');
+  abv.textContent = 'ABV: ' + e.abv;
+  theInfoDiv.appendChild(abv);
+  var food = document.createElement('p');
+  food.setAttribute('class', 'margin-five text-center');
+  food.textContent = 'Food Pairing(s): ' + e.food[0];
+  theInfoDiv.appendChild(food);
+  var foodTwo = document.createElement('p');
+  foodTwo.setAttribute('class', 'margin-five text-center');
+  foodTwo.textContent = 'Food Pairing(s): ' + e.food[1];
+  theInfoDiv.appendChild(foodTwo);
+  var foodThree = document.createElement('p');
+  foodThree.setAttribute('class', 'margin-five text-center');
+  foodThree.textContent = 'Food Pairing(s): ' + e.food[2];
+  theInfoDiv.appendChild(foodThree);
+
+
+  var notesButton = document.createElement('button');
+  notesButton.textContent = 'Edit Notes';
+  notesButton.setAttribute('data-notes',e.beerId);
+  notesButton.setAttribute('data-boolean','false');
+  theInfoDiv.appendChild(notesButton);
+
+  var notesHolderDiv = document.createElement('div');
+  notesHolderDiv.setAttribute('class','');
+  main.appendChild(notesHolderDiv);
+  var notes = document.createElement('p');
+  notes.textContent = e.notes;
+  notesHolderDiv.appendChild(notes);
+
+  var editNotesDiv = document.createElement('div');
+  editNotesDiv.setAttribute('class','hidden');
+  main.appendChild(editNotesDiv);
+  var form = document.createElement('form');
+  editNotesDiv.appendChild(form);
+  var textField = document.createElement('textfield');
+  textField.value = e.notes;
+  form.appendChild(textField);
+
+
+
+
+  return main;
+}
+
+
+
 // this function loads the profile onto the profile page
 function profileLoad() {
   $profileImage.src = user.profile.imgUrl;
   $profileName.textContent = user.profile.name;
   $profileBio.textContent = user.profile.bio;
   for (i = 0; i < user.favorites.length; i++) {
-    var append = domCreate(user.favorites[i]);
+    var append = profileDom(user.favorites[i]);
     $favPosition.appendChild(append);
   }
 }
@@ -265,7 +342,6 @@ window.addEventListener('click', function (e) {
 
   if (e.target.dataset.click === 'button') {
     var infoDiv = document.getElementById(e.target.dataset.view);
-    console.log('infoDiv', infoDiv);
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
@@ -277,16 +353,18 @@ window.addEventListener('click', function (e) {
     }
   }
 
-  if(e.target.dataset.star === 'favorite') {
+  if (e.target.dataset.star === 'favorite') {
     var num = e.target.dataset.fav - 1;
     console.log(num);
     user.favorites.push(random[num]);
     e.target.className = 'fas fa-star';
   }
 
-  if(e.target.id === 'editProfile') {
+  if (e.target.id === 'editProfile') {
     view('signUp');
   }
+
+
 
 
 
