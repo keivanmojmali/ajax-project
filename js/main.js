@@ -277,7 +277,7 @@ window.addEventListener('click', function (e) {
     var num = e.target.dataset.fav - 1;
     console.log(num);
     user.favorites.push(random[num]);
-    e.target.className == 'fas fa-star'
+    e.target.className = 'fas fa-star';
   }
 
 
