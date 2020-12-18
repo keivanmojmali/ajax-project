@@ -89,9 +89,15 @@
 }
 
 
+.big-icon {
+  font-size: 55px;
+  align-self: center;
+}
 
-
-
+.small-icon{
+  font-size: 40px;
+  align-self: center;
+}
 
 
 /* adjust this css once top bar is fixed */
