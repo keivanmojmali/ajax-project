@@ -12,6 +12,9 @@ var $profileImage = document.querySelector('#profileImage');
 var $profileName = document.querySelector('#profileName');
 var $profileBio = document.querySelector('#profileBio');
 var $favPosition = document.querySelector('#favorites');
+var $eatTonight = document.querySelector('#eatTonight');
+var $imageTonight = document.querySelector('#imageTonight');
+var $beerTonight = document.querySelector('#beerTonight');
 var random = [];
 var current = 0;
 
@@ -29,6 +32,10 @@ function view(e) {
     $explore.classList.remove('hidden');
     $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
+  }
+  if(e === 'results') {
+    $results.classList.remove('hidden');
+    $planMeal.classList.add('hidden');
   }
 }
 
@@ -162,23 +169,6 @@ function profileLoad() {
 
 
 
-// delete this function later
-
-function testSave() {
-  for (i = 0; i < 4; i++) {
-    user.favorites.push(random[i]);
-  }
-  $profile.classList.remove('hidden');
-
-}
-
-
-
-
-
-
-
-
 
 window.addEventListener('click', function (e) {
 
@@ -186,7 +176,10 @@ window.addEventListener('click', function (e) {
     view('signUp')
   }
 
-
+  if (e.target.id === 'eat') {
+    mealTonight();
+    view('results');
+  };
 
 })
 
@@ -202,11 +195,6 @@ window.addEventListener('DOMContentLoaded', function (e) {
     randomBeers();
   }
 
-  intervalId = setInterval(30000, function () {
-    for (var i = 0; i < 50; i++) {
-      randomBeers();
-    }
-  });
 })
 
 document.addEventListener('submit', function (e) {
@@ -215,5 +203,26 @@ document.addEventListener('submit', function (e) {
   var name = $signForm.elements.name.value;
   var bio = $signForm.elements.bio.value;
   user.profile = { name, imgUrl, bio };
-  view('explore');
+  if(e.target.id === 'explore') {
+    view('explore');
+  }
+
 })
+
+
+function mealTonight(){
+  var toRender = user.favorites[30];
+  console.log('HHHHHHHH',$imageTonight);
+  $imageTonight.src = toRender.image;
+  $imageTonight.alt = 'A random beer and food selection for tonight';
+  $beerTonight.textContent = toRender.name;
+  var food1 = document.createElement('li');
+  food1.textContent = toRender.food[0];
+  $eatTonight.appendChild(food1);
+  var food2 = document.createElement('li');
+  food2.textContent = toRender.food[1];
+  $eatTonight.appendChild(food2);
+  var food3 = document.createElement('li');
+  food3.textContent = toRender.food[2];
+  $eatTonight.appendChild(food3);
+};

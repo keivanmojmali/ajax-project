@@ -99,7 +99,7 @@
 
 
       <!-- this is the top bar  -->
-      <div id="topBar" data-view="top" class="top-bar hidden">
+      <div id="topBar" data-view="top" class="top-bar ">
         <div class="hamburger-placeholder">
 
         </div>
@@ -110,7 +110,7 @@
 
 
       <!-- this is the bottom nav -->
-      <div id="bottomBar" class="bottom-bar hidden" data-view="bottom">
+      <div id="bottomBar" class="bottom-bar " data-view="bottom">
         <div class="row flex">
 
           <div class="column-thirds flex center-content">
@@ -178,7 +178,7 @@
 
       <!-- This is where the plan my meal page will go -->
 
-      <div id="planMeal" class="hidden plan-my-meal margin-top-bottom flex flex-column" data-view="plan">
+      <div id="planMeal" class=" plan-my-meal margin-top-bottom flex flex-column" data-view="plan">
         <div class="row">
           <div class="column-full flex center-content">
             <h1 class="heading-text"> Plan My Meal!</h1>
@@ -196,7 +196,7 @@
         </div>
         <div class="row">
           <div class="column-full flex center-content">
-            <button class="submit">Let's Do It!</button>
+            <button id="eat" class="submit">Let's Do It!</button>
           </div>
         </div>
       </div>
@@ -212,10 +212,10 @@
         </div>
         <div class="row margin-five content-padding">
           <div class="column-full text-center">
-            <div class="profile-img">
-
-            </div>
-            <h1 class="heading-text" id="beerName">Beer Name</h1>
+            <h1 class="heading-text" id="beerTonight"></h1>
+          </div>
+          <div class="column-full">
+            <img id="imageTonight" src="" alt="">
           </div>
         </div>
         <div class="row margin-five content-padding">
@@ -223,11 +223,13 @@
             <h1 class="heading-text">
               Paired With!
             </h1>
-            <p>This is what the food will be paired with. probabely a steak and then this and then that and then eat
-              this and then that</p>
+            <ul id="eatTonight">
+
+            </ul>
           </div>
         </div>
       </div>
+
 
 
 
