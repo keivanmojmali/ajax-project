@@ -47,6 +47,10 @@ function view(e) {
     $results.classList.add('hidden');
     $joinNow.classList.add('hidden');
     $signForm.classList.remove('hidden');
+    $signForm.elements.url.value = user.profile.imgUrl;
+    $signForm.elements.name.value = user.profile.name;
+    $signForm.elements.bio.value = user.profile.bio;
+
   }
   if (e === 'explore') {
     $welcome.classList.add('hidden');
@@ -278,6 +282,10 @@ window.addEventListener('click', function (e) {
     console.log(num);
     user.favorites.push(random[num]);
     e.target.className = 'fas fa-star';
+  }
+
+  if(e.target.id === 'editProfile') {
+    view('signUp');
   }
 
 
