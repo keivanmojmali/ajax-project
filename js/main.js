@@ -62,7 +62,7 @@ function view(e) {
     loadExplore();
 
   }
-  if(e === 'results') {
+  if (e === 'results') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
     $topBar.classList.remove('hidden');
@@ -75,7 +75,7 @@ function view(e) {
     $signForm.classList.add('hidden');
     mealTonight();
   }
-  if(e === 'plan') {
+  if (e === 'plan') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
     $topBar.classList.remove('hidden');
@@ -87,7 +87,7 @@ function view(e) {
     $joinNow.classList.add('hidden');
     $signForm.classList.add('hidden');
   }
-  if(e === 'profile'){
+  if (e === 'profile') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
     $topBar.classList.remove('hidden');
@@ -121,7 +121,7 @@ function randomBeers() {
       var abv = toRender.abv;
       var food = toRender.food_pairing;
       var theId = beerId;
-      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId};
+      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId };
       beerId++
       random.push(singleObject);
     } else {
@@ -158,28 +158,25 @@ function domCreate(e) {
   var starDiv = document.createElement('div');
   name.appendChild(starDiv);
   var star = document.createElement('i');
-  star.setAttribute('class','far fa-star');
+  star.setAttribute('class', 'far fa-star');
+  star.setAttribute('data-star','favorite');
+  star.setAttribute('data-fav',e.beerId);
   starDiv.appendChild(star);
   var more = document.createElement('div');
   more.setAttribute('class', 'flex center-content');
   main.appendChild(more);
-
-
   var moreLink = document.createElement('button');
   // moreLink.setAttribute('class', ''); add a button class here
-  moreLink.setAttribute('type','submit');
-  moreLink.setAttribute('data-view',e.beerId);
-  moreLink.setAttribute('data-click','button');
+  moreLink.setAttribute('type', 'submit');
+  moreLink.setAttribute('data-view', e.beerId);
+  moreLink.setAttribute('data-click', 'button');
   moreLink.textContent = 'More Information';
   more.appendChild(moreLink);
-
   var theInfoDiv = document.createElement('div');
   theInfoDiv.setAttribute('class', 'hidden row flex flex-column center-content');
-  theInfoDiv.setAttribute('id',e.beerId);
-  theInfoDiv.setAttribute('data-boolean','false');
+  theInfoDiv.setAttribute('id', e.beerId);
+  theInfoDiv.setAttribute('data-boolean', 'false');
   main.appendChild(theInfoDiv);
-
-
   var hops = document.createElement('p');
   hops.setAttribute('class', 'margin-five text-center');
   hops.textContent = 'Hops: ' + e.hops;
@@ -241,7 +238,7 @@ function profileLoad() {
 
 
 window.addEventListener('click', function (e) {
-console.log(e.target);
+  console.log(e.target);
   if (e.target.id === 'joinNow') {
     view('signUp')
   }
@@ -250,29 +247,40 @@ console.log(e.target);
     view('results');
   };
 
-  if(e.target.id === 'navProfile') {
+  if (e.target.id === 'navProfile') {
     view('profile')
 
   }
-  if(e.target.id === 'navPlan') {
+  if (e.target.id === 'navPlan') {
     view('plan')
 
   }
-  if(e.target.id === 'navExplore') {
+  if (e.target.id === 'navExplore') {
     view('explore')
   }
 
-  if(e.target.dataset.click === 'button') {
+  if (e.target.dataset.click === 'button') {
     var infoDiv = document.getElementById(e.target.dataset.view);
-    console.log('infoDiv',infoDiv);
+    console.log('infoDiv', infoDiv);
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
+      e.target.textContent = 'Less Information'
     } else {
       infoDiv.classList.add('hidden');
       infoDiv.dataset.boolean = 'false';
+      e.target.textContent = 'More Information'
     }
   }
+
+  if(e.target.dataset.star === 'favorite') {
+    var num = e.target.dataset.fav - 1;
+    console.log(num);
+    user.favorites.push(random[num]);
+    e.target.className == 'fas fa-star'
+  }
+
+
 
 })
 
@@ -301,7 +309,7 @@ document.addEventListener('submit', function (e) {
   var name = $signForm.elements.name.value;
   var bio = $signForm.elements.bio.value;
   user.profile = { name, imgUrl, bio };
-  if(e.target.id === 'signForm') {
+  if (e.target.id === 'signForm') {
     view('explore');
   }
 
@@ -309,7 +317,7 @@ document.addEventListener('submit', function (e) {
 })
 
 
-function mealTonight(){
+function mealTonight() {
   var toRender = random[30];
   $imageTonight.src = toRender.image;
   $imageTonight.alt = 'A random beer and food selection for tonight';
