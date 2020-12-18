@@ -17,6 +17,7 @@ var $imageTonight = document.querySelector('#imageTonight');
 var $beerTonight = document.querySelector('#beerTonight');
 var random = [];
 var current = 0;
+var beerId = 1;
 
 
 
@@ -102,8 +103,6 @@ function view(e) {
 }
 
 
-
-
 // This function returns a random beer
 function randomBeers() {
   var xhr = new XMLHttpRequest();
@@ -121,7 +120,9 @@ function randomBeers() {
       var yeast = toRender.ingredients.yeast;
       var abv = toRender.abv;
       var food = toRender.food_pairing;
-      var singleObject = { image, tagline, name, hops, yeast, abv, food };
+      var theId = beerId;
+      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId};
+      beerId++
       random.push(singleObject);
     } else {
       randomBeers();
@@ -162,14 +163,23 @@ function domCreate(e) {
   var more = document.createElement('div');
   more.setAttribute('class', 'flex center-content');
   main.appendChild(more);
-  var moreLink = document.createElement('a');
-  moreLink.setAttribute('class', 'a-style');
-  moreLink.setAttribute('href', '#');
+
+
+  var moreLink = document.createElement('button');
+  // moreLink.setAttribute('class', ''); add a button class here
+  moreLink.setAttribute('type','submit');
+  moreLink.setAttribute('data-view',e.beerId);
+  moreLink.setAttribute('data-click','button');
   moreLink.textContent = 'More Information';
   more.appendChild(moreLink);
+
   var theInfoDiv = document.createElement('div');
-  theInfoDiv.setAttribute('class', ' row flex flex-column center-content');
+  theInfoDiv.setAttribute('class', 'hidden row flex flex-column center-content');
+  theInfoDiv.setAttribute('id',e.beerId);
+  theInfoDiv.setAttribute('data-boolean','false');
   main.appendChild(theInfoDiv);
+
+
   var hops = document.createElement('p');
   hops.setAttribute('class', 'margin-five text-center');
   hops.textContent = 'Hops: ' + e.hops;
@@ -252,10 +262,23 @@ console.log(e.target);
     view('explore')
   }
 
+  if(e.target.dataset.click === 'button') {
+    var infoDiv = document.getElementById(e.target.dataset.view);
+    console.log('infoDiv',infoDiv);
+    if (infoDiv.dataset.boolean === 'false') {
+      infoDiv.classList.remove('hidden');
+      infoDiv.dataset.boolean = 'true';
+    } else {
+      infoDiv.classList.add('hidden');
+      infoDiv.dataset.boolean = 'false';
+    }
+  }
+
 })
 
 
 window.addEventListener('DOMContentLoaded', function (e) {
+
   if (user.profile.name === '') {
     view('newUser')
   } else {
@@ -267,6 +290,9 @@ window.addEventListener('DOMContentLoaded', function (e) {
   }
 
 })
+
+
+
 
 document.addEventListener('submit', function (e) {
   e.preventDefault();
