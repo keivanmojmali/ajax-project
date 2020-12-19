@@ -118,8 +118,9 @@ function randomBeers() {
       var yeast = toRender.ingredients.yeast;
       var abv = toRender.abv;
       var food = toRender.food_pairing;
+      var notes = 'Add Notes Here';
       var theId = beerId;
-      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes: '' };
+      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
       beerId++
       random.push(singleObject);
     } else {
@@ -167,7 +168,7 @@ function domCreate(e) {
   // moreLink.setAttribute('class', ''); add a button class here
   moreLink.setAttribute('type', 'submit');
   moreLink.setAttribute('data-view', e.beerId);
-  moreLink.setAttribute('data-click', 'button');
+  moreLink.setAttribute('data-click', 'notesEdit');
   moreLink.textContent = 'More Information';
   more.appendChild(moreLink);
   var theInfoDiv = document.createElement('div');
@@ -276,26 +277,37 @@ function profileDom(e) {
 
   var notesButton = document.createElement('button');
   notesButton.textContent = 'Edit Notes';
-  notesButton.setAttribute('data-notes',e.beerId);
-  notesButton.setAttribute('data-boolean','false');
+  notesButton.setAttribute('data-edit', 'editMe');
+  notesButton.setAttribute('data-find', e.beerId);
+  notesButton.setAttribute('data-boolean', 'false');
   theInfoDiv.appendChild(notesButton);
 
   var notesHolderDiv = document.createElement('div');
-  notesHolderDiv.setAttribute('class','');
+  notesHolderDiv.setAttribute('class', 'column-full');
+  notesHolderDiv.setAttribute('data-notes', e.beerId);
   main.appendChild(notesHolderDiv);
   var notes = document.createElement('p');
   notes.textContent = e.notes;
   notesHolderDiv.appendChild(notes);
 
   var editNotesDiv = document.createElement('div');
-  editNotesDiv.setAttribute('class','hidden');
+  editNotesDiv.setAttribute('class', 'hidden');
+  editNotesDiv.setAttribute('data-input', e.beerId);
   main.appendChild(editNotesDiv);
   var form = document.createElement('form');
+  form.setAttribute('data-form', e.beerId)
   editNotesDiv.appendChild(form);
-  var textField = document.createElement('textfield');
+  var textField = document.createElement('textarea');
   textField.value = e.notes;
+  textField.setAttribute('class', 'column-full');
+  textField.setAttribute('name', 'notes');
   form.appendChild(textField);
-
+  var submitFormButton = document.createElement('button');
+  submitFormButton.textContent = 'Save';
+  submitFormButton.setAttribute('data-submit', 'save');
+  submitFormButton.setAttribute('data-sub', e.beerId);
+  submitFormButton.setAttribute('class', 'column-full');
+  form.appendChild(submitFormButton);
 
 
 
@@ -340,7 +352,7 @@ window.addEventListener('click', function (e) {
     view('explore')
   }
 
-  if (e.target.dataset.click === 'button') {
+  if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.getElementById(e.target.dataset.view);
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
@@ -364,19 +376,41 @@ window.addEventListener('click', function (e) {
     view('signUp');
   }
 
-
-
-
-
+  if (e.target.dataset.edit === 'editMe') {
+    var notesDiv = document.querySelectorAll('[data-notes]');
+    var editNotes = document.querySelectorAll('[data-input]');
+    var form = document.querySelectorAll('[data-form]');
+    for (var i = 0; i < form.length; i++) {
+      if (notesDiv[i] === e.target.dataset.find)
+        notesDiv[i].classList.add('hidden');
+      editNotes[i].classList.remove('hidden');
+      // edit note sbutton becomes hidden as well
+    }
+  }
+  if (e.target.dataset.submit === 'save') {
+    var num = e.target.dataset.sub - 1;
+    var notesDiv = document.querySelectorAll('[data-notes]');
+    var editNotes = document.querySelectorAll('[data-input]');
+    var form = document.querySelectorAll('[data-form]');
+    for (var i = 0; i < notesDiv.length; i++) {
+      if (notesDiv[i] === e.target.dataset.sub) {
+        console.log('working here');
+        user.favorites[num].notes = form[i].elements.notes.value;
+        notesDiv[i].classList.remove('hidden');
+        editNotes[i].classList.add('hidden');
+      }
+    }
+  }
 })
 
 
 window.addEventListener('DOMContentLoaded', function (e) {
 
+
   if (user.profile.name === '') {
     view('newUser')
   } else {
-    view('explore');
+    view('plan');
   }
 
   for (var i = 0; i < 50; i++) {
