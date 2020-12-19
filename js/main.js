@@ -276,7 +276,7 @@ function profileDom(e) {
 
 
   var notesButton = document.createElement('button');
-  notesButton.textContent = 'Edit Notes';
+  notesButton.textContent = 'Add Notes';
   notesButton.setAttribute('data-edit', 'editMe');
   notesButton.setAttribute('data-find', e.beerId);
   notesButton.setAttribute('data-boolean', 'false');
@@ -392,8 +392,11 @@ window.addEventListener('click', function (e) {
     var notesDiv = document.querySelectorAll('[data-notes]');
     var editNotes = document.querySelectorAll('[data-input]');
     var form = document.querySelectorAll('[data-form]');
+
+
+
     for (var i = 0; i < notesDiv.length; i++) {
-      if (notesDiv[i] === e.target.dataset.sub) {
+      if (notesDiv[i].dataset.notes === e.target.dataset.sub) {
         console.log('working here');
         user.favorites[num].notes = form[i].elements.notes.value;
         notesDiv[i].classList.remove('hidden');
