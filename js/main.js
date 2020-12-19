@@ -288,6 +288,7 @@ function profileDom(e) {
   main.appendChild(notesHolderDiv);
   var notes = document.createElement('p');
   notes.textContent = e.notes;
+  notes.setAttribute('data-update',e.beerId);
   notesHolderDiv.appendChild(notes);
 
   var editNotesDiv = document.createElement('div');
@@ -391,16 +392,15 @@ window.addEventListener('click', function (e) {
     var num = e.target.dataset.sub - 1;
     var notesDiv = document.querySelectorAll('[data-notes]');
     var editNotes = document.querySelectorAll('[data-input]');
+    var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
-
-
-
     for (var i = 0; i < notesDiv.length; i++) {
       if (notesDiv[i].dataset.notes === e.target.dataset.sub) {
         console.log('working here');
         user.favorites[num].notes = form[i].elements.notes.value;
         notesDiv[i].classList.remove('hidden');
         editNotes[i].classList.add('hidden');
+        updateNotes[i].textContent = form[i].elements.notes.value;
       }
     }
   }
