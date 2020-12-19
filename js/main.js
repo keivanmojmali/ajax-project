@@ -26,7 +26,6 @@ function view(e) {
   if (e === 'newUser') {
     $welcome.classList.remove('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.add('hidden');
     $bottomBar.classList.add('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -39,7 +38,6 @@ function view(e) {
   if (e === 'signUp') {
     $welcome.classList.add('hidden');
     $signup.classList.remove('hidden');
-    $topBar.classList.add('hidden');
     $bottomBar.classList.add('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -55,7 +53,6 @@ function view(e) {
   if (e === 'explore') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.remove('hidden');
     $profile.classList.add('hidden');
@@ -69,7 +66,6 @@ function view(e) {
   if (e === 'results') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -82,7 +78,6 @@ function view(e) {
   if (e === 'plan') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
@@ -94,7 +89,6 @@ function view(e) {
   if (e === 'profile') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $topBar.classList.remove('hidden');
     $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.remove('hidden');
@@ -124,8 +118,9 @@ function randomBeers() {
       var yeast = toRender.ingredients.yeast;
       var abv = toRender.abv;
       var food = toRender.food_pairing;
+      var notes = '';
       var theId = beerId;
-      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId };
+      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
       beerId++
       random.push(singleObject);
     } else {
@@ -163,8 +158,8 @@ function domCreate(e) {
   name.appendChild(starDiv);
   var star = document.createElement('i');
   star.setAttribute('class', 'far fa-star');
-  star.setAttribute('data-star','favorite');
-  star.setAttribute('data-fav',e.beerId);
+  star.setAttribute('data-star', 'favorite');
+  star.setAttribute('data-fav', e.beerId);
   starDiv.appendChild(star);
   var more = document.createElement('div');
   more.setAttribute('class', 'flex center-content');
@@ -173,7 +168,7 @@ function domCreate(e) {
   // moreLink.setAttribute('class', ''); add a button class here
   moreLink.setAttribute('type', 'submit');
   moreLink.setAttribute('data-view', e.beerId);
-  moreLink.setAttribute('data-click', 'button');
+  moreLink.setAttribute('data-click', 'notesEdit');
   moreLink.textContent = 'More Information';
   more.appendChild(moreLink);
   var theInfoDiv = document.createElement('div');
@@ -227,13 +222,108 @@ function loadExplore() {
 
 
 
+function profileDom(e) {
+  var main = document.createElement('div');
+  main.setAttribute('class', 'margin-top-bottom');
+  var col = document.createElement('div');
+  col.setAttribute('class', 'column-full flex center-content');
+  main.appendChild(col);
+  var image = document.createElement('img');
+  image.setAttribute('src', e.image);
+  image.setAttribute('alt', e.tagline);
+  col.appendChild(image);
+  var name = document.createElement('div');
+  name.setAttribute('class', 'column-full flex-column flex center-content');
+  main.appendChild(name);
+  var nameText = document.createElement('h1');
+  nameText.setAttribute('class', 'beer-name');
+  nameText.textContent = e.name;
+  name.appendChild(nameText);
+  var tag = document.createElement('p');
+  tag.setAttribute('class', 'margin-five text-center');
+  tag.textContent = e.tagline;
+  name.appendChild(tag);
+  var more = document.createElement('div');
+  var theInfoDiv = document.createElement('div');
+  theInfoDiv.setAttribute('class', 'row flex flex-column center-content');
+  theInfoDiv.setAttribute('id', e.beerId);
+  theInfoDiv.setAttribute('data-boolean', 'false');
+  main.appendChild(theInfoDiv);
+  var hops = document.createElement('p');
+  hops.setAttribute('class', 'margin-five text-center');
+  hops.textContent = 'Hops: ' + e.hops;
+  theInfoDiv.appendChild(hops);
+  var yeast = document.createElement('p');
+  yeast.setAttribute('class', 'margin-five text-center');
+  yeast.textContent = 'Yeast: ' + e.yeast;
+  theInfoDiv.appendChild(yeast);
+  var abv = document.createElement('p');
+  abv.setAttribute('class', 'margin-five text-center');
+  abv.textContent = 'ABV: ' + e.abv;
+  theInfoDiv.appendChild(abv);
+  var food = document.createElement('p');
+  food.setAttribute('class', 'margin-five text-center');
+  food.textContent = 'Food Pairing(s): ' + e.food[0];
+  theInfoDiv.appendChild(food);
+  var foodTwo = document.createElement('p');
+  foodTwo.setAttribute('class', 'margin-five text-center');
+  foodTwo.textContent = 'Food Pairing(s): ' + e.food[1];
+  theInfoDiv.appendChild(foodTwo);
+  var foodThree = document.createElement('p');
+  foodThree.setAttribute('class', 'margin-five text-center');
+  foodThree.textContent = 'Food Pairing(s): ' + e.food[2];
+  theInfoDiv.appendChild(foodThree);
+
+
+  var notesButton = document.createElement('button');
+  notesButton.textContent = 'Add Notes';
+  notesButton.setAttribute('data-edit', 'editMe');
+  notesButton.setAttribute('data-find', e.beerId);
+  notesButton.setAttribute('data-boolean', 'false');
+  theInfoDiv.appendChild(notesButton);
+
+  var notesHolderDiv = document.createElement('div');
+  notesHolderDiv.setAttribute('class', 'column-full');
+  notesHolderDiv.setAttribute('data-notes', e.beerId);
+  main.appendChild(notesHolderDiv);
+  var notes = document.createElement('p');
+  notes.textContent = e.notes;
+  notes.setAttribute('data-update',e.beerId);
+  notesHolderDiv.appendChild(notes);
+
+  var editNotesDiv = document.createElement('div');
+  editNotesDiv.setAttribute('class', 'hidden');
+  editNotesDiv.setAttribute('data-input', e.beerId);
+  main.appendChild(editNotesDiv);
+  var form = document.createElement('form');
+  form.setAttribute('data-form', e.beerId)
+  editNotesDiv.appendChild(form);
+  var textField = document.createElement('textarea');
+  textField.value = e.notes;
+  textField.setAttribute('class', 'column-full');
+  textField.setAttribute('name', 'notes');
+  form.appendChild(textField);
+  var submitFormButton = document.createElement('button');
+  submitFormButton.textContent = 'Save';
+  submitFormButton.setAttribute('data-submit', 'save');
+  submitFormButton.setAttribute('data-sub', e.beerId);
+  submitFormButton.setAttribute('class', 'column-full');
+  form.appendChild(submitFormButton);
+
+
+
+  return main;
+}
+
+
+
 // this function loads the profile onto the profile page
 function profileLoad() {
   $profileImage.src = user.profile.imgUrl;
   $profileName.textContent = user.profile.name;
   $profileBio.textContent = user.profile.bio;
   for (i = 0; i < user.favorites.length; i++) {
-    var append = domCreate(user.favorites[i]);
+    var append = profileDom(user.favorites[i]);
     $favPosition.appendChild(append);
   }
 }
@@ -263,9 +353,8 @@ window.addEventListener('click', function (e) {
     view('explore')
   }
 
-  if (e.target.dataset.click === 'button') {
+  if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.getElementById(e.target.dataset.view);
-    console.log('infoDiv', infoDiv);
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
@@ -277,28 +366,54 @@ window.addEventListener('click', function (e) {
     }
   }
 
-  if(e.target.dataset.star === 'favorite') {
+  if (e.target.dataset.star === 'favorite') {
     var num = e.target.dataset.fav - 1;
     console.log(num);
     user.favorites.push(random[num]);
     e.target.className = 'fas fa-star';
   }
 
-  if(e.target.id === 'editProfile') {
+  if (e.target.id === 'editProfile') {
     view('signUp');
   }
 
-
-
+  if (e.target.dataset.edit === 'editMe') {
+    var notesDiv = document.querySelectorAll('[data-notes]');
+    var editNotes = document.querySelectorAll('[data-input]');
+    var form = document.querySelectorAll('[data-form]');
+    for (var i = 0; i < form.length; i++) {
+      if (notesDiv[i] === e.target.dataset.find)
+        notesDiv[i].classList.add('hidden');
+      editNotes[i].classList.remove('hidden');
+      // edit note sbutton becomes hidden as well
+    }
+  }
+  if (e.target.dataset.submit === 'save') {
+    var num = e.target.dataset.sub - 1;
+    var notesDiv = document.querySelectorAll('[data-notes]');
+    var editNotes = document.querySelectorAll('[data-input]');
+    var updateNotes = document.querySelectorAll('[data-update]');
+    var form = document.querySelectorAll('[data-form]');
+    for (var i = 0; i < notesDiv.length; i++) {
+      if (notesDiv[i].dataset.notes === e.target.dataset.sub) {
+        console.log('working here');
+        user.favorites[num].notes = form[i].elements.notes.value;
+        notesDiv[i].classList.remove('hidden');
+        editNotes[i].classList.add('hidden');
+        updateNotes[i].textContent = form[i].elements.notes.value;
+      }
+    }
+  }
 })
 
 
 window.addEventListener('DOMContentLoaded', function (e) {
 
+
   if (user.profile.name === '') {
     view('newUser')
   } else {
-    view('explore');
+    view('plan');
   }
 
   for (var i = 0; i < 50; i++) {
