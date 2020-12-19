@@ -118,7 +118,7 @@ function randomBeers() {
       var yeast = toRender.ingredients.yeast;
       var abv = toRender.abv;
       var food = toRender.food_pairing;
-      var notes = 'Add Notes Here';
+      var notes = '';
       var theId = beerId;
       var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
       beerId++
