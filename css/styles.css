@@ -2,169 +2,54 @@
   width: 20%;
 }
 
-
-
-
-
-
-
-
-.center-content {
-  justify-content: center;
-  align-content: center;
+.line {
+  border-bottom: 1.5px solid black;
+  margin: 8px 5px 8px 5px;
 }
 
 .flex {
   display: flex;
 }
 
-.center-self {
-  align-self: center;
-}
-
 .flex-column {
   flex-direction: column;
 }
 
-.full-height-and-width {
-  height: 100vh;
-  width: 100%;
+.space-between {
+  justify-content: space-between;
 }
 
-.margin-five {
-  margin: 6px;
+.align-center {
+  align-content: center;
 }
 
-.text-center {
-  text-align: center;
-}
-
-.full-width {
-  width: 100%;
-}
-
-.space-evenly {
-  justify-content: space-evenly;
-}
-
-.column-thirds {
-  width: calc(100% / 3);
-}
-
-.top-bar{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 8%;
-  background-color: tomato;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 14%;
-  background-color: tomato;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.margin-top-bottom {
-  margin: 30px 0px 30px 0px;
-}
-
-.padding-top {
-  padding-top: 37px;
-}
-
-.a-style{
-  text-decoration: none;
-  color: black;
-
+.black-border {
+  border: solid black 1px;
 }
 
 .content-padding {
-  padding: 8px;
+  padding: 15px;
 }
 
-
-.line {
-  border-bottom: 1.5px solid black;
-  margin: 8px 5px 8px 5px;
+.padding-left {
+  padding-left: 60px;
 }
 
-.column-half {
-  width: 50%;
+.row {
+  margin: 15px;
+  padding: 10px;
 }
 
-
-.big-icon {
-  font-size: 55px;
-  align-self: center;
+.center-content {
+  justify-content: center;
+  align-content: center;
 }
-
-.small-icon{
-  font-size: 40px;
-  align-self: center;
-}
-
-
-/* adjust this css once top bar is fixed */
-
-.search-placeholder {
-  width: 200px;
-  height: 31px;
-  background-color: white;
-  align-self: center;
-  margin-left: 30px;
-}
-
-.hamburger-placeholder {
-  width: 51px;
-  height: 31px;
-  background-color: white;
-  align-self: center;
-  margin-left: 30px;
-}
-
-.circle-big {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: white;
-}
-
-.circle-small {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: white;
-}
-
-.col-img {
-  background-color: gray;
-  width: 340px;
-  height: 340px;
-
-}
-
-
-.profile-img {
-  background-color: gray;
-  width: 170px;
-  height: 170px;
-  margin: auto;
-
-}
-
-
-
-/* end placeholders needed*/
-
 
 
 .hidden {
   display: none;
+}
+
+.small-margin {
+  margin: 5px;
 }

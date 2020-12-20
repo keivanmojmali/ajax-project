@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX Project</title>
+  <script src="https://kit.fontawesome.com/f74def297f.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/reset.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <main>
+    <!-- this is the nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top padding-left">
+      <a class="navbar-brand" href="#">AJAX Beer!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Explorer<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Make A Plan!
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Plan My Meal</a>
+              <a class="dropdown-item" href="#">Plan My Flight</a>
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+
+
+    <div class="container">
+
+      <!-- this is the main pic -->
+      <div class="row">
+        <div class="col relative">
+          <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+        </div>
+      </div>
+
+      <!-- this is the a reason to sign up section -->
+      <div class="row">
+        <div class="col">
+          <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+        </div>
+        <div class="col flex flex-column center-content">
+          <h1>A reason to Sign up!</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat molestiae cumque fuga ad quos esse
+            provident
+          </p>
+        </div>
+      </div>
+
+      <!-- sign up section with form -->
+      <div class="row">
+        <div class="col flex flex-column center-content">
+          <h1>Looking to Sign Up?</h1>
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+        </div>
+        <div class="col">
+          <form action="GET">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" name="name" class="form-control" required maxlength="45">
+            </div>
+            <div class="form-group">
+              <label for="url">Image URL</label>
+              <input type="url" name="url" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <input type="text" name="bio" class="form-control" required placeholder="Tell Us A Little About Yourself">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-large" type="submit"> Sign Up Now!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- reason to sign up 2 -->
+      <div class="row">
+        <div class="col flex flex-column center-content">
+          <h1>A reason to Sign up!</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat molestiae cumque fuga ad quos esse
+            provident
+          </p>
+          <h1>Reason number 2 </h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nemo repellat, sint dolor natus
+            animi?
+          </p>
+        </div>
+        <div class="col">
+          <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+        </div>
+      </div>
+
+      <!-- this will be the explorer depeneding on the view -->
+      <div class="row hidden" id="explore">
+        <div class="row">
+          <div class="col">
+            <img class="img-fluid" src="./Images/beer-banner.png" alt="beer banner">
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+      <!-- <script src="js/data.js"></script>
+      <script src="js/main.js"></script> -->
+      <script src="./test.js"></script>
+      <script src="./js/data.js"></script>
+</body>
+
+
+
+
+</html>
