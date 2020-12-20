@@ -170,7 +170,7 @@ function domCreate(e) {
   infoStarRow.setAttribute('class', 'row');
   container.appendChild(infoStarRow);
   var infoCol = document.createElement('div');
-  infoCol.setAttribute('class', 'col-lg');
+  infoCol.setAttribute('class', 'col');
   infoStarRow.appendChild(infoCol);
   var infoBtn = document.createElement('button');
   infoBtn.setAttribute('type', 'submit')
@@ -180,13 +180,16 @@ function domCreate(e) {
   infoBtn.textContent = 'More Information';
   infoCol.appendChild(infoBtn);
   var starCol = document.createElement('div');
-  starCol.setAttribute('class', 'col');
+  starCol.setAttribute('class', 'col flex small-margin');
   infoStarRow.appendChild(starCol);
   var star = document.createElement('i');
-  star.setAttribute('class', 'far fa-bookmark');
+  star.setAttribute('class', 'far fa-bookmark small-margin');
   star.setAttribute('data-star', 'favorite');
   star.setAttribute('data-fav', e.beerId);
   starCol.appendChild(star);
+  var addTo = document.createElement('p');
+  addTo.textContent = 'Add Me To Favorites!'
+  starCol.appendChild(addTo);
   var moreInfoRow = document.createElement('div');
   moreInfoRow.setAttribute('class', 'row hidden');
   moreInfoRow.setAttribute('id', e.beerId);
@@ -453,7 +456,7 @@ window.addEventListener('click', function (e) {
     var num = e.target.dataset.fav - 1;
     console.log(num);
     user.favorites.push(random[num]);
-    e.target.className = 'fas fa-bookmark';
+    e.target.className = 'fas fa-bookmark small-margin';
   }
 
   // if (e.target.id === 'editProfile') {

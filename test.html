@@ -35,14 +35,8 @@
             <a class="nav-link" href="#">Profile</a>
           </li>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Make A Plan!
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Plan My Meal</a>
-              <a class="dropdown-item" href="#">Plan My Flight</a>
+          <li class="nav-item">
+            <a href="##" class="nav-link">Plan My Night</a>
           </li>
         </ul>
 
@@ -54,77 +48,122 @@
     <div class="container">
 
       <!-- this is the main pic -->
-      <div class="row">
-        <div class="col relative">
-          <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+      <container class="container hidden" id="welcome">
+        <div class="row">
+          <div class="col relative">
+            <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+          </div>
         </div>
-      </div>
 
-      <!-- this is the a reason to sign up section -->
-      <div class="row">
-        <div class="col">
-          <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+        <!-- this is the a reason to sign up section -->
+        <div class="row">
+          <div class="col">
+            <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+          </div>
+          <div class="col flex flex-column center-content">
+            <h1>A reason to Sign up!</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat molestiae cumque fuga ad quos esse
+              provident
+            </p>
+          </div>
         </div>
-        <div class="col flex flex-column center-content">
-          <h1>A reason to Sign up!</h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat molestiae cumque fuga ad quos esse
-            provident
-          </p>
-        </div>
-      </div>
 
-      <!-- sign up section with form -->
-      <div class="row">
-        <div class="col flex flex-column center-content">
-          <h1>Looking to Sign Up?</h1>
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+        <!-- sign up section with form -->
+        <div class="row">
+          <div class="col flex flex-column center-content">
+            <h1>Looking to Sign Up?</h1>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+          </div>
+          <div class="col">
+            <form action="GET">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" name="name" class="form-control" required maxlength="45">
+              </div>
+              <div class="form-group">
+                <label for="url">Image URL</label>
+                <input type="url" name="url" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="bio">Bio</label>
+                <input type="text" name="bio" class="form-control" required
+                  placeholder="Tell Us A Little About Yourself">
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary btn-large" type="submit"> Sign Up Now!</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="col">
-          <form action="GET">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" name="name" class="form-control" required maxlength="45">
-            </div>
-            <div class="form-group">
-              <label for="url">Image URL</label>
-              <input type="url" name="url" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="bio">Bio</label>
-              <input type="text" name="bio" class="form-control" required placeholder="Tell Us A Little About Yourself">
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary btn-large" type="submit"> Sign Up Now!</button>
-            </div>
-          </form>
-        </div>
-      </div>
 
-      <!-- reason to sign up 2 -->
-      <div class="row">
-        <div class="col flex flex-column center-content">
-          <h1>A reason to Sign up!</h1>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat molestiae cumque fuga ad quos esse
-            provident
-          </p>
-          <h1>Reason number 2 </h1>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nemo repellat, sint dolor natus
-            animi?
-          </p>
+        <!-- reason to sign up 2 -->
+        <div class="row">
+          <div class="col flex flex-column center-content">
+            <h1>A reason to Sign up!</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat molestiae cumque fuga ad quos esse
+              provident
+            </p>
+
+          </div>
+          <div class="col">
+            <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
+          </div>
         </div>
-        <div class="col">
-          <img src="./Images/pexels-cottonbro-5530170.jpg" alt="Having Fun" class="img-fluid">
-        </div>
-      </div>
+      </container>
 
       <!-- this will be the explorer depeneding on the view -->
-      <div class="row hidden" id="explore">
+      <div class="container hidden" id="explore">
         <div class="row">
           <div class="col">
             <img class="img-fluid" src="./Images/beer-banner.png" alt="beer banner">
           </div>
         </div>
       </div>
+
+
+      <div class="container" id="plan">
+        <div class="row">
+          <div class="col">
+            <img src="./Images/beer-banner.png" alt="banner" class="img-fluid">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <img src="./Images/pexels-cottonbro-5530170.jpg" alt="random" class="img-fluid">
+          </div>
+          <div class="col-8 flex flex-column center-content">
+            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam autem cupiditate excepturi!</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non recusandae nihil asperiores dicta illum aliquam dolor, ullam odit ab voluptates.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <h1>Give it a Shot!</h1>
+            <button class="btn btn-lg btn-primary">Plan My Meal</button>
+          </div>
+          <div class="col-8">
+            <h1>Tonight's Beer!</h1>
+            <img src="#" alt="">
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
