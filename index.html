@@ -7,6 +7,8 @@
   <title>AJAX Project</title>
   <script src="https://kit.fontawesome.com/f74def297f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/reset.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -19,13 +21,52 @@
 
     <div class="container">
 
+      <!-- nav BAr -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ajax Beer!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Make A Plan!
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Plan My Meal</a>
+          <a class="dropdown-item" href="#">Plan My Flight</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+
+      </nav>
+
+
+
+
+
+
+
 
 
 
       <!-- Welcome page when there is no profile saved  -->
-      <div data-view="welcome" id="welcome" class="hidden flex flex-column center-content full-height-and-width">
+      <div data-view="welcome" id="welcome" class="container hidden">
         <div class="row">
-          <div class="column-full flex center-content">
+          <div class="col">
             <h1 class="heading-text">
               Welcome to <br>
               Beer Name!
@@ -33,7 +74,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="column-full flex center-content">
+          <div class="col">
             <p class="body-text">
               Lorem ipsum dolor sit amet consectetur adipisicing <br>
               elit. Suscipit quis, porro tempore est earum odio <br>
@@ -42,8 +83,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="column-full flex center-content">
-            <button id="joinNow" class="submit">Join Now!</button>
+          <div class="col">
+            <button id="joinNow" class="btn btn-primary btn-large">Join Now!</button>
           </div>
         </div>
       </div>
@@ -52,39 +93,39 @@
 
       <!-- sign up form for new users -->
 
-      <div id="signUp" class="hidden flex flex-column center-content full-height-and-width" data-view="join">
+      <div id="signUp" class="container" data-view="join">
         <div class="row">
-          <div class="column-full center-content flex">
+          <div class="col">
             <h1 class="heading-text">
               Welcome!
             </h1>
           </div>
         </div>
         <div class="row">
-          <div class="column-full center-content flex">
+          <div class="col">
             <p class="body-text">
               Please Fill Out This Short <br>
               Form Below To Register
             </p>
           </div>
         </div>
-        <div class="row center-content flex flex-column">
-          <div class="column-full">
+        <div class="row">
+          <div class="col">
             <form action="GET" class="sign-up" id="signForm">
-              <div class="center-content flex flex-column">
+              <div class="form-group">
                 <label for="url"> Image URL</label>
-                <input type="url" name="url" id="url" required>
+                <input type="url" name="url" id="url" class="form-control" required placeholder="Enter an Image URL">
               </div>
-              <div class="center-content flex flex-column">
-                <label for="name">Full Name</label>
-                <input type="text" name="name" id="name" required maxlength="30">
+              <div class="form-group">
+                <label for="name" >Full Name</label>
+                <input type="text" name="name" id="name" class="form-control" required maxlength="30" placeholder="Enter Your Full Name">
               </div>
-              <div class="center-content flex flex-column">
-                <label for="bio">A little About Yourself!</label>
-                <input type="text" name="bio" id="bio" required maxlength="140">
+              <div class="form-group">
+                <label for="bio">Bio</label>
+                <input type="text" name="bio" id="bio" class="form-control" required maxlength="140" placeholder="Tell Us A Little About Yourself">
               </div>
-              <div class="center-content flex flex-column">
-                <button type="submit" > Sign Up Now!</button>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-large"> Sign Up Now!</button>
               </div>
             </form>
           </div>
@@ -96,46 +137,9 @@
 
 
 
-
-
-      <!-- this is the top bar  -->
-      <div id="topBar" data-view="top" class="top-bar ">
-
-      </div>
-
-
-      <!-- this is the bottom nav -->
-      <div id="bottomBar" class="bottom-bar " data-view="bottom">
-        <div class="row flex">
-
-          <div class="column-thirds flex center-content">
-            <i id="navProfile" class="fas fa-user small-icon"></i>
-          </div>
-
-          <div class="column-thirds flex center-content">
-            <i id="navExplore" class="fas fa-home big-icon"></i>
-          </div>
-
-
-          <div class="column-thirds flex center-content">
-            <i id="navPlan" class="fas fa-hamburger small-icon"></i>
-          </div>
-
-
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
       <!-- Explore Page here  -->
 
-      <div id="explore" class="hidden padding-top" data-view="explore">
+      <div id="explore" class="hidden container" data-view="explore">
 
       </div>
 
@@ -143,28 +147,28 @@
 
       <!-- This is where the profile will go  -->
 
-      <div class="hidden profile flex flex-column" id="profile">
-        <div class="row flex margin-top-bottom margin-five">
-          <div class="column-half content-padding">
-            <img class="full-width" id="profileImage" src="" alt="">
+      <div class="hidden container" id="profile">
+        <div class="row">
+          <div class="col">
+            <img class="img-thumbnail" id="profileImage" src="" alt="">
           </div>
-          <div class="column-half flex flex-column margin-five space-evenly text-center">
+          <div class="col">
             <h1 id="profileName"></h1>
             <p id="profileBio">
             </p>
-            <button id="editProfile">Edit Profile</button>
+            <button class="btn btn-sm btn-info" id="editProfile">Edit Profile</button>
           </div>
         </div>
 
         <div class="line"></div>
         <div class="row">
-          <div class="column-full">
-            <h2 class="heading-text margin-five content-padding">
+          <div class="col">
+            <h2 class="">
               My Favorites!
             </h2>
           </div>
         </div>
-        <div class="flex flex-column" id="favorites">
+        <div class=".container" id="favorites">
         </div>
       </div>
 
@@ -174,15 +178,15 @@
 
       <!-- This is where the plan my meal page will go -->
 
-      <div id="planMeal" class="hidden plan-my-meal margin-top-bottom flex flex-column" data-view="plan">
+      <div id="planMeal" class="hidden container" data-view="plan">
         <div class="row">
-          <div class="column-full flex center-content">
-            <h1 class="heading-text"> Plan My Meal!</h1>
+          <div class="col">
+            <h1 class=""> Plan My Meal!</h1>
           </div>
         </div>
         <div class="row">
-          <div class="column-full flex center-content">
-            <h2 class="heading-text">
+          <div class="col">
+            <h2 class="">
               Our Beer and Food <br>
               Algorithm will Match <br>
               You with the Perfect <br>
@@ -191,8 +195,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="column-full flex center-content">
-            <button id="eat" class="submit">Let's Do It!</button>
+          <div class="col">
+            <button id="eat" class="btn btn-lg btn-primary">Let's Do It!</button>
           </div>
         </div>
       </div>
@@ -200,23 +204,23 @@
 
       <!-- This is where the result of the page will go -->
 
-      <div id="results" class="hidden result margin-top-bottom" data-view="result">
-        <div class="row margin-five content-padding">
-          <div class="column-full">
-            <h1 class="heading-text">Tonight's Beer!</h1>
+      <div id="results" class="hidden container" data-view="result">
+        <div class="row">
+          <div class="col">
+            <h1 class="">Tonight's Beer!</h1>
           </div>
         </div>
-        <div class="row margin-five content-padding">
-          <div class="column-full text-center">
-            <h1 class="heading-text" id="beerTonight"></h1>
+        <div class="row ">
+          <div class="col">
+            <h1 class="" id="beerTonight"></h1>
           </div>
           <div class="column-full">
-            <img id="imageTonight" src="" alt="">
+            <img class="img-thumbnail" id="imageTonight" src="" alt="">
           </div>
         </div>
-        <div class="row margin-five content-padding">
-          <div class="column-full">
-            <h1 class="heading-text">
+        <div class="row">
+          <div class="col">
+            <h1 class="">
               Paired With!
             </h1>
             <ul id="eatTonight">
@@ -263,6 +267,8 @@
 
 
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

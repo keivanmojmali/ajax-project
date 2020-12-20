@@ -26,7 +26,7 @@ function view(e) {
   if (e === 'newUser') {
     $welcome.classList.remove('hidden');
     $signup.classList.add('hidden');
-    $bottomBar.classList.add('hidden');
+    // $bottomBar.classList.add('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
     $planMeal.classList.add('hidden');
@@ -38,7 +38,7 @@ function view(e) {
   if (e === 'signUp') {
     $welcome.classList.add('hidden');
     $signup.classList.remove('hidden');
-    $bottomBar.classList.add('hidden');
+    // $bottomBar.classList.add('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
     $planMeal.classList.add('hidden');
@@ -53,7 +53,7 @@ function view(e) {
   if (e === 'explore') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $bottomBar.classList.remove('hidden');
+    // $bottomBar.classList.remove('hidden');
     $explore.classList.remove('hidden');
     $profile.classList.add('hidden');
     $planMeal.classList.add('hidden');
@@ -66,7 +66,7 @@ function view(e) {
   if (e === 'results') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $bottomBar.classList.remove('hidden');
+    // $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
     $planMeal.classList.add('hidden');
@@ -78,7 +78,7 @@ function view(e) {
   if (e === 'plan') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $bottomBar.classList.remove('hidden');
+    // $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.add('hidden');
     $planMeal.classList.remove('hidden');
@@ -89,7 +89,7 @@ function view(e) {
   if (e === 'profile') {
     $welcome.classList.add('hidden');
     $signup.classList.add('hidden');
-    $bottomBar.classList.remove('hidden');
+    // $bottomBar.classList.remove('hidden');
     $explore.classList.add('hidden');
     $profile.classList.remove('hidden');
     $planMeal.classList.add('hidden');
@@ -132,81 +132,100 @@ function randomBeers() {
 
 
 
-// this function returns dom element to append
+
+
 function domCreate(e) {
-  var main = document.createElement('div');
-  main.setAttribute('class', 'margin-top-bottom');
-  var col = document.createElement('div');
-  col.setAttribute('class', 'column-full flex center-content');
-  main.appendChild(col);
+  var container = document.createElement('div');
+  container.setAttribute('class', 'container');
+  var imgRow = document.createElement('row');
+  imgRow.setAttribute('class','row');
+  container.appendChild(imgRow);
+  var imgCol = document.createElement('div');
+  imgCol.setAttribute('class','col text-center');
+  imgRow.appendChild(imgCol);
   var image = document.createElement('img');
+  image.setAttribute('class','img-thumbnail explore-img');
   image.setAttribute('src', e.image);
   image.setAttribute('alt', e.tagline);
-  col.appendChild(image);
-  var name = document.createElement('div');
-  name.setAttribute('class', 'column-full flex-column flex center-content');
-  main.appendChild(name);
-  var nameText = document.createElement('h1');
-  nameText.setAttribute('class', 'beer-name');
-  nameText.textContent = e.name;
-  name.appendChild(nameText);
+  imgCol.appendChild(image);
+  var nameRow = document.createElement('div');
+  nameRow.setAttribute('class','row');
+  container.appendChild(nameRow);
+  var nameCol = document.createElement('div');
+  nameCol.setAttribute('class','col');
+  nameRow.appendChild(nameCol);
+  var name = document.createElement('h1');
+  name.textContent = e.name;
+  nameCol.appendChild(name);
+  var tagRow = document.createElement('div');
+  tagRow.setAttribute('class','row');
+  container.appendChild(tagRow);
+  var tagCol = document.createElement('div');
+  tagCol.setAttribute('class','col');
+  tagRow.appendChild(tagCol);
   var tag = document.createElement('p');
-  tag.setAttribute('class', 'margin-five text-center');
   tag.textContent = e.tagline;
-  name.appendChild(tag);
-  var starDiv = document.createElement('div');
-  name.appendChild(starDiv);
+  tagCol.appendChild(tag);
+  var infoStarRow = document.createElement('div');
+  infoStarRow.setAttribute('class','row');
+  container.appendChild(infoStarRow);
+  var infoCol = document.createElement('div');
+  infoCol.setAttribute('class','col-lg');
+  infoStarRow.appendChild(infoCol);
+  var infoBtn = document.createElement('button');
+  infoBtn.setAttribute('type','submit')
+  infoBtn.setAttribute('data-view',e.beerId);
+  infoBtn.setAttribute('data-click','notesEdit');
+  infoBtn.setAttribute('class','btn btn-primary btn-sm');
+  infoBtn.textContent = 'More Information';
+  infoCol.appendChild(infoBtn);
+  var starCol = document.createElement('div');
+  starCol.setAttribute('class','col');
+  infoStarRow.appendChild(starCol);
   var star = document.createElement('i');
   star.setAttribute('class', 'far fa-star');
   star.setAttribute('data-star', 'favorite');
   star.setAttribute('data-fav', e.beerId);
-  starDiv.appendChild(star);
-  var more = document.createElement('div');
-  more.setAttribute('class', 'flex center-content');
-  main.appendChild(more);
-  var moreLink = document.createElement('button');
-  // moreLink.setAttribute('class', ''); add a button class here
-  moreLink.setAttribute('type', 'submit');
-  moreLink.setAttribute('data-view', e.beerId);
-  moreLink.setAttribute('data-click', 'notesEdit');
-  moreLink.textContent = 'More Information';
-  more.appendChild(moreLink);
-  var theInfoDiv = document.createElement('div');
-  theInfoDiv.setAttribute('class', 'hidden row flex flex-column center-content');
-  theInfoDiv.setAttribute('id', e.beerId);
-  theInfoDiv.setAttribute('data-boolean', 'false');
-  main.appendChild(theInfoDiv);
+  starCol.appendChild(star);
+  var moreInfoRow = document.createElement('div');
+  moreInfoRow.setAttribute('class','row hidden');
+  moreInfoRow.setAttribute('id', e.beerId);
+  moreInfoRow.setAttribute('data-boolean', 'false');
+  container.appendChild(moreInfoRow);
+  // Could possibly separate into hops and yeast row and then food pairaings row if you want
+  var hopsCol = document.createElement('div');
+  hopsCol.setAttribute('class','col');
+  moreInfoRow.appendChild(hopsCol);
   var hops = document.createElement('p');
-  hops.setAttribute('class', 'margin-five text-center');
   hops.textContent = 'Hops: ' + e.hops;
-  theInfoDiv.appendChild(hops);
-  // var taste = document.createElement('p');
-  // taste.setAttribute('class', 'margin-five text-center');
-  // taste.textContent = 'Taste: ' + e.hops.attribute;
-  // theInfoDiv.appendChild(taste);
+  hopsCol.appendChild(hops);
+  yeastCol = document.createElement('div');
+  yeastCol.setAttribute('class','col');
+  moreInfoRow.appendChild(yeastCol);
   var yeast = document.createElement('p');
-  yeast.setAttribute('class', 'margin-five text-center');
   yeast.textContent = 'Yeast: ' + e.yeast;
-  theInfoDiv.appendChild(yeast);
+  yeastCol.appendChild(yeast);
+  var abvCol = document.createElement('div');
+  abvCol.setAttribute('class','col');
+  moreInfoRow.appendChild(abvCol);
   var abv = document.createElement('p');
-  abv.setAttribute('class', 'margin-five text-center');
   abv.textContent = 'ABV: ' + e.abv;
-  theInfoDiv.appendChild(abv);
-  var food = document.createElement('p');
-  food.setAttribute('class', 'margin-five text-center');
-  food.textContent = 'Food Pairing(s): ' + e.food[0];
-  theInfoDiv.appendChild(food);
+  abvCol.appendChild(abv);
+  // you can do one col here or serparte them into multipile depending on the look
+  var foodCol = document.createElement('div');
+  foodCol.setAttribute('class','col');
+  moreInfoRow.appendChild(foodCol);
+  var foodOne = document.createElement('p');
+  foodOne.textContent = 'Food Pairing(s): ' + e.food[0];
+  foodCol.appendChild(foodOne);
   var foodTwo = document.createElement('p');
-  foodTwo.setAttribute('class', 'margin-five text-center');
   foodTwo.textContent = 'Food Pairing(s): ' + e.food[1];
-  theInfoDiv.appendChild(foodTwo);
+  foodCol.appendChild(foodTwo);
   var foodThree = document.createElement('p');
-  foodThree.setAttribute('class', 'margin-five text-center');
   foodThree.textContent = 'Food Pairing(s): ' + e.food[2];
-  theInfoDiv.appendChild(foodThree);
-  return main;
+  foodCol.appendChild(foodThree);
+  return container;
 }
-
 
 
 
@@ -222,98 +241,162 @@ function loadExplore() {
 
 
 
+
+
+
+
 function profileDom(e) {
-  var main = document.createElement('div');
-  main.setAttribute('class', 'margin-top-bottom');
-  var col = document.createElement('div');
-  col.setAttribute('class', 'column-full flex center-content');
-  main.appendChild(col);
+  var container = document.createElement('div');
+  container.setAttribute('class', 'container');
+  var imgRow = document.createElement('row');
+  imgRow.setAttribute('class', 'row');
+  container.appendChild(imgRow);
+  var imgCol = document.createElement('div');
+  imgCol.setAttribute('class', 'col text-center');
+  imgRow.appendChild(imgCol);
   var image = document.createElement('img');
+  image.setAttribute('class', 'img-thumbnail explore-img');
   image.setAttribute('src', e.image);
   image.setAttribute('alt', e.tagline);
-  col.appendChild(image);
-  var name = document.createElement('div');
-  name.setAttribute('class', 'column-full flex-column flex center-content');
-  main.appendChild(name);
-  var nameText = document.createElement('h1');
-  nameText.setAttribute('class', 'beer-name');
-  nameText.textContent = e.name;
-  name.appendChild(nameText);
+  imgCol.appendChild(image);
+  var nameRow = document.createElement('div');
+  nameRow.setAttribute('class', 'row');
+  container.appendChild(nameRow);
+  var nameCol = document.createElement('div');
+  nameCol.setAttribute('class', 'col');
+  nameRow.appendChild(nameCol);
+  var name = document.createElement('h1');
+  name.textContent = e.name;
+  nameCol.appendChild(name);
+  var tagRow = document.createElement('div');
+  tagRow.setAttribute('class', 'row');
+  container.appendChild(tagRow);
+  var tagCol = document.createElement('div');
+  tagCol.setAttribute('class', 'col');
+  tagRow.appendChild(tagCol);
   var tag = document.createElement('p');
-  tag.setAttribute('class', 'margin-five text-center');
   tag.textContent = e.tagline;
-  name.appendChild(tag);
-  var more = document.createElement('div');
-  var theInfoDiv = document.createElement('div');
-  theInfoDiv.setAttribute('class', 'row flex flex-column center-content');
-  theInfoDiv.setAttribute('id', e.beerId);
-  theInfoDiv.setAttribute('data-boolean', 'false');
-  main.appendChild(theInfoDiv);
+  tagCol.appendChild(tag);
+  var infoStarRow = document.createElement('div');
+  infoStarRow.setAttribute('class', 'row');
+  container.appendChild(infoStarRow);
+  var infoCol = document.createElement('div');
+  infoCol.setAttribute('class', 'col-lg');
+  infoStarRow.appendChild(infoCol);
+  var infoBtn = document.createElement('button');
+  infoBtn.setAttribute('type', 'submit')
+  infoBtn.setAttribute('data-view', e.beerId);
+  infoBtn.setAttribute('data-click', 'notesEdit');
+  infoBtn.setAttribute('class', 'btn btn-primary btn-sm');
+  infoBtn.textContent = 'More Information';
+  infoCol.appendChild(infoBtn);
+  // var starCol = document.createElement('div');
+  // starCol.setAttribute('class', 'col');
+  // infoStarRow.appendChild(starCol);
+  // var star = document.createElement('i');
+  // star.setAttribute('class', 'far fa-star');
+  // star.setAttribute('data-star', 'favorite');
+  // star.setAttribute('data-fav', e.beerId);
+  // starCol.appendChild(star);
+  var moreInfoRow = document.createElement('div');
+  moreInfoRow.setAttribute('class', 'row hidden');
+  moreInfoRow.setAttribute('id', e.beerId);
+  moreInfoRow.setAttribute('data-boolean', 'false');
+  container.appendChild(moreInfoRow);
+  // Could possibly separate into hops and yeast row and then food pairaings row if you want
+  var hopsCol = document.createElement('div');
+  hopsCol.setAttribute('class', 'col');
+  moreInfoRow.appendChild(hopsCol);
   var hops = document.createElement('p');
-  hops.setAttribute('class', 'margin-five text-center');
   hops.textContent = 'Hops: ' + e.hops;
-  theInfoDiv.appendChild(hops);
+  hopsCol.appendChild(hops);
+  yeastCol = document.createElement('div');
+  yeastCol.setAttribute('class', 'col');
+  moreInfoRow.appendChild(yeastCol);
   var yeast = document.createElement('p');
-  yeast.setAttribute('class', 'margin-five text-center');
   yeast.textContent = 'Yeast: ' + e.yeast;
-  theInfoDiv.appendChild(yeast);
+  yeastCol.appendChild(yeast);
+  var abvCol = document.createElement('div');
+  abvCol.setAttribute('class', 'col');
+  moreInfoRow.appendChild(abvCol);
   var abv = document.createElement('p');
-  abv.setAttribute('class', 'margin-five text-center');
   abv.textContent = 'ABV: ' + e.abv;
-  theInfoDiv.appendChild(abv);
-  var food = document.createElement('p');
-  food.setAttribute('class', 'margin-five text-center');
-  food.textContent = 'Food Pairing(s): ' + e.food[0];
-  theInfoDiv.appendChild(food);
+  abvCol.appendChild(abv);
+  // you can do one col here or serparte them into multipile depending on the look
+  var foodCol = document.createElement('div');
+  foodCol.setAttribute('class', 'col');
+  moreInfoRow.appendChild(foodCol);
+  var foodOne = document.createElement('p');
+  foodOne.textContent = 'Food Pairing(s): ' + e.food[0];
+  foodCol.appendChild(foodOne);
   var foodTwo = document.createElement('p');
-  foodTwo.setAttribute('class', 'margin-five text-center');
   foodTwo.textContent = 'Food Pairing(s): ' + e.food[1];
-  theInfoDiv.appendChild(foodTwo);
+  foodCol.appendChild(foodTwo);
   var foodThree = document.createElement('p');
-  foodThree.setAttribute('class', 'margin-five text-center');
   foodThree.textContent = 'Food Pairing(s): ' + e.food[2];
-  theInfoDiv.appendChild(foodThree);
+  foodCol.appendChild(foodThree);
 
+  var notesBtnRow = document.createElement('div');
+  notesBtnRow.setAttribute('class','row');
+  container.appendChild(notesBtnRow);
 
-  var notesButton = document.createElement('button');
-  notesButton.textContent = 'Add Notes';
-  notesButton.setAttribute('data-edit', 'editMe');
-  notesButton.setAttribute('data-find', e.beerId);
-  notesButton.setAttribute('data-boolean', 'false');
-  theInfoDiv.appendChild(notesButton);
+  var notesBtnCol = document.createElement('div');
+  notesBtnCol.setAttribute('class','col');
+  notesBtnRow.appendChild(notesBtnCol);
 
-  var notesHolderDiv = document.createElement('div');
-  notesHolderDiv.setAttribute('class', 'column-full');
-  notesHolderDiv.setAttribute('data-notes', e.beerId);
-  main.appendChild(notesHolderDiv);
+  var notesBtn = document.createElement('button');
+  notesBtn.setAttribute('class','btn btn-sm btn-secondary');
+  notesBtn.textContent = 'Add Notes';
+  notesBtn.setAttribute('data-edit', 'editMe');
+  notesBtn.setAttribute('data-find', e.beerId);
+  notesBtn.setAttribute('data-boolean', 'false');
+  notesBtnCol.appendChild(notesBtn);
+
+  var notesRow = document.createElement('div');
+  notesRow.setAttribute('class','row');
+  notesRow.setAttribute('data-notes', e.beerId);
+  container.appendChild(notesRow);
+
+  var notesCol = document.createElement('div');
+  notesCol.setAttribute('class','col');
+  notesCol.setAttribute('data-notes',e.beerId);
+  notesRow.appendChild(notesCol);
+
   var notes = document.createElement('p');
   notes.textContent = e.notes;
-  notes.setAttribute('data-update',e.beerId);
-  notesHolderDiv.appendChild(notes);
+  notes.setAttribute('data-update', e.beerId);
+  notesCol.appendChild(notes);
 
-  var editNotesDiv = document.createElement('div');
-  editNotesDiv.setAttribute('class', 'hidden');
-  editNotesDiv.setAttribute('data-input', e.beerId);
-  main.appendChild(editNotesDiv);
+  var editNotesRow = document.createElement('div');
+  editNotesRow.setAttribute('class','row hidden');
+  editNotesRow.setAttribute('data-input', e.beerId);
+  container.appendChild(editNotesRow);
+
+  var editNotesCol = document.createElement('div');
+  editNotesCol.setAttribute('class','col');
+  editNotesRow.appendChild(editNotesCol);
+
   var form = document.createElement('form');
   form.setAttribute('data-form', e.beerId)
-  editNotesDiv.appendChild(form);
+  editNotesCol.appendChild(form);
+
   var textField = document.createElement('textarea');
   textField.value = e.notes;
   textField.setAttribute('class', 'column-full');
   textField.setAttribute('name', 'notes');
   form.appendChild(textField);
+
   var submitFormButton = document.createElement('button');
   submitFormButton.textContent = 'Save';
   submitFormButton.setAttribute('data-submit', 'save');
   submitFormButton.setAttribute('data-sub', e.beerId);
-  submitFormButton.setAttribute('class', 'column-full');
+  submitFormButton.setAttribute('class', 'btn btn-sm btn-secondary');
   form.appendChild(submitFormButton);
 
-
-
-  return main;
+  return container;
 }
+
+
 
 
 
@@ -378,28 +461,29 @@ window.addEventListener('click', function (e) {
   }
 
   if (e.target.dataset.edit === 'editMe') {
-    var notesDiv = document.querySelectorAll('[data-notes]');
-    var editNotes = document.querySelectorAll('[data-input]');
+    var notesRow = document.querySelectorAll('[data-notes]');
+    var editNotesRow = document.querySelectorAll('[data-input]');
     var form = document.querySelectorAll('[data-form]');
+
     for (var i = 0; i < form.length; i++) {
-      if (notesDiv[i] === e.target.dataset.find)
-        notesDiv[i].classList.add('hidden');
-      editNotes[i].classList.remove('hidden');
+      if (notesRow[i] === e.target.dataset.find)
+        notesRow[i].classList.add('hidden');
+      editNotesRow[i].classList.remove('hidden');
       // edit note sbutton becomes hidden as well
     }
   }
   if (e.target.dataset.submit === 'save') {
     var num = e.target.dataset.sub - 1;
-    var notesDiv = document.querySelectorAll('[data-notes]');
-    var editNotes = document.querySelectorAll('[data-input]');
+    var notesRow = document.querySelectorAll('[data-notes]');
+    var editNotesRow = document.querySelectorAll('[data-input]');
     var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
-    for (var i = 0; i < notesDiv.length; i++) {
-      if (notesDiv[i].dataset.notes === e.target.dataset.sub) {
-        console.log('working here');
+
+    for (var i = 0; i < notesRow.length; i++) {
+      if (notesRow[i].dataset.notes === e.target.dataset.sub) {
         user.favorites[num].notes = form[i].elements.notes.value;
-        notesDiv[i].classList.remove('hidden');
-        editNotes[i].classList.add('hidden');
+        notesRow[i].classList.remove('hidden');
+        editNotesRow[i].classList.add('hidden');
         updateNotes[i].textContent = form[i].elements.notes.value;
       }
     }
@@ -414,6 +498,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
     view('newUser')
   } else {
     view('plan');
+    // change later
   }
 
   for (var i = 0; i < 50; i++) {
