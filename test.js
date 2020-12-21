@@ -15,8 +15,11 @@ var $favPosition = document.querySelector('#favorites');
 var $eatTonight = document.querySelector('#eatTonight');
 var $imageTonight = document.querySelector('#imageTonight');
 var $beerTonight = document.querySelector('#beerTonight');
+var $planheadlineOne = document.querySelector('#planHeadlineOne')
+var $planHeadlineTwo = document.querySelector('#planHeadlineTwo');
 var random = [];
 var current = 0;
+var pageCount = 1;
 var beerId = 1;
 
 
@@ -101,35 +104,38 @@ var beerId = 1;
 // }
 
 
-// This function returns a random beer
 function randomBeers() {
+  pageCount++
+  if (pageCount > 75) {
+    pageCount = 10
+  }
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.punkapi.com/v2/beers/random');
-  xhr.responseType = 'json';
+  xhr.open('GET', 'https://api.punkapi.com/v2/beers?page=' + pageCount + '&per_page=49');
+  xhr.responseText = 'json';
   xhr.addEventListener('load', function () {
-    var toRender = xhr.response[0];
-    if (toRender.image_url !== null && toRender.tagline !== null && toRender.name !== null
-      && toRender.ingredients.hops[0].name !== null && toRender.ingredients.yeast !== null
-      && toRender.abv !== null && toRender.food_pairing !== null) {
-      var image = toRender.image_url;
-      var tagline = toRender.tagline;
-      var name = toRender.name;
-      var hops = toRender.ingredients.hops[0].name;
-      var yeast = toRender.ingredients.yeast;
-      var abv = toRender.abv;
-      var food = toRender.food_pairing;
-      var notes = '';
-      var theId = beerId;
-      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
-      beerId++
-      random.push(singleObject);
-    } else {
-      randomBeers();
+    var toRender = JSON.parse(xhr.response);
+    for (var i = 0; i < toRender.length; i++) {
+      if (toRender[i].image_url !== null && toRender[i].tagline !== null && toRender[i].name !== null
+        && toRender[i].ingredients.hops[0].name !== null && toRender[i].ingredients.yeast !== null
+        && toRender[i].abv !== null && toRender[i].food_pairing !== null) {
+        var image = toRender[i].image_url;
+        var tagline = toRender[i].tagline;
+        var name = toRender[i].name;
+        var hops = toRender[i].ingredients.hops[0].name;
+        var yeast = toRender[i].ingredients.yeast;
+        var abv = toRender[i].abv;
+        var food = toRender[i].food_pairing;
+        var notes = '';
+        var theId = beerId;
+        var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
+        beerId++
+        random.push(singleObject);
+      }
     }
   })
   xhr.send();
-}
 
+}
 
 
 
@@ -144,7 +150,7 @@ function domCreate(e) {
   imgCol.setAttribute('class', 'col text-center');
   imgRow.appendChild(imgCol);
   var image = document.createElement('img');
-  image.setAttribute('class', 'img-fluid explore-img');
+  image.setAttribute('class', 'img-fluid twenty-img');
   image.setAttribute('src', e.image);
   image.setAttribute('alt', e.tagline);
   imgCol.appendChild(image);
@@ -250,7 +256,7 @@ function loadExplore() {
 
 function profileDom(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'container');
+  container.setAttribute('class', 'col-6 flex flex-column space-between align-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -258,7 +264,7 @@ function profileDom(e) {
   imgCol.setAttribute('class', 'col text-center');
   imgRow.appendChild(imgCol);
   var image = document.createElement('img');
-  image.setAttribute('class', 'img-thumbnail explore-img');
+  image.setAttribute('class', 'img-max-twenty');
   image.setAttribute('src', e.image);
   image.setAttribute('alt', e.tagline);
   imgCol.appendChild(image);
@@ -439,6 +445,10 @@ window.addEventListener('click', function (e) {
   //   view('explore')
   // }
 
+  if (e.target.id === 'planForMe') {
+    mealTonight();
+  }
+
   if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.getElementById(e.target.dataset.view);
     if (infoDiv.dataset.boolean === 'false') {
@@ -504,9 +514,8 @@ window.addEventListener('DOMContentLoaded', function (e) {
   //   // change later
   // }
 
-  for (var i = 0; i < 50; i++) {
-    randomBeers();
-  }
+  randomBeers();
+
 
 })
 
@@ -530,7 +539,10 @@ document.addEventListener('submit', function (e) {
 
 function mealTonight() {
   var toRender = random[30];
+  $planheadlineOne.textContent = "Tonight's Beer"
+  $planHeadlineTwo.textContent = 'Paired With:'
   $imageTonight.src = toRender.image;
+  $imageTonight.classList.add('twenty-img');
   $imageTonight.alt = 'A random beer and food selection for tonight';
   $beerTonight.textContent = toRender.name;
   var food1 = document.createElement('li');
@@ -542,4 +554,4 @@ function mealTonight() {
   var food3 = document.createElement('li');
   food3.textContent = toRender.food[2];
   $eatTonight.appendChild(food3);
-};
+}

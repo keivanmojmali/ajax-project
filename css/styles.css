@@ -1,6 +1,14 @@
-.explore-img {
+.twenty-img {
   width: 20%;
 }
+
+.img-max-twenty {
+  max-width: 20%;
+}
+
+
+
+
 
 .line {
   border-bottom: 1.5px solid black;
