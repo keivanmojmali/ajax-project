@@ -7,9 +7,6 @@
 }
 
 
-
-
-
 .line {
   border-bottom: 1.5px solid black;
   margin: 8px 5px 8px 5px;
@@ -60,4 +57,12 @@
 
 .small-margin {
   margin: 5px;
+}
+
+.max-height-vh {
+  max-height: 100vh;
+}
+
+.style-none {
+  text-decoration: none;
 }

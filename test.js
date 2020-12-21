@@ -3,6 +3,7 @@ var $signup = document.querySelector('#signUp');
 var $topBar = document.querySelector('#topBar');
 var $bottomBar = document.querySelector('#bottomBar');
 var $explore = document.querySelector('#explore');
+var $exploreResults = document.querySelector('#exploreResults');
 var $profile = document.querySelector('#profile');
 var $planMeal = document.querySelector('#planMeal');
 var $results = document.querySelector('#results');
@@ -17,91 +18,34 @@ var $imageTonight = document.querySelector('#imageTonight');
 var $beerTonight = document.querySelector('#beerTonight');
 var $planheadlineOne = document.querySelector('#planHeadlineOne')
 var $planHeadlineTwo = document.querySelector('#planHeadlineTwo');
+var $navLinks = document.querySelector('#navLinks')
+var $edituserForm = document.querySelector('#editUserForm');
+var $editProfileCol = document.querySelector('#editProfileCol');
+var $profileView = document.querySelector('#profileView');
+
 var random = [];
 var current = 0;
 var pageCount = 1;
 var beerId = 1;
 
 
+function view(e){
+  if(e === 'explore') {
+    $welcome.classList.add('hidden');
+    $explore.classList.remove('hidden');
+    $navLinks.classList.remove('hidden');
+    $profile.classList.add('hidden');
+    loadExplore();
+  }
+  if(e === 'profile') {
+    $welcome.classList.add('hidden');
+    $explore.classList.add('hidden');
+    $navLinks.classList.remove('hidden');
+    $profile.classList.remove('hidden');
+    profileLoad();
+  }
 
-// // This function changes the views
-// function view(e) {
-//   if (e === 'newUser') {
-//     $welcome.classList.remove('hidden');
-//     $signup.classList.add('hidden');
-//     // $bottomBar.classList.add('hidden');
-//     $explore.classList.add('hidden');
-//     $profile.classList.add('hidden');
-//     $planMeal.classList.add('hidden');
-//     $results.classList.add('hidden');
-//     $joinNow.classList.remove('hidden');
-//     $signForm.classList.add('hidden');
-
-//   }
-//   if (e === 'signUp') {
-//     $welcome.classList.add('hidden');
-//     $signup.classList.remove('hidden');
-//     // $bottomBar.classList.add('hidden');
-//     $explore.classList.add('hidden');
-//     $profile.classList.add('hidden');
-//     $planMeal.classList.add('hidden');
-//     $results.classList.add('hidden');
-//     $joinNow.classList.add('hidden');
-//     $signForm.classList.remove('hidden');
-//     $signForm.elements.url.value = user.profile.imgUrl;
-//     $signForm.elements.name.value = user.profile.name;
-//     $signForm.elements.bio.value = user.profile.bio;
-
-//   }
-//   if (e === 'explore') {
-//     $welcome.classList.add('hidden');
-//     $signup.classList.add('hidden');
-//     // $bottomBar.classList.remove('hidden');
-//     $explore.classList.remove('hidden');
-//     $profile.classList.add('hidden');
-//     $planMeal.classList.add('hidden');
-//     $results.classList.add('hidden');
-//     $joinNow.classList.add('hidden');
-//     $signForm.classList.add('hidden');
-//     loadExplore();
-
-//   }
-//   if (e === 'results') {
-//     $welcome.classList.add('hidden');
-//     $signup.classList.add('hidden');
-//     // $bottomBar.classList.remove('hidden');
-//     $explore.classList.add('hidden');
-//     $profile.classList.add('hidden');
-//     $planMeal.classList.add('hidden');
-//     $results.classList.remove('hidden');
-//     $joinNow.classList.add('hidden');
-//     $signForm.classList.add('hidden');
-//     mealTonight();
-//   }
-//   if (e === 'plan') {
-//     $welcome.classList.add('hidden');
-//     $signup.classList.add('hidden');
-//     // $bottomBar.classList.remove('hidden');
-//     $explore.classList.add('hidden');
-//     $profile.classList.add('hidden');
-//     $planMeal.classList.remove('hidden');
-//     $results.classList.add('hidden');
-//     $joinNow.classList.add('hidden');
-//     $signForm.classList.add('hidden');
-//   }
-//   if (e === 'profile') {
-//     $welcome.classList.add('hidden');
-//     $signup.classList.add('hidden');
-//     // $bottomBar.classList.remove('hidden');
-//     $explore.classList.add('hidden');
-//     $profile.classList.remove('hidden');
-//     $planMeal.classList.add('hidden');
-//     $results.classList.add('hidden');
-//     $joinNow.classList.add('hidden');
-//     $signForm.classList.add('hidden');
-//     profileLoad();
-//   }
-// }
+}
 
 
 function randomBeers() {
@@ -142,7 +86,7 @@ function randomBeers() {
 
 function domCreate(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-6 flex flex-column space-between align-center black-border content-padding');
+  container.setAttribute('class', 'col-4 flex flex-column space-between align-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -238,25 +182,20 @@ function domCreate(e) {
 
 
 
-
 // this function loads 25 beers with ima s into the explorer page
 function loadExplore() {
   for (i = 0; i < 26; i++) {
     var holdEl = domCreate(random[i])
-    $explore.appendChild(holdEl);
+    $exploreResults.appendChild(holdEl);
   }
   current = current + 25;
 }
 
 
 
-
-
-
-
 function profileDom(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-6 flex flex-column space-between align-center black-border content-padding');
+  container.setAttribute('class', 'col-4 flex flex-column space-between align-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -407,6 +346,26 @@ function profileDom(e) {
 
 
 
+function mealTonight() {
+  var toRender = random[30];
+  $planheadlineOne.textContent = "Tonight's Beer"
+  $planHeadlineTwo.textContent = 'Paired With:'
+  $imageTonight.src = toRender.image;
+  $imageTonight.classList.add('twenty-img');
+  $imageTonight.alt = 'A random beer and food selection for tonight';
+  $beerTonight.textContent = toRender.name;
+  var food1 = document.createElement('li');
+  food1.textContent = toRender.food[0];
+  $eatTonight.appendChild(food1);
+  var food2 = document.createElement('li');
+  food2.textContent = toRender.food[1];
+  $eatTonight.appendChild(food2);
+  var food3 = document.createElement('li');
+  food3.textContent = toRender.food[2];
+  $eatTonight.appendChild(food3);
+}
+
+
 
 
 // this function loads the profile onto the profile page
@@ -424,6 +383,7 @@ function profileLoad() {
 
 
 window.addEventListener('click', function (e) {
+  console.log(e.target);
   // console.log(e.target);
   // if (e.target.id === 'joinNow') {
   //   view('signUp')
@@ -433,21 +393,38 @@ window.addEventListener('click', function (e) {
   //   view('results');
   // };
 
-  // if (e.target.id === 'navProfile') {
-  //   view('profile')
-
-  // }
-  // if (e.target.id === 'navPlan') {
-  //   view('plan')
-
-  // }
-  // if (e.target.id === 'navExplore') {
-  //   view('explore')
-  // }
-
-  if (e.target.id === 'planForMe') {
-    mealTonight();
+  if (e.target.id === 'profileNav') {
+    view('profile')
   }
+
+  if (e.target.id === 'planNav') {
+    view('plan')
+  }
+
+  if (e.target.id === 'exploreNav') {
+    view('explore')
+  }
+
+  // if (e.target.id === 'planForMe') {
+
+  // }
+
+  if(e.target.id === 'editProfileNow'){
+    $editProfileCol.classList.remove('hidden');
+    $edituserForm.elements.name.value = user.profile.name;
+    $edituserForm.elements.url.value = user.profile.imgUrl;
+    $edituserForm.elements.bio.value = user.profile.bio;
+  }
+
+  if(e.target.id === 'saveUserChanges') {
+    $editProfileCol.classList.add('hidden');
+    $edituserForm.elements.name.value = user.profile.name;
+    $edituserForm.elements.url.value = user.profile.imgUrl;
+    $edituserForm.elements.bio.value = user.profile.bio;
+     profileLoad()
+
+  }
+
 
   if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.getElementById(e.target.dataset.view);
@@ -491,6 +468,7 @@ window.addEventListener('click', function (e) {
     var editNotesRow = document.querySelectorAll('[data-input]');
     var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
+    console.log('value of form var:',form);
 
     for (var i = 0; i < notesRow.length; i++) {
       if (notesRow[i].dataset.notes === e.target.dataset.sub) {
@@ -507,12 +485,11 @@ window.addEventListener('click', function (e) {
 window.addEventListener('DOMContentLoaded', function (e) {
 
 
-  // if (user.profile.name === '') {
-  //   view('newUser')
-  // } else {
-  //   view('plan');
-  //   // change later
-  // }
+  if (user.profile.name === '') {
+    view('welcome')
+  } else {
+    view('profile');
+  }
 
   randomBeers();
 
@@ -530,28 +507,8 @@ document.addEventListener('submit', function (e) {
   var bio = $signForm.elements.bio.value;
   user.profile = { name, imgUrl, bio };
   if (e.target.id === 'signForm') {
-    // view('explore');
+    view('explore');
   }
 
 
 })
-
-
-function mealTonight() {
-  var toRender = random[30];
-  $planheadlineOne.textContent = "Tonight's Beer"
-  $planHeadlineTwo.textContent = 'Paired With:'
-  $imageTonight.src = toRender.image;
-  $imageTonight.classList.add('twenty-img');
-  $imageTonight.alt = 'A random beer and food selection for tonight';
-  $beerTonight.textContent = toRender.name;
-  var food1 = document.createElement('li');
-  food1.textContent = toRender.food[0];
-  $eatTonight.appendChild(food1);
-  var food2 = document.createElement('li');
-  food2.textContent = toRender.food[1];
-  $eatTonight.appendChild(food2);
-  var food3 = document.createElement('li');
-  food3.textContent = toRender.food[2];
-  $eatTonight.appendChild(food3);
-}
