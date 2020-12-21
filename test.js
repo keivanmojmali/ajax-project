@@ -421,7 +421,9 @@ window.addEventListener('click', function (e) {
     $edituserForm.elements.name.value = user.profile.name;
     $edituserForm.elements.url.value = user.profile.imgUrl;
     $edituserForm.elements.bio.value = user.profile.bio;
-     profileLoad()
+    $profileImage.src = $edituserForm.elements.url.value;
+    $profileName.textContent = $edituserForm.elements.name.value;
+    $profileBio.textContent = $edituserForm.elements.bio.value;
 
   }
 
