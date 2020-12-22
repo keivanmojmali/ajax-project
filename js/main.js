@@ -25,7 +25,7 @@ var $profileView = document.querySelector('#profileView');
 var $plan = document.querySelector('#plan');
 var random = [];
 var current = 0;
-var pageCount = 1;
+var pageCount = 4;
 var beerId = 1;
 
 
@@ -36,6 +36,11 @@ function view(e){
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
     loadExplore();
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
   if(e === 'profile') {
     $welcome.classList.add('hidden');
@@ -43,6 +48,11 @@ function view(e){
     $navLinks.classList.remove('hidden');
     $profile.classList.remove('hidden');
     profileLoad();
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
   if(e === 'plan') {
     $welcome.classList.add('hidden');
@@ -50,7 +60,11 @@ function view(e){
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
     $plan.classList.remove('hidden');
-
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 
 }
@@ -99,10 +113,10 @@ function domCreate(e) {
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
   var imgCol = document.createElement('div');
-  imgCol.setAttribute('class', 'col text-center');
+  imgCol.setAttribute('class', 'col rem-pic d-flex align-items-center justify-content-center');
   imgRow.appendChild(imgCol);
   var image = document.createElement('img');
-  image.setAttribute('class', 'img-fluid twenty-img');
+  image.setAttribute('class', 'twenty-img');
   image.setAttribute('src', e.image);
   image.setAttribute('alt', e.tagline);
   imgCol.appendChild(image);
@@ -192,7 +206,11 @@ function domCreate(e) {
 
 // this function loads 25 beers with ima s into the explorer page
 function loadExplore() {
-  for (i = 0; i < 26; i++) {
+
+  if(current > 51) {
+    randomBeers();
+  }
+  for (i = current; i < 26; i++) {
     var holdEl = domCreate(random[i])
     $exploreResults.appendChild(holdEl);
   }
@@ -355,7 +373,7 @@ function profileDom(e) {
 
 
 function mealTonight() {
-  var toRender = random[28];
+  var toRender = random[16];
   $planheadlineOne.textContent = "Tonight's Beer"
   $planHeadlineTwo.textContent = 'Paired With:'
   $imageTonight.src = toRender.image;
@@ -371,6 +389,9 @@ function mealTonight() {
   var food3 = document.createElement('li');
   food3.textContent = toRender.food[2];
   $eatTonight.appendChild(food3);
+  window.scroll(84,658);
+  window.scroll({behavior: 'smooth'});
+
 }
 
 
@@ -410,6 +431,14 @@ window.addEventListener('click', function (e) {
   }
 
 
+    if(e.target.id === 'loadMoreBeers') {
+      loadExplore()
+      // window.scroll({
+      //   top: 0,
+      //   left: 0,
+      //   behavior: 'smooth'
+      // });
+    }
 
   if(e.target.id === 'editProfileNow'){
     $editProfileCol.classList.remove('hidden');
