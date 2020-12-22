@@ -29,22 +29,22 @@ var pageCount = 1;
 var beerId = 1;
 
 
-function view(e) {
-  if (e === 'explore') {
+function view(e){
+  if(e === 'explore') {
     $welcome.classList.add('hidden');
     $explore.classList.remove('hidden');
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
     loadExplore();
   }
-  if (e === 'profile') {
+  if(e === 'profile') {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
     $profile.classList.remove('hidden');
     profileLoad();
   }
-  if (e === 'plan') {
+  if(e === 'plan') {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
@@ -69,7 +69,7 @@ function randomBeers() {
     for (var i = 0; i < toRender.length; i++) {
       if (toRender[i].image_url !== null && toRender[i].tagline !== null && toRender[i].name !== null
         && toRender[i].ingredients.hops[0].name !== null && toRender[i].ingredients.yeast !== null
-        && toRender[i].abv !== null && toRender[i].food_pairing !== null) {
+        && toRender[i].abv !== null && toRender[i].food_pairing !== null && toRender[i].name.length < 16) {
         var image = toRender[i].image_url;
         var tagline = toRender[i].tagline;
         var name = toRender[i].name;
@@ -208,15 +208,15 @@ function profileDom(e) {
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
   var imgCol = document.createElement('div');
-  imgCol.setAttribute('class', 'col text-center');
+  imgCol.setAttribute('class', 'col rem-pic d-flex align-items-center justify-content-center');
   imgRow.appendChild(imgCol);
   var image = document.createElement('img');
-  image.setAttribute('class', 'img-max-twenty');
+  image.setAttribute('class', 'twenty-img');
   image.setAttribute('src', e.image);
   image.setAttribute('alt', e.tagline);
   imgCol.appendChild(image);
   var nameRow = document.createElement('div');
-  nameRow.setAttribute('class', 'row');
+  nameRow.setAttribute('class', 'row fav-height');
   container.appendChild(nameRow);
   var nameCol = document.createElement('div');
   nameCol.setAttribute('class', 'col');
@@ -225,7 +225,7 @@ function profileDom(e) {
   name.textContent = e.name;
   nameCol.appendChild(name);
   var tagRow = document.createElement('div');
-  tagRow.setAttribute('class', 'row');
+  tagRow.setAttribute('class', 'row fav-height');
   container.appendChild(tagRow);
   var tagCol = document.createElement('div');
   tagCol.setAttribute('class', 'col');
@@ -234,7 +234,7 @@ function profileDom(e) {
   tag.textContent = e.tagline;
   tagCol.appendChild(tag);
   var infoStarRow = document.createElement('div');
-  infoStarRow.setAttribute('class', 'row');
+  infoStarRow.setAttribute('class', 'row fav-height');
   container.appendChild(infoStarRow);
   var infoCol = document.createElement('div');
   infoCol.setAttribute('class', 'col-lg');
@@ -393,7 +393,7 @@ function profileLoad() {
 window.addEventListener('click', function (e) {
   console.log(e.target);
 
-  if (e.target.id === 'planForMe') {
+  if(e.target.id === 'planForMe'){
     mealTonight();
   }
 
@@ -411,19 +411,19 @@ window.addEventListener('click', function (e) {
 
 
 
-  if (e.target.id === 'editProfileNow') {
+  if(e.target.id === 'editProfileNow'){
     $editProfileCol.classList.remove('hidden');
     $edituserForm.elements.name.value = user.profile.name;
     $edituserForm.elements.url.value = user.profile.imgUrl;
     $edituserForm.elements.bio.value = user.profile.bio;
   }
 
-  if (e.target.id === 'saveUserChanges') {
+  if(e.target.id === 'saveUserChanges') {
     $editProfileCol.classList.add('hidden');
     var name = $edituserForm.elements.name.value;
     var imgUrl = $edituserForm.elements.url.value;
     var bio = $edituserForm.elements.bio.value;
-    user.profile = { name, imgUrl, bio };
+    user.profile = {name, imgUrl, bio};
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
     $profileBio.textContent = user.profile.bio;
@@ -473,7 +473,7 @@ window.addEventListener('click', function (e) {
     var editNotesRow = document.querySelectorAll('[data-input]');
     var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
-    console.log('value of form var:', form);
+    console.log('value of form var:',form);
 
     for (var i = 0; i < notesRow.length; i++) {
       if (notesRow[i].dataset.notes === e.target.dataset.sub) {
