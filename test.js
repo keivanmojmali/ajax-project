@@ -22,7 +22,7 @@ var $navLinks = document.querySelector('#navLinks')
 var $edituserForm = document.querySelector('#editUserForm');
 var $editProfileCol = document.querySelector('#editProfileCol');
 var $profileView = document.querySelector('#profileView');
-
+var $plan = document.querySelector('#plan');
 var random = [];
 var current = 0;
 var pageCount = 1;
@@ -43,6 +43,14 @@ function view(e){
     $navLinks.classList.remove('hidden');
     $profile.classList.remove('hidden');
     profileLoad();
+  }
+  if(e === 'plan') {
+    $welcome.classList.add('hidden');
+    $explore.classList.add('hidden');
+    $navLinks.classList.remove('hidden');
+    $profile.classList.add('hidden');
+    $plan.classList.remove('hidden');
+
   }
 
 }
@@ -347,7 +355,7 @@ function profileDom(e) {
 
 
 function mealTonight() {
-  var toRender = random[30];
+  var toRender = random[28];
   $planheadlineOne.textContent = "Tonight's Beer"
   $planHeadlineTwo.textContent = 'Paired With:'
   $imageTonight.src = toRender.image;
@@ -384,14 +392,10 @@ function profileLoad() {
 
 window.addEventListener('click', function (e) {
   console.log(e.target);
-  // console.log(e.target);
-  // if (e.target.id === 'joinNow') {
-  //   view('signUp')
-  // }
 
-  // if (e.target.id === 'eat') {
-  //   view('results');
-  // };
+  if(e.target.id === 'planForMe'){
+    mealTonight();
+  }
 
   if (e.target.id === 'profileNav') {
     view('profile')
@@ -405,9 +409,7 @@ window.addEventListener('click', function (e) {
     view('explore')
   }
 
-  // if (e.target.id === 'planForMe') {
 
-  // }
 
   if(e.target.id === 'editProfileNow'){
     $editProfileCol.classList.remove('hidden');
@@ -418,12 +420,13 @@ window.addEventListener('click', function (e) {
 
   if(e.target.id === 'saveUserChanges') {
     $editProfileCol.classList.add('hidden');
-    $edituserForm.elements.name.value = user.profile.name;
-    $edituserForm.elements.url.value = user.profile.imgUrl;
-    $edituserForm.elements.bio.value = user.profile.bio;
-    $profileImage.src = $edituserForm.elements.url.value;
-    $profileName.textContent = $edituserForm.elements.name.value;
-    $profileBio.textContent = $edituserForm.elements.bio.value;
+    var name = $edituserForm.elements.name.value;
+    var imgUrl = $edituserForm.elements.url.value;
+    var bio = $edituserForm.elements.bio.value;
+    user.profile = {name, imgUrl, bio};
+    $profileImage.src = user.profile.imgUrl;
+    $profileName.textContent = user.profile.name;
+    $profileBio.textContent = user.profile.bio;
 
   }
 
