@@ -24,13 +24,14 @@ var $editProfileCol = document.querySelector('#editProfileCol');
 var $profileView = document.querySelector('#profileView');
 var $plan = document.querySelector('#plan');
 var random = [];
+var planFeatureHoldArray = [];
 var current = 0;
 var pageCount = 4;
 var beerId = 1;
 
 
-function view(e){
-  if(e === 'explore') {
+function view(e) {
+  if (e === 'explore') {
     $welcome.classList.add('hidden');
     $explore.classList.remove('hidden');
     $navLinks.classList.remove('hidden');
@@ -42,7 +43,7 @@ function view(e){
       behavior: 'smooth'
     });
   }
-  if(e === 'profile') {
+  if (e === 'profile') {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
@@ -54,7 +55,7 @@ function view(e){
       behavior: 'smooth'
     });
   }
-  if(e === 'plan') {
+  if (e === 'plan') {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
@@ -103,6 +104,36 @@ function randomBeers() {
 
 }
 
+
+function planFeatureHold() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://api.punkapi.com/v2/beers/random');
+  xhr.responseText = 'json';
+  xhr.addEventListener('load', function () {
+    var response = JSON.parse(xhr.response);
+    var toRender = response[0];
+    console.log(toRender);
+    if (toRender.image_url !== null && toRender.tagline !== null && toRender.name !== null
+      && toRender.ingredients.hops[0].name !== null && toRender.ingredients.yeast !== null
+      && toRender.abv !== null && toRender.food_pairing !== null && toRender.name.length < 16) {
+      var image = toRender.image_url;
+      var tagline = toRender.tagline;
+      var name = toRender.name;
+      var hops = toRender.ingredients.hops[0].name;
+      var yeast = toRender.ingredients.yeast;
+      var abv = toRender.abv;
+      var food = toRender.food_pairing;
+      var notes = '';
+      var theId = beerId;
+      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
+      planFeatureHoldArray.push(singleObject);
+    } else {
+      planFeatureHold();
+    }
+  })
+  xhr.send();
+
+}
 
 
 
@@ -207,7 +238,7 @@ function domCreate(e) {
 // this function loads 25 beers with ima s into the explorer page
 function loadExplore() {
 
-  if(current > 51) {
+  if (current > 51) {
     randomBeers();
   }
   for (i = current; i < 26; i++) {
@@ -373,7 +404,7 @@ function profileDom(e) {
 
 
 function mealTonight() {
-  var toRender = random[16];
+  var toRender = planFeatureHoldArray[0];
   $planheadlineOne.textContent = "Tonight's Beer"
   $planHeadlineTwo.textContent = 'Paired With:'
   $imageTonight.src = toRender.image;
@@ -389,10 +420,49 @@ function mealTonight() {
   var food3 = document.createElement('li');
   food3.textContent = toRender.food[2];
   $eatTonight.appendChild(food3);
-  window.scroll(84,658);
-  window.scroll({behavior: 'smooth'});
+  window.scroll(84, 658);
+  window.scroll({ behavior: 'smooth' });
 
 }
+
+
+function flightRender() {
+  var imgOne = document.getElementById('imgOne');
+  var beerOne = document.getElementById('beerOne');
+  var desOne = document.getElementById('descriptionOne');
+  var imgTwo = document.getElementById('imgTwo');
+  var beerTwo = document.getElementById('beerTwo');
+  var desTwo = document.getElementById('descriptionTwo');
+  var imgThree = document.getElementById('imgThree');
+  var beerThree = document.getElementById('beerThree');
+  var desThree = document.getElementById('descriptionThree');
+  var imgFour = document.getElementById('imgFour');
+  var beerFour = document.getElementById('beerFour');
+  var desFour = document.getElementById('descriptionFour');
+  var imgFive = document.getElementById('imgFive');
+  var beerFive = document.getElementById('beerFive');
+  var desFive = document.getElementById('descriptionFive');
+
+  imgOne.src = planFeatureHoldArray[1].image;
+  imgTwo.src = planFeatureHoldArray[2].image;
+  imgThree.src = planFeatureHoldArray[3].image;
+  imgFour.src = planFeatureHoldArray[4].image;
+  imgFive.src = planFeatureHoldArray[5].image;
+
+  beerOne.textContent = planFeatureHoldArray[1].name;
+  beerTwo.textContent = planFeatureHoldArray[2].name;
+  beerThree.textContent = planFeatureHoldArray[3].name;
+  beerFour.textContent = planFeatureHoldArray[4].name;
+  beerFive.textContent = planFeatureHoldArray[5].name;
+
+  desOne.textContent = planFeatureHoldArray[1].tagline;
+  desTwo.textContent = planFeatureHoldArray[2].tagline;
+  desThree.textContent = planFeatureHoldArray[3].tagline;
+  desFour.textContent = planFeatureHoldArray[4].tagline;
+  desFive.textContent = planFeatureHoldArray[5].tagline;
+
+}
+
 
 
 
@@ -414,7 +484,9 @@ function profileLoad() {
 window.addEventListener('click', function (e) {
   console.log(e.target);
 
-  if(e.target.id === 'planForMe'){
+  if (e.target.id === 'planForMe') {
+      window.scroll(84, 557);
+      window.scroll({ behavior: 'smooth' });
     mealTonight();
   }
 
@@ -431,28 +503,32 @@ window.addEventListener('click', function (e) {
   }
 
 
-    if(e.target.id === 'loadMoreBeers') {
-      loadExplore()
-      // window.scroll({
-      //   top: 0,
-      //   left: 0,
-      //   behavior: 'smooth'
-      // });
-    }
+  if (e.target.id === 'loadMoreBeers') {
+    loadExplore()
+    // window.scroll({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth'
+    // });
+  }
 
-  if(e.target.id === 'editProfileNow'){
+  if(e.target.id === 'planMyFlight') {
+    flightRender();
+  }
+
+  if (e.target.id === 'editProfileNow') {
     $editProfileCol.classList.remove('hidden');
     $edituserForm.elements.name.value = user.profile.name;
     $edituserForm.elements.url.value = user.profile.imgUrl;
     $edituserForm.elements.bio.value = user.profile.bio;
   }
 
-  if(e.target.id === 'saveUserChanges') {
+  if (e.target.id === 'saveUserChanges') {
     $editProfileCol.classList.add('hidden');
     var name = $edituserForm.elements.name.value;
     var imgUrl = $edituserForm.elements.url.value;
     var bio = $edituserForm.elements.bio.value;
-    user.profile = {name, imgUrl, bio};
+    user.profile = { name, imgUrl, bio };
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
     $profileBio.textContent = user.profile.bio;
@@ -502,7 +578,7 @@ window.addEventListener('click', function (e) {
     var editNotesRow = document.querySelectorAll('[data-input]');
     var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
-    console.log('value of form var:',form);
+    console.log('value of form var:', form);
 
     for (var i = 0; i < notesRow.length; i++) {
       if (notesRow[i].dataset.notes === e.target.dataset.sub) {
@@ -526,6 +602,11 @@ window.addEventListener('DOMContentLoaded', function (e) {
   }
 
   randomBeers();
+
+  for (var i = 0; i < 6; i++) {
+    planFeatureHold();
+    console.log('plan called');
+  }
 
 
 })
