@@ -19,6 +19,7 @@ var $beerTonight = document.querySelector('#beerTonight');
 var $planheadlineOne = document.querySelector('#planHeadlineOne')
 var $planHeadlineTwo = document.querySelector('#planHeadlineTwo');
 var $navLinks = document.querySelector('#navLinks')
+var $bottomNavLinks = document.querySelector('#bottomNavLinks');
 var $edituserForm = document.querySelector('#editUserForm');
 var $editProfileCol = document.querySelector('#editProfileCol');
 var $profileView = document.querySelector('#profileView');
@@ -26,7 +27,7 @@ var $plan = document.querySelector('#plan');
 var random = [];
 var planFeatureHoldArray = [];
 var current = 0;
-var pageCount = 4;
+var pageCount = 1;
 var beerId = 1;
 
 
@@ -35,37 +36,35 @@ function view(e) {
     $welcome.classList.add('hidden');
     $explore.classList.remove('hidden');
     $navLinks.classList.remove('hidden');
+    $bottomNavLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
+    $favPosition.innerHTML = '';
+    $plan.classList.add('hidden');
     loadExplore();
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    window.scroll(0,0);
+    window.scroll({ behavior: 'smooth' });
   }
   if (e === 'profile') {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
+    $bottomNavLinks.classList.remove('hidden');
     $profile.classList.remove('hidden');
+    $plan.classList.add('hidden');
     profileLoad();
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    window.scroll(0, 0);
+    window.scroll({ behavior: 'smooth' });
   }
   if (e === 'plan') {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
+    $bottomNavLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
+    $favPosition.innerHTML = '';
     $plan.classList.remove('hidden');
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    window.scroll(0, 0);
+    window.scroll({ behavior: 'smooth' });
   }
 
 }
@@ -73,11 +72,11 @@ function view(e) {
 
 function randomBeers() {
   pageCount++
-  if (pageCount > 75) {
-    pageCount = 10
+  if (pageCount > 7) {
+    pageCount = 0
   }
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.punkapi.com/v2/beers?page=' + pageCount + '&per_page=49');
+  xhr.open('GET', 'https://api.punkapi.com/v2/beers?page=' + pageCount + '&per_page=80');
   xhr.responseText = 'json';
   xhr.addEventListener('load', function () {
     var toRender = JSON.parse(xhr.response);
@@ -104,6 +103,8 @@ function randomBeers() {
 
 }
 
+https://api.punkapi.com/v2/beers?page=10&per_page=49
+
 
 function planFeatureHold() {
   var xhr = new XMLHttpRequest();
@@ -112,7 +113,6 @@ function planFeatureHold() {
   xhr.addEventListener('load', function () {
     var response = JSON.parse(xhr.response);
     var toRender = response[0];
-    console.log(toRender);
     if (toRender.image_url !== null && toRender.tagline !== null && toRender.name !== null
       && toRender.ingredients.hops[0].name !== null && toRender.ingredients.yeast !== null
       && toRender.abv !== null && toRender.food_pairing !== null && toRender.name.length < 16) {
@@ -139,7 +139,7 @@ function planFeatureHold() {
 
 function domCreate(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-4 flex flex-column space-between align-center black-border content-padding');
+  container.setAttribute('class', 'col-4 d-flex flex-column justify-content-between align-items-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -183,7 +183,7 @@ function domCreate(e) {
   infoBtn.textContent = 'More Information';
   infoCol.appendChild(infoBtn);
   var starCol = document.createElement('div');
-  starCol.setAttribute('class', 'col flex small-margin');
+  starCol.setAttribute('class', 'col d-flex small-margin');
   infoStarRow.appendChild(starCol);
   var star = document.createElement('i');
   star.setAttribute('class', 'far fa-bookmark small-margin');
@@ -237,22 +237,21 @@ function domCreate(e) {
 
 // this function loads 25 beers with ima s into the explorer page
 function loadExplore() {
+  count = current + 25;
 
-  if (current > 51) {
-    randomBeers();
-  }
-  for (i = current; i < 26; i++) {
-    var holdEl = domCreate(random[i])
+  for(i = current; i < count; i++)  {
+    var holdEl = domCreate(random[i]);
     $exploreResults.appendChild(holdEl);
   }
   current = current + 25;
+  randomBeers();
 }
 
 
 
 function profileDom(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-4 flex flex-column space-between align-center black-border content-padding');
+  container.setAttribute('class', 'col-4 d-flex flex-column justify-content-between align-iitems-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -383,11 +382,12 @@ function profileDom(e) {
 
   var form = document.createElement('form');
   form.setAttribute('data-form', e.beerId)
+  form.setAttribute('class','d-flex flex-column');
   editNotesCol.appendChild(form);
 
   var textField = document.createElement('textarea');
   textField.value = e.notes;
-  textField.setAttribute('class', 'column-full');
+  textField.setAttribute('class', 'column-full small-margin');
   textField.setAttribute('name', 'notes');
   form.appendChild(textField);
 
@@ -420,7 +420,7 @@ function mealTonight() {
   var food3 = document.createElement('li');
   food3.textContent = toRender.food[2];
   $eatTonight.appendChild(food3);
-  window.scroll(84, 658);
+  window.scroll(84, 600);
   window.scroll({ behavior: 'smooth' });
 
 }
@@ -488,7 +488,6 @@ function profileLoad() {
 
 
 window.addEventListener('click', function (e) {
-  console.log(e.target);
 
   if (e.target.id === 'planForMe') {
       window.scroll(84, 557);
@@ -496,26 +495,22 @@ window.addEventListener('click', function (e) {
     mealTonight();
   }
 
-  if (e.target.id === 'profileNav') {
+  if (e.target.id === 'profileNav' || e.target.id === 'profileBottom') {
     view('profile')
   }
 
-  if (e.target.id === 'planNav') {
+  if (e.target.id === 'planNav' || e.target.id === 'planBottom') {
     view('plan')
   }
 
-  if (e.target.id === 'exploreNav') {
+  if (e.target.id === 'exploreNav' || e.target.id === 'exploreBottom') {
     view('explore')
   }
 
 
   if (e.target.id === 'loadMoreBeers') {
+
     loadExplore()
-    // window.scroll({
-    //   top: 0,
-    //   left: 0,
-    //   behavior: 'smooth'
-    // });
   }
 
   if(e.target.id === 'planMyFlight') {
@@ -544,6 +539,7 @@ window.addEventListener('click', function (e) {
 
   if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.getElementById(e.target.dataset.view);
+
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
@@ -557,7 +553,6 @@ window.addEventListener('click', function (e) {
 
   if (e.target.dataset.star === 'favorite') {
     var num = e.target.dataset.fav - 1;
-    console.log(num);
     user.favorites.push(random[num]);
     e.target.className = 'fas fa-bookmark small-margin';
   }
@@ -584,7 +579,6 @@ window.addEventListener('click', function (e) {
     var editNotesRow = document.querySelectorAll('[data-input]');
     var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
-    console.log('value of form var:', form);
 
     for (var i = 0; i < notesRow.length; i++) {
       if (notesRow[i].dataset.notes === e.target.dataset.sub) {
@@ -611,7 +605,6 @@ window.addEventListener('DOMContentLoaded', function (e) {
 
   for (var i = 0; i < 6; i++) {
     planFeatureHold();
-    console.log('plan called');
   }
 
 
@@ -622,7 +615,6 @@ window.addEventListener('DOMContentLoaded', function (e) {
 
 document.addEventListener('submit', function (e) {
   e.preventDefault();
-  console.log(e.target.id);
   var imgUrl = $signForm.elements.url.value;
   var name = $signForm.elements.name.value;
   var bio = $signForm.elements.bio.value;
@@ -630,6 +622,9 @@ document.addEventListener('submit', function (e) {
   if (e.target.id === 'signForm') {
     view('explore');
   }
+
+  window.scroll(0, 0);
+  window.scroll({ behavior: 'smooth' });
 
 
 })
