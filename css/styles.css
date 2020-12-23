@@ -76,10 +76,11 @@
   height: 7rem;
 }
 
-.carousel-bg {
+.welcome-bg {
   background-image: url('../Images/beer-suds-2.jpg');
   background-size: cover;
   height: 80vh;
+  width: 100%;
 }
 
 .focus-border {
@@ -98,4 +99,15 @@
 
 ul {
   list-style-type: none;
+}
+
+
+.welcome-banner {
+  background-color: lightgray;
+  opacity: 80%;
+  color: black;
+  bottom: 15%;
+  left: 10%;
+  margin: 10px;
+  padding: 20px;
 }
