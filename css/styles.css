@@ -66,3 +66,11 @@
 .style-none {
   text-decoration: none;
 }
+
+.rem-pic {
+  height: 15rem;
+}
+
+.fav-height {
+  height: 7rem;
+}
