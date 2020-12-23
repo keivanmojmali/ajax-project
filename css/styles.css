@@ -40,8 +40,13 @@
   padding-left: 60px;
 }
 
-.row {
+/* .row {
   margin: 15px;
+  padding: 10px;
+} */
+
+.row-margin {
+  margin: 15px 0px 15px 0px ;
   padding: 10px;
 }
 
@@ -68,7 +73,7 @@
 }
 
 .rem-pic {
-  height: 15rem;
+  height: 22rem;
 }
 
 .fav-height {
@@ -83,4 +88,18 @@
 
 .focus-border {
   border: solid blue 3px;
+}
+
+.plan-night {
+  background-image: url('../Images/friends-at-dinner.jpg');
+  background-size: cover;
+  height: 50vh;
+}
+
+.text-line-height {
+  line-height: 1.5;
+}
+
+ul {
+  list-style-type: none;
 }

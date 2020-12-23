@@ -410,7 +410,7 @@ function mealTonight() {
   var food3 = document.createElement('li');
   food3.textContent = toRender.food[2];
   $eatTonight.appendChild(food3);
-  window.scroll(84, 658);
+  window.scroll(84, 600);
   window.scroll({ behavior: 'smooth' });
 
 }
