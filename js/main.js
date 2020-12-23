@@ -231,8 +231,8 @@ function loadExplore() {
   if (current > 51) {
     randomBeers();
   }
-  for (i = current; i < 26; i++) {
-    var holdEl = domCreate(random[i])
+  for (i = current; i < 20; i++) {
+    var holdEl = domCreate(random[i]);
     $exploreResults.appendChild(holdEl);
   }
   current = current + 25;
@@ -485,15 +485,16 @@ window.addEventListener('click', function (e) {
     mealTonight();
   }
 
-  if (e.target.id === 'profileNav') {
+  if (e.target.id === 'profileNav' || e.target.id === 'profileBottom') {
+    console.log('working');
     view('profile')
   }
 
-  if (e.target.id === 'planNav') {
+  if (e.target.id === 'planNav' || e.target.id === 'planBottom') {
     view('plan')
   }
 
-  if (e.target.id === 'exploreNav') {
+  if (e.target.id === 'exploreNav' || e.target.id === 'exploreBottom') {
     view('explore')
   }
 
