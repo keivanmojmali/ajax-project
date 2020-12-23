@@ -241,7 +241,6 @@ function loadExplore() {
 
   for(i = current; i < count; i++)  {
     var holdEl = domCreate(random[i]);
-    console.log(i);
     $exploreResults.appendChild(holdEl);
   }
   current = current + 25;
@@ -489,7 +488,6 @@ function profileLoad() {
 
 
 window.addEventListener('click', function (e) {
-  console.log(e.target.id);
 
   if (e.target.id === 'planForMe') {
       window.scroll(84, 557);
@@ -498,7 +496,6 @@ window.addEventListener('click', function (e) {
   }
 
   if (e.target.id === 'profileNav' || e.target.id === 'profileBottom') {
-    console.log('working');
     view('profile')
   }
 
@@ -533,7 +530,6 @@ window.addEventListener('click', function (e) {
     var imgUrl = $edituserForm.elements.url.value;
     var bio = $edituserForm.elements.bio.value;
     user.profile = { name, imgUrl, bio };
-    console.log(user.profile);
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
     $profileBio.textContent = user.profile.bio;
