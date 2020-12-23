@@ -528,6 +528,7 @@ window.addEventListener('click', function (e) {
     var imgUrl = $edituserForm.elements.url.value;
     var bio = $edituserForm.elements.bio.value;
     user.profile = { name, imgUrl, bio };
+    console.log(user.profile);
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
     $profileBio.textContent = user.profile.bio;
