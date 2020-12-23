@@ -379,11 +379,12 @@ function profileDom(e) {
 
   var form = document.createElement('form');
   form.setAttribute('data-form', e.beerId)
+  form.setAttribute('class','d-flex flex-column');
   editNotesCol.appendChild(form);
 
   var textField = document.createElement('textarea');
   textField.value = e.notes;
-  textField.setAttribute('class', 'column-full');
+  textField.setAttribute('class', 'column-full small-margin');
   textField.setAttribute('name', 'notes');
   form.appendChild(textField);
 
