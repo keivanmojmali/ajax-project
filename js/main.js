@@ -449,6 +449,12 @@ function flightRender() {
   imgFour.src = planFeatureHoldArray[4].image;
   imgFive.src = planFeatureHoldArray[5].image;
 
+  imgOne.className = 'twenty-img';
+  imgTwo.className = 'twenty-img';
+  imgThree.className = 'twenty-img';
+  imgFour.className = 'twenty-img';
+  imgFive.className = 'twenty-img';
+
   beerOne.textContent = planFeatureHoldArray[1].name;
   beerTwo.textContent = planFeatureHoldArray[2].name;
   beerThree.textContent = planFeatureHoldArray[3].name;
