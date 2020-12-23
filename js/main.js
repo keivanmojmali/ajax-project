@@ -36,6 +36,7 @@ function view(e) {
     $explore.classList.remove('hidden');
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
+    $favPosition.innerHTML = '';
     $plan.classList.add('hidden');
     loadExplore();
     window.scroll(0,0);
@@ -56,6 +57,7 @@ function view(e) {
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
+    $favPosition.innerHTML = '';
     $plan.classList.remove('hidden');
     window.scroll(0, 0);
     window.scroll({ behavior: 'smooth' });
