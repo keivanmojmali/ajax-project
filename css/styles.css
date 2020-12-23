@@ -74,3 +74,14 @@
 .fav-height {
   height: 7rem;
 }
+
+.carousel-bg {
+  background-image: url('../Images/beer-suds-2.jpg');
+  background-size: cover;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.focus-border {
+  border: solid blue 3px;
+}

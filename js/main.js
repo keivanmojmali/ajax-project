@@ -37,11 +37,8 @@ function view(e) {
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
     loadExplore();
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    window.scroll(0,0);
+    window.scroll({ behavior: 'smooth' });
   }
   if (e === 'profile') {
     $welcome.classList.add('hidden');
@@ -49,11 +46,8 @@ function view(e) {
     $navLinks.classList.remove('hidden');
     $profile.classList.remove('hidden');
     profileLoad();
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    window.scroll(0, 0);
+    window.scroll({ behavior: 'smooth' });
   }
   if (e === 'plan') {
     $welcome.classList.add('hidden');
@@ -61,11 +55,8 @@ function view(e) {
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
     $plan.classList.remove('hidden');
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    window.scroll(0, 0);
+    window.scroll({ behavior: 'smooth' });
   }
 
 }
@@ -112,7 +103,6 @@ function planFeatureHold() {
   xhr.addEventListener('load', function () {
     var response = JSON.parse(xhr.response);
     var toRender = response[0];
-    console.log(toRender);
     if (toRender.image_url !== null && toRender.tagline !== null && toRender.name !== null
       && toRender.ingredients.hops[0].name !== null && toRender.ingredients.yeast !== null
       && toRender.abv !== null && toRender.food_pairing !== null && toRender.name.length < 16) {
@@ -488,7 +478,6 @@ function profileLoad() {
 
 
 window.addEventListener('click', function (e) {
-  console.log(e.target);
 
   if (e.target.id === 'planForMe') {
       window.scroll(84, 557);
@@ -511,11 +500,6 @@ window.addEventListener('click', function (e) {
 
   if (e.target.id === 'loadMoreBeers') {
     loadExplore()
-    // window.scroll({
-    //   top: 0,
-    //   left: 0,
-    //   behavior: 'smooth'
-    // });
   }
 
   if(e.target.id === 'planMyFlight') {
@@ -557,7 +541,6 @@ window.addEventListener('click', function (e) {
 
   if (e.target.dataset.star === 'favorite') {
     var num = e.target.dataset.fav - 1;
-    console.log(num);
     user.favorites.push(random[num]);
     e.target.className = 'fas fa-bookmark small-margin';
   }
@@ -584,7 +567,6 @@ window.addEventListener('click', function (e) {
     var editNotesRow = document.querySelectorAll('[data-input]');
     var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
-    console.log('value of form var:', form);
 
     for (var i = 0; i < notesRow.length; i++) {
       if (notesRow[i].dataset.notes === e.target.dataset.sub) {
@@ -611,7 +593,6 @@ window.addEventListener('DOMContentLoaded', function (e) {
 
   for (var i = 0; i < 6; i++) {
     planFeatureHold();
-    console.log('plan called');
   }
 
 
@@ -622,7 +603,6 @@ window.addEventListener('DOMContentLoaded', function (e) {
 
 document.addEventListener('submit', function (e) {
   e.preventDefault();
-  console.log(e.target.id);
   var imgUrl = $signForm.elements.url.value;
   var name = $signForm.elements.name.value;
   var bio = $signForm.elements.bio.value;
@@ -630,6 +610,9 @@ document.addEventListener('submit', function (e) {
   if (e.target.id === 'signForm') {
     view('explore');
   }
+
+  window.scroll(0, 0);
+  window.scroll({ behavior: 'smooth' });
 
 
 })
