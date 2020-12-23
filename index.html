@@ -18,14 +18,13 @@
   </header>
 
   <main>
-    <!-- this is the nav -->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top padding-left">
       <a class="navbar-brand" href="#">AJAX Beer!</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto hidden" id="navLinks">
           <li class="nav-item active">
@@ -34,20 +33,14 @@
           <li class="nav-item">
             <a id="profileNav" class="nav-link" href="#">Profile</a>
           </li>
-
           <li class="nav-item">
             <a id="planNav" href="##" class="nav-link">Plan My Night</a>
           </li>
         </ul>
-
       </div>
     </nav>
 
-
-
     <div class="container">
-
-      <!-- this is the main pic -->
       <container class="container  " id="welcome">
         <div class="row row-margin">
           <div class="col welcome-bg position-relative">
@@ -59,12 +52,11 @@
           </div>
         </div>
 
-        <!-- this is the a reason to sign up section -->
         <div class="row row-margin">
           <div class="col">
             <img src="./Images/two-friends-laughing .jpg" alt="Having Fun" class="img-fluid">
           </div>
-          <div class="col flex flex-column center-content">
+          <div class="col d-flex flex-column center-content">
             <h1>Signing Up is Completely Free!</h1>
             <p>Signing up is always free and gives you access to all of our memeber features. Explore new beers and have
               your night planned for you!
@@ -72,15 +64,8 @@
           </div>
         </div>
 
-
-
-
-
-
-
-        <!-- sign up section with form -->
         <div class="row focus-border row-margin">
-          <div class="col flex flex-column center-content">
+          <div class="col d-flex flex-column center-content">
             <h1>Signing Up Takes 30 Seconds</h1>
             <h3>Fill out this short form and you are on your way to being a member!</h2>
           </div>
@@ -106,9 +91,8 @@
           </div>
         </div>
 
-        <!-- reason to sign up 2 -->
         <div class="row row-margin">
-          <div class="col flex flex-column center-content">
+          <div class="col d-flex flex-column center-content">
             <h1>Tasty Suds</h1>
             <p>Our member features will ensure that ever single beer you have after joining will taste a little crisper.
             </p>
@@ -120,7 +104,6 @@
         </div>
       </container>
 
-      <!-- this will be the explorer depeneding on the view -->
       <div class="container hidden" id="explore">
         <div class="row row-margin">
           <div class="col">
@@ -155,7 +138,7 @@
           <div class="col-4">
             <img src="./Images/three-friends.jpg" alt="random" class="img-fluid">
           </div>
-          <div class="col-8 flex flex-column center-content">
+          <div class="col-8 d-flex flex-column center-content">
             <h3>Tired of choosing what to watch, what to eat and what to do? Same.
               Enjoy a night off from all of that choosing with Plan My Night and Plan My Flight.
             </h3>
@@ -194,8 +177,6 @@
         </div>
         <div class="row row-margin">
           <div class="col d-flex">
-
-
             <div class="d-flex flex-column small-margin">
               <div class="rem-pic d-flex align-items-center justify-content-center">
                 <img id="imgOne" class="img-fluid" src="./Images/78587psku.jpg" alt="">
@@ -204,11 +185,7 @@
                 <h3 id="beerOne"></h3>
                 <p id="descriptionOne"></p>
               </div>
-
             </div>
-
-
-
             <div class="d-flex flex-column small-margin">
               <div class="rem-pic d-flex justify-content-center align-items-center">
                 <img id="imgTwo" class="img-fluid" src=" ./Images/78587psku.jpg" alt="">
@@ -217,10 +194,7 @@
                 <h3 id="beerTwo"></h3>
                 <p id="descriptionTwo"></p>
               </div>
-
             </div>
-
-
             <div class="d-flex flex-column small-margin">
               <div class="rem-pic d-flex justify-content-center align-items-center">
                 <img id="imgThree" class="img-fluid" src="./Images/78587psku.jpg" alt="">
@@ -229,10 +203,7 @@
                 <h3 id="beerThree"></h3>
                 <p id="descriptionThree"></p>
               </div>
-
             </div>
-
-
             <div class="d-flex flex-column small-margin">
               <div class="rem-pic d-flex justify-content-center align-items-center">
                 <img id="imgFour" class="img-fluid" src="./Images/78587psku.jpg" alt="">
@@ -242,8 +213,6 @@
                 <p id="descriptionFour"></p>
               </div>
             </div>
-
-
             <div class="d-flex-flex-column small-margin">
               <div class="rem-pic d-flex justify-content-center align-items-center">
                 <img id="imgFive" class="img-fluid" src="./Images/78587psku.jpg" alt="">
@@ -253,13 +222,9 @@
                 <p id="descriptionFive"></p>
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
-
-      <!-- this is the profile and favorites -->
       <div class="container hidden" id="profile">
         <div class="row row-margin" id="profileView">
           <div class="col-5">
@@ -270,7 +235,6 @@
             <p id="profileBio"></p>
             <button class="btn btn-sm btn-info" id="editProfileNow"> Edit Profile</button>
           </div>
-          <!-- edit profile here -->
           <div class="row row-margin">
             <div class="col hidden " id="editProfileCol">
               <form action="GET" id="editUserForm">
@@ -293,9 +257,6 @@
               </form>
             </div>
           </div>
-
-
-
         </div>
         <div class="row line"></div>
         <div class="row row-margin">
@@ -304,12 +265,9 @@
           </div>
         </div>
         <div class="row row-margin" id='favorites'>
-
         </div>
       </div>
-
     </div>
-
     <div class="container bg-dark" id="footer">
       <div class="row margin-row">
         <div class="col-3">
@@ -329,8 +287,6 @@
           <p>Thank you for giving us a visit! Please drink responsibly</p>
         </div>
       </div>
-
-
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -343,8 +299,4 @@
       <script src="./js/data.js"></script>
       <script src="./js/main.js"></script>
 </body>
-
-
-
-
 </html>

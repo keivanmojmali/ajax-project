@@ -2,31 +2,11 @@
   width: 20%;
 }
 
-.img-max-twenty {
-  max-width: 20%;
-}
-
-
 .line {
   border-bottom: 1.5px solid black;
   margin: 8px 5px 8px 5px;
 }
 
-.flex {
-  display: flex;
-}
-
-.flex-column {
-  flex-direction: column;
-}
-
-.space-between {
-  justify-content: space-between;
-}
-
-.align-center {
-  align-content: center;
-}
 
 .black-border {
   border: solid black 1px;
@@ -60,9 +40,6 @@
   margin: 5px;
 }
 
-.max-height-vh {
-  max-height: 100vh;
-}
 
 .style-none {
   text-decoration: none;

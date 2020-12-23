@@ -139,7 +139,7 @@ function planFeatureHold() {
 
 function domCreate(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-4 flex flex-column space-between align-center black-border content-padding');
+  container.setAttribute('class', 'col-4 d-flex flex-column justify-content-between align-items-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -183,7 +183,7 @@ function domCreate(e) {
   infoBtn.textContent = 'More Information';
   infoCol.appendChild(infoBtn);
   var starCol = document.createElement('div');
-  starCol.setAttribute('class', 'col flex small-margin');
+  starCol.setAttribute('class', 'col d-flex small-margin');
   infoStarRow.appendChild(starCol);
   var star = document.createElement('i');
   star.setAttribute('class', 'far fa-bookmark small-margin');
@@ -252,7 +252,7 @@ function loadExplore() {
 
 function profileDom(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-4 flex flex-column space-between align-center black-border content-padding');
+  container.setAttribute('class', 'col-4 d-flex flex-column justify-content-between align-iitems-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
