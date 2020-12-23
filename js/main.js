@@ -26,7 +26,7 @@ var $plan = document.querySelector('#plan');
 var random = [];
 var planFeatureHoldArray = [];
 var current = 0;
-var pageCount = 4;
+var pageCount = 1;
 var beerId = 1;
 
 
@@ -36,6 +36,7 @@ function view(e) {
     $explore.classList.remove('hidden');
     $navLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
+    $plan.classList.add('hidden');
     loadExplore();
     window.scroll(0,0);
     window.scroll({ behavior: 'smooth' });
@@ -45,6 +46,7 @@ function view(e) {
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
     $profile.classList.remove('hidden');
+    $plan.classList.add('hidden');
     profileLoad();
     window.scroll(0, 0);
     window.scroll({ behavior: 'smooth' });
@@ -64,11 +66,11 @@ function view(e) {
 
 function randomBeers() {
   pageCount++
-  if (pageCount > 75) {
-    pageCount = 10
+  if (pageCount > 7) {
+    pageCount = 0
   }
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.punkapi.com/v2/beers?page=' + pageCount + '&per_page=49');
+  xhr.open('GET', 'https://api.punkapi.com/v2/beers?page=' + pageCount + '&per_page=80');
   xhr.responseText = 'json';
   xhr.addEventListener('load', function () {
     var toRender = JSON.parse(xhr.response);
@@ -94,6 +96,8 @@ function randomBeers() {
   xhr.send();
 
 }
+
+https://api.punkapi.com/v2/beers?page=10&per_page=49
 
 
 function planFeatureHold() {
@@ -227,15 +231,15 @@ function domCreate(e) {
 
 // this function loads 25 beers with ima s into the explorer page
 function loadExplore() {
+  count = current + 25;
 
-  if (current > 51) {
-    randomBeers();
-  }
-  for (i = current; i < 20; i++) {
+  for(i = current; i < count; i++)  {
     var holdEl = domCreate(random[i]);
+    console.log(i);
     $exploreResults.appendChild(holdEl);
   }
   current = current + 25;
+  randomBeers();
 }
 
 
@@ -478,6 +482,7 @@ function profileLoad() {
 
 
 window.addEventListener('click', function (e) {
+  console.log(e.target.id);
 
   if (e.target.id === 'planForMe') {
       window.scroll(84, 557);
@@ -500,6 +505,7 @@ window.addEventListener('click', function (e) {
 
 
   if (e.target.id === 'loadMoreBeers') {
+
     loadExplore()
   }
 
