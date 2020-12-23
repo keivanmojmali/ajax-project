@@ -27,7 +27,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto " id="navLinks">
+        <ul class="navbar-nav mr-auto hidden" id="navLinks">
           <li class="nav-item active">
             <a id="exploreNav" class="nav-link" href="#">Explorer<span class="sr-only">(current)</span></a>
           </li>
@@ -50,10 +50,11 @@
       <!-- this is the main pic -->
       <container class="container  " id="welcome">
         <div class="row row-margin">
-          <div class="col welcome-bg">
+          <div class="col welcome-bg position-relative">
             <div class="position-absolute welcome-banner">
               <h1>Welcome to Beer AJAX!</h1>
-              <p>Explore Craft Beers. Plan Your Craft Beer Night and Much More! Join Now to Learn More.</p>
+              <p>The Ultimate Tool for Craft Beer Lovers. Explore Craft Beers. Have a Flight Curated for You or <br>
+                 Let Us Plan the Perfect Night with a Craft Beer and a Three Course Meal</p>
             </div>
           </div>
         </div>
@@ -126,6 +127,14 @@
             <img class="img-fluid" src="./Images/beer-banner.png" alt="beer banner">
           </div>
         </div>
+        <div class="row ">
+          <div class="col">
+            <h1>Explore Craft Beers</h1>
+          </div>
+          <div class="col text-left">
+            <p>Like What you See? Click "Add To Favorites" and We Will Save it to your Profile. Click the "More Information" Button to See a Breakdown of Detailed Information</p>
+          </div>
+        </div>
         <div class="row" id="exploreResults"></div>
 
         <div class="row row-margin">
@@ -147,7 +156,7 @@
             <img src="./Images/three-friends.jpg" alt="random" class="img-fluid">
           </div>
           <div class="col-8 flex flex-column center-content">
-            <h3>Ever get tired of choosing what to watch, what to eat and what to do? Same.
+            <h3>Tired of choosing what to watch, what to eat and what to do? Same.
               Enjoy a night off from all of that choosing with Plan My Night and Plan My Flight.
             </h3>
           </div>
@@ -157,8 +166,8 @@
           <div class="col-4">
             <p class="text-line-height">Plan My Night produces a curated menu. A beer in our collection paired with a
               three course meal.
-              The beer and tasting menu have been specifically chosen to compliment eachother.
-              Take the stress out of planning a night and enjoy a night off.
+              The beer and tasting menu have been specifically chosen to compliment each other.
+              Stop Planning and Start Doing!
             </p>
             <h1>Give it a Shot!</h1>
             <button id="planForMe" class="btn btn-sm btn-primary">Plan My Meal</button>
@@ -304,7 +313,7 @@
     <div class="container bg-dark" id="footer">
       <div class="row margin-row">
         <div class="col-3">
-          <ul class="list-group">
+          <ul class="list-group hidden" id="bottomNavLinks">
             <li>
               <a href="#" class="text-light style-none" id="exploreBottom">Explore</a>
             </li>

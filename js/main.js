@@ -19,6 +19,7 @@ var $beerTonight = document.querySelector('#beerTonight');
 var $planheadlineOne = document.querySelector('#planHeadlineOne')
 var $planHeadlineTwo = document.querySelector('#planHeadlineTwo');
 var $navLinks = document.querySelector('#navLinks')
+var $bottomNavLinks = document.querySelector('#bottomNavLinks');
 var $edituserForm = document.querySelector('#editUserForm');
 var $editProfileCol = document.querySelector('#editProfileCol');
 var $profileView = document.querySelector('#profileView');
@@ -35,6 +36,7 @@ function view(e) {
     $welcome.classList.add('hidden');
     $explore.classList.remove('hidden');
     $navLinks.classList.remove('hidden');
+    $bottomNavLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
     $favPosition.innerHTML = '';
     $plan.classList.add('hidden');
@@ -46,6 +48,7 @@ function view(e) {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
+    $bottomNavLinks.classList.remove('hidden');
     $profile.classList.remove('hidden');
     $plan.classList.add('hidden');
     profileLoad();
@@ -56,6 +59,7 @@ function view(e) {
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
+    $bottomNavLinks.classList.remove('hidden');
     $profile.classList.add('hidden');
     $favPosition.innerHTML = '';
     $plan.classList.remove('hidden');
