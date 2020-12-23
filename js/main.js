@@ -26,6 +26,7 @@ var $profileView = document.querySelector('#profileView');
 var $plan = document.querySelector('#plan');
 var random = [];
 var planFeatureHoldArray = [];
+var favNum = 0
 var current = 0;
 var pageCount = 1;
 var beerId = 1;
@@ -45,6 +46,7 @@ function view(e) {
     window.scroll({ behavior: 'smooth' });
   }
   if (e === 'profile') {
+    $favPosition.innerHTML = '';
     $welcome.classList.add('hidden');
     $explore.classList.add('hidden');
     $navLinks.classList.remove('hidden');
@@ -82,7 +84,7 @@ function randomBeers() {
     var toRender = JSON.parse(xhr.response);
     for (var i = 0; i < toRender.length; i++) {
       if (toRender[i].image_url !== null && toRender[i].tagline !== null && toRender[i].name !== null
-        && toRender[i].ingredients.hops[0].name !== null && toRender[i].ingredients.yeast !== null
+        && toRender[i].ingredients.hops !== null && toRender[i].ingredients.yeast !== null
         && toRender[i].abv !== null && toRender[i].food_pairing !== null && toRender[i].name.length < 16) {
         var image = toRender[i].image_url;
         var tagline = toRender[i].tagline;
@@ -103,7 +105,6 @@ function randomBeers() {
 
 }
 
-https://api.punkapi.com/v2/beers?page=10&per_page=49
 
 
 function planFeatureHold() {
@@ -114,7 +115,7 @@ function planFeatureHold() {
     var response = JSON.parse(xhr.response);
     var toRender = response[0];
     if (toRender.image_url !== null && toRender.tagline !== null && toRender.name !== null
-      && toRender.ingredients.hops[0].name !== null && toRender.ingredients.yeast !== null
+      && toRender.ingredients.hops!== null && toRender.ingredients.yeast !== null
       && toRender.abv !== null && toRender.food_pairing !== null && toRender.name.length < 16) {
       var image = toRender.image_url;
       var tagline = toRender.tagline;
@@ -198,7 +199,6 @@ function domCreate(e) {
   moreInfoRow.setAttribute('id', e.beerId);
   moreInfoRow.setAttribute('data-boolean', 'false');
   container.appendChild(moreInfoRow);
-  // Could possibly separate into hops and yeast row and then food pairaings row if you want
   var hopsCol = document.createElement('div');
   hopsCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(hopsCol);
@@ -217,7 +217,6 @@ function domCreate(e) {
   var abv = document.createElement('p');
   abv.textContent = 'ABV: ' + e.abv;
   abvCol.appendChild(abv);
-  // you can do one col here or serparte them into multipile depending on the look
   var foodCol = document.createElement('div');
   foodCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(foodCol);
@@ -234,8 +233,6 @@ function domCreate(e) {
 }
 
 
-
-// this function loads 25 beers with ima s into the explorer page
 function loadExplore() {
   count = current + 25;
 
@@ -294,20 +291,11 @@ function profileDom(e) {
   infoBtn.setAttribute('class', 'btn btn-primary btn-sm');
   infoBtn.textContent = 'More Information';
   infoCol.appendChild(infoBtn);
-  // var starCol = document.createElement('div');
-  // starCol.setAttribute('class', 'col');
-  // infoStarRow.appendChild(starCol);
-  // var star = document.createElement('i');
-  // star.setAttribute('class', 'far fa-star');
-  // star.setAttribute('data-star', 'favorite');
-  // star.setAttribute('data-fav', e.beerId);
-  // starCol.appendChild(star);
   var moreInfoRow = document.createElement('div');
   moreInfoRow.setAttribute('class', 'row hidden');
   moreInfoRow.setAttribute('id', e.beerId);
   moreInfoRow.setAttribute('data-boolean', 'false');
   container.appendChild(moreInfoRow);
-  // Could possibly separate into hops and yeast row and then food pairaings row if you want
   var hopsCol = document.createElement('div');
   hopsCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(hopsCol);
@@ -326,7 +314,6 @@ function profileDom(e) {
   var abv = document.createElement('p');
   abv.textContent = 'ABV: ' + e.abv;
   abvCol.appendChild(abv);
-  // you can do one col here or serparte them into multipile depending on the look
   var foodCol = document.createElement('div');
   foodCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(foodCol);
@@ -339,65 +326,53 @@ function profileDom(e) {
   var foodThree = document.createElement('p');
   foodThree.textContent = 'Food Pairing(s): ' + e.food[2];
   foodCol.appendChild(foodThree);
-
   var notesBtnRow = document.createElement('div');
   notesBtnRow.setAttribute('class', 'row');
   container.appendChild(notesBtnRow);
-
   var notesBtnCol = document.createElement('div');
   notesBtnCol.setAttribute('class', 'col');
   notesBtnRow.appendChild(notesBtnCol);
-
   var notesBtn = document.createElement('button');
   notesBtn.setAttribute('class', 'btn btn-sm btn-secondary');
   notesBtn.textContent = 'Add Notes';
   notesBtn.setAttribute('data-edit', 'editMe');
-  notesBtn.setAttribute('data-find', e.beerId);
+  notesBtn.setAttribute('data-find', e.order);
   notesBtn.setAttribute('data-boolean', 'false');
   notesBtnCol.appendChild(notesBtn);
-
   var notesRow = document.createElement('div');
   notesRow.setAttribute('class', 'row');
-  notesRow.setAttribute('data-notes', e.beerId);
+  notesRow.setAttribute('data-notes', e.order);
   container.appendChild(notesRow);
-
   var notesCol = document.createElement('div');
-  notesCol.setAttribute('class', 'col');
-  notesCol.setAttribute('data-notes', e.beerId);
+  notesCol.setAttribute('class', 'col small-margin');
   notesRow.appendChild(notesCol);
-
   var notes = document.createElement('p');
   notes.textContent = e.notes;
-  notes.setAttribute('data-update', e.beerId);
+  notes.setAttribute('data-update', e.order);
   notesCol.appendChild(notes);
-
   var editNotesRow = document.createElement('div');
   editNotesRow.setAttribute('class', 'row hidden');
-  editNotesRow.setAttribute('data-input', e.beerId);
+  editNotesRow.setAttribute('data-input', e.order);
   container.appendChild(editNotesRow);
-
   var editNotesCol = document.createElement('div');
   editNotesCol.setAttribute('class', 'col');
   editNotesRow.appendChild(editNotesCol);
-
   var form = document.createElement('form');
-  form.setAttribute('data-form', e.beerId)
+  form.setAttribute('data-form', e.order)
   form.setAttribute('class','d-flex flex-column');
   editNotesCol.appendChild(form);
-
   var textField = document.createElement('textarea');
   textField.value = e.notes;
   textField.setAttribute('class', 'column-full small-margin');
   textField.setAttribute('name', 'notes');
   form.appendChild(textField);
-
   var submitFormButton = document.createElement('button');
   submitFormButton.textContent = 'Save';
   submitFormButton.setAttribute('data-submit', 'save');
-  submitFormButton.setAttribute('data-sub', e.beerId);
+  submitFormButton.setAttribute('data-sub', e.order);
+  submitFormButton.setAttribute('data-pick', e.order);
   submitFormButton.setAttribute('class', 'btn btn-sm btn-secondary');
   form.appendChild(submitFormButton);
-
   return container;
 }
 
@@ -442,25 +417,21 @@ function flightRender() {
   var imgFive = document.getElementById('imgFive');
   var beerFive = document.getElementById('beerFive');
   var desFive = document.getElementById('descriptionFive');
-
   imgOne.src = planFeatureHoldArray[1].image;
   imgTwo.src = planFeatureHoldArray[2].image;
   imgThree.src = planFeatureHoldArray[3].image;
   imgFour.src = planFeatureHoldArray[4].image;
   imgFive.src = planFeatureHoldArray[5].image;
-
   imgOne.className = 'twenty-img';
   imgTwo.className = 'twenty-img';
   imgThree.className = 'twenty-img';
   imgFour.className = 'twenty-img';
   imgFive.className = 'twenty-img';
-
   beerOne.textContent = planFeatureHoldArray[1].name;
   beerTwo.textContent = planFeatureHoldArray[2].name;
   beerThree.textContent = planFeatureHoldArray[3].name;
   beerFour.textContent = planFeatureHoldArray[4].name;
   beerFive.textContent = planFeatureHoldArray[5].name;
-
   desOne.textContent = planFeatureHoldArray[1].tagline;
   desTwo.textContent = planFeatureHoldArray[2].tagline;
   desThree.textContent = planFeatureHoldArray[3].tagline;
@@ -470,10 +441,6 @@ function flightRender() {
 }
 
 
-
-
-
-// this function loads the profile onto the profile page
 function profileLoad() {
   $profileImage.src = user.profile.imgUrl;
   $profileName.textContent = user.profile.name;
@@ -483,8 +450,6 @@ function profileLoad() {
     $favPosition.appendChild(append);
   }
 }
-
-
 
 
 window.addEventListener('click', function (e) {
@@ -554,12 +519,12 @@ window.addEventListener('click', function (e) {
   if (e.target.dataset.star === 'favorite') {
     var num = e.target.dataset.fav - 1;
     user.favorites.push(random[num]);
+    user.favorites[favNum].order = favNum;
+    favNum++;
     e.target.className = 'fas fa-bookmark small-margin';
+
   }
 
-  // if (e.target.id === 'editProfile') {
-  //   view('signUp');
-  // }
 
   if (e.target.dataset.edit === 'editMe') {
     var notesRow = document.querySelectorAll('[data-notes]');
@@ -570,18 +535,17 @@ window.addEventListener('click', function (e) {
       if (notesRow[i] === e.target.dataset.find)
         notesRow[i].classList.add('hidden');
       editNotesRow[i].classList.remove('hidden');
-      // edit note sbutton becomes hidden as well
+
     }
   }
   if (e.target.dataset.submit === 'save') {
-    var num = e.target.dataset.sub - 1;
+    var num = e.target.dataset.sub;
     var notesRow = document.querySelectorAll('[data-notes]');
     var editNotesRow = document.querySelectorAll('[data-input]');
     var updateNotes = document.querySelectorAll('[data-update]');
     var form = document.querySelectorAll('[data-form]');
-
     for (var i = 0; i < notesRow.length; i++) {
-      if (notesRow[i].dataset.notes === e.target.dataset.sub) {
+      if (notesRow[i].dataset.notes === e.target.dataset.pick) {
         user.favorites[num].notes = form[i].elements.notes.value;
         notesRow[i].classList.remove('hidden');
         editNotesRow[i].classList.add('hidden');
