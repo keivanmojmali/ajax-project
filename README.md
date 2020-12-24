@@ -31,24 +31,40 @@ work on first. This would save me time on building out the code but also on debu
 
 ### Screenshots 
 
-### 1. Initial landing page - user does not have a profile
+### Initial landing page - user does not have a profile
 ![welcome-Page](Images/screen-shots/Welcome.png)
 
 
-### 1. Beer explorer page - once user has created a profile
+### Beer explorer page - once user has created a profile
 
 ![beer-explore](/Images/screen-shots/2 - Beer Explorer.PNG)
 
 
-### 1. View detailed information and add to favorites list from explorer page
+### View detailed information and add to favorites list from explorer page
 
 ![more-info](Images/screen-shots/3 - Deatiled More Info .PNG)
 
-### 1. View profile and saved favorites
+### View profile and saved favorites
 
 ![profile-favorites](Images/screen-shots/4 - profile and favorites list .PNG)
 
-### 1. 
+### Edit profile and change stored information 
+
+![edit-profile](Images/screen-shots/Edit Profile.PNG)
+
+### Plan My Night page - showing main top portion and beer pairing feature
+
+![plan-my-night](Images/screen-shots/5 - plan-night-overview.PNG)
+
+### Beer pairing result with three course meal 
+
+![beer-pairing](Images/screen-shots/6 - beer pairing.PNG)
+
+### Five beer curated flight option results
+
+![beer-flight](Images/screen-shots/7 - flight option.PNG)
+
+
 
 
 
