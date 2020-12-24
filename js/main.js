@@ -177,7 +177,7 @@ function domCreate(e) {
   infoCol.setAttribute('class', 'col');
   infoStarRow.appendChild(infoCol);
   var infoBtn = document.createElement('button');
-  infoBtn.setAttribute('type', 'submit')
+  infoBtn.setAttribute('type', 'button')
   infoBtn.setAttribute('data-view', e.beerId);
   infoBtn.setAttribute('data-click', 'notesEdit');
   infoBtn.setAttribute('class', 'btn btn-primary btn-sm');
@@ -285,7 +285,7 @@ function profileDom(e) {
   infoCol.setAttribute('class', 'col-lg');
   infoStarRow.appendChild(infoCol);
   var infoBtn = document.createElement('button');
-  infoBtn.setAttribute('type', 'submit')
+  infoBtn.setAttribute('type', 'button')
   infoBtn.setAttribute('data-view', e.beerId);
   infoBtn.setAttribute('data-click', 'notesEdit');
   infoBtn.setAttribute('class', 'btn btn-primary btn-sm');
@@ -494,10 +494,14 @@ window.addEventListener('click', function (e) {
     var name = $edituserForm.elements.name.value;
     var imgUrl = $edituserForm.elements.url.value;
     var bio = $edituserForm.elements.bio.value;
-    user.profile = { name, imgUrl, bio };
+    var newInfo = { name, imgUrl, bio };
+    console.log(newInfo);
+    user.profile = newInfo;
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
     $profileBio.textContent = user.profile.bio;
+    console.log(user);
+    // debugger;
 
   }
 
