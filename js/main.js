@@ -569,11 +569,12 @@ window.addEventListener('click', function (e) {
         updateNotes[i].textContent = form[i].elements.notes.value;
       }
     }
+  }
+  }
 })
 
 
 window.addEventListener('DOMContentLoaded', function (e) {
-
 
   if (user.profile.name === '') {
     view('welcome')
