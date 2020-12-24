@@ -180,7 +180,7 @@ function domCreate(e) {
   var infoBtn = document.createElement('button');
   infoBtn.setAttribute('type', 'button')
   infoBtn.setAttribute('data-view', e.beerId);
-  infoBtn.setAttribute('data-click', 'notesEdit');
+  infoBtn.setAttribute('data-click', 'exploreEdit');
   infoBtn.setAttribute('class', 'btn btn-primary btn-sm');
   infoBtn.textContent = 'More Information';
   infoCol.appendChild(infoBtn);
@@ -506,8 +506,23 @@ window.addEventListener('click', function (e) {
   }
 
 
+  if(e.target.dataset.click === 'exploreEdit') {
+    var infoDivExplore = document.getElementById(e.target.dataset.view);
+    if (infoDivExplore.dataset.boolean === 'false') {
+      infoDivExplore.classList.remove('hidden');
+      infoDivExplore.dataset.boolean = 'true';
+      e.target.textContent = 'Less Information'
+    } else {
+      infoDivExplore.classList.add('hidden');
+      infoDivExplore.dataset.boolean = 'false';
+      e.target.textContent = 'More Information'
+    }
+  }
+
+
   if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.querySelector('[data-beerId="' + e.target.dataset.view + '"]');
+    console.log(infoDiv);
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
