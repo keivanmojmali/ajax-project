@@ -522,7 +522,6 @@ window.addEventListener('click', function (e) {
 
   if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.querySelector('[data-beerId="' + e.target.dataset.view + '"]');
-    console.log(infoDiv);
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
@@ -556,7 +555,6 @@ window.addEventListener('click', function (e) {
       editNotesRow[i].classList.remove('hidden');
 
     }
-  }
   if (e.target.dataset.submit === 'save') {
     var num = e.target.dataset.sub;
     var notesRow = document.querySelectorAll('[data-notes]');
@@ -571,7 +569,6 @@ window.addEventListener('click', function (e) {
         updateNotes[i].textContent = form[i].elements.notes.value;
       }
     }
-  }
 })
 
 
