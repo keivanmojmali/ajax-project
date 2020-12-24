@@ -24,8 +24,20 @@ https://keivanmojmali.github.io/ajax-project/
   * Upload pictures 
   * Share journal entries through social media accounts 
   
-### Lessons Learned 
+### Main takeway from Beer Profile
 * To prototype design but also pre-plan functions. Beer Profile was written using functional programming paradigm. 
 Looking back, I can see that I could have planned pure functions from the start which would have dictated which features to
 work on first. This would save me time on building out the code but also on debugging. 
-*
+
+### Screenshots 
+
+### Initial landing page - user does not have a profile
+![welcome-Page](Images/screen-shots/Welcome.png)
+
+
+### Beer explorer page - once user has created a profile
+
+![beer-explore](/Images/screen-shots/2 - Beer Explorer.PNG)
+
+
+
