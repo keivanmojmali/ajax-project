@@ -31,13 +31,24 @@ work on first. This would save me time on building out the code but also on debu
 
 ### Screenshots 
 
-### Initial landing page - user does not have a profile
+### 1. Initial landing page - user does not have a profile
 ![welcome-Page](Images/screen-shots/Welcome.png)
 
 
-### Beer explorer page - once user has created a profile
+### 1. Beer explorer page - once user has created a profile
 
 ![beer-explore](/Images/screen-shots/2 - Beer Explorer.PNG)
+
+
+### 1. View detailed information and add to favorites list from explorer page
+
+![more-info](Images/screen-shots/3 - Deatiled More Info .PNG)
+
+### 1. View profile and saved favorites
+
+![profile-favorites](Images/screen-shots/4 - profile and favorites list .PNG)
+
+### 1. 
 
 
 
