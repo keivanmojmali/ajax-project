@@ -293,7 +293,7 @@ function profileDom(e) {
   infoCol.appendChild(infoBtn);
   var moreInfoRow = document.createElement('div');
   moreInfoRow.setAttribute('class', 'row hidden');
-  moreInfoRow.setAttribute('id', e.beerId);
+  moreInfoRow.setAttribute('data-beerId', e.beerId);
   moreInfoRow.setAttribute('data-boolean', 'false');
   container.appendChild(moreInfoRow);
   var hopsCol = document.createElement('div');
@@ -445,6 +445,7 @@ function profileLoad() {
   $profileImage.src = user.profile.imgUrl;
   $profileName.textContent = user.profile.name;
   $profileBio.textContent = user.profile.bio;
+  $favPosition.innerHTML = ''
   for (i = 0; i < user.favorites.length; i++) {
     var append = profileDom(user.favorites[i]);
     $favPosition.appendChild(append);
@@ -495,25 +496,25 @@ window.addEventListener('click', function (e) {
     var imgUrl = $edituserForm.elements.url.value;
     var bio = $edituserForm.elements.bio.value;
     var newInfo = { name, imgUrl, bio };
-    console.log(newInfo);
     user.profile = newInfo;
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
     $profileBio.textContent = user.profile.bio;
-    console.log(user);
     // debugger;
 
   }
 
 
   if (e.target.dataset.click === 'notesEdit') {
-    var infoDiv = document.getElementById(e.target.dataset.view);
-
+    var infoDiv = document.querySelector('[data-beerId="' + e.target.dataset.view + '"]');
+    console.log(infoDiv)
     if (infoDiv.dataset.boolean === 'false') {
+      console.log('Showing')
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
       e.target.textContent = 'Less Information'
     } else {
+      console.log('hiding')
       infoDiv.classList.add('hidden');
       infoDiv.dataset.boolean = 'false';
       e.target.textContent = 'More Information'
