@@ -37,32 +37,32 @@ work on first. This would save me time on building out the code but also on debu
 
 ### Beer explorer page - once user has created a profile
 
-![beer-explore](/Images/screen-shots/2 - Beer Explorer.PNG)
+![beer-explore](/Images/screen-shots/beer-explore.PNG)
 
 
 ### View detailed information and add to favorites list from explorer page
 
-![more-info](Images/screen-shots/3 - Deatiled More Info .PNG)
+![more-info](Images/screen-shots/detailed-info.PNG)
 
 ### View profile and saved favorites
 
-![profile-favorites](Images/screen-shots/4 - profile and favorites list .PNG)
+![profile-favorites](Images/screen-shots/profile-favs.PNG)
 
 ### Edit profile and change stored information 
 
-![edit-profile](Images/screen-shots/Edit Profile.PNG)
+![edit-profile](Images/screen-shots/edit-profile.PNG)
 
 ### Plan My Night page - showing main top portion and beer pairing feature
 
-![plan-my-night](Images/screen-shots/5 - plan-night-overview.PNG)
+![plan-my-night](Images/screen-shots/plan-night.PNG)
 
 ### Beer pairing result with three course meal 
 
-![beer-pairing](Images/screen-shots/6 - beer pairing.PNG)
+![beer-pairing](Images/screen-shots/beer-pairing.PNG)
 
 ### Five beer curated flight option results
 
-![beer-flight](Images/screen-shots/7 - flight option.PNG)
+![beer-flight](Images/screen-shots/flight-option.PNG)
 
 
 
