@@ -34,6 +34,7 @@ var beerId = 1;
 
 function view(e) {
   if (e === 'explore') {
+    $exploreResults.innerHTML = " ";
     $welcome.classList.add('hidden');
     $explore.classList.remove('hidden');
     $navLinks.classList.remove('hidden');
@@ -234,6 +235,7 @@ function domCreate(e) {
 
 
 function loadExplore() {
+
   count = current + 25;
 
   for(i = current; i < count; i++)  {
@@ -525,6 +527,7 @@ window.addEventListener('click', function (e) {
     var num = e.target.dataset.fav - 1;
     user.favorites.push(random[num]);
     user.favorites[favNum].order = favNum;
+    random.splice(num,1);
     favNum++;
     e.target.className = 'fas fa-bookmark small-margin';
 
