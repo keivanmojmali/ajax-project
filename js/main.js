@@ -502,21 +502,17 @@ window.addEventListener('click', function (e) {
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
     $profileBio.textContent = user.profile.bio;
-    // debugger;
 
   }
 
 
   if (e.target.dataset.click === 'notesEdit') {
     var infoDiv = document.querySelector('[data-beerId="' + e.target.dataset.view + '"]');
-    console.log(infoDiv)
     if (infoDiv.dataset.boolean === 'false') {
-      console.log('Showing')
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
       e.target.textContent = 'Less Information'
     } else {
-      console.log('hiding')
       infoDiv.classList.add('hidden');
       infoDiv.dataset.boolean = 'false';
       e.target.textContent = 'More Information'
