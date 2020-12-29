@@ -64,7 +64,7 @@ work on first. This would save me time on building out the code but also on debu
 
 ![beer-flight](Images/flight-updated.PNG)
 
-## Mobile Screenshots at a Viewport of 375 X 667 
+## Mobile Screenshots
 
 ![mobile-welcome](Images/mobile-welcome.PNG)
 
