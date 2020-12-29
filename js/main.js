@@ -562,7 +562,6 @@ window.addEventListener('click', function (e) {
   }
 
   if (e.target.dataset.submit === 'save') {
-    console.log('fired off event');
     var num = e.target.dataset.sub;
     var notesRow = document.querySelectorAll('[data-notes]');
     var editNotesRow = document.querySelectorAll('[data-input]');
@@ -570,7 +569,6 @@ window.addEventListener('click', function (e) {
     var form = document.querySelectorAll('[data-form]');
     for (var i = 0; i < notesRow.length; i++) {
       if (notesRow[i].dataset.notes === e.target.dataset.pick) {
-        console.log('made it past conditional');
         user.favorites[num].notes = form[i].elements.notes.value;
         notesRow[i].classList.remove('hidden');
         editNotesRow[i].classList.add('hidden');
