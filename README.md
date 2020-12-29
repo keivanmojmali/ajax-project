@@ -54,15 +54,27 @@ work on first. This would save me time on building out the code but also on debu
 
 ### Plan My Night page - showing main top portion and beer pairing feature
 
-![plan-my-night](Images/screen-shots/plan-night.PNG)
+![plan-my-night](Images/plan-my-night-updated.PNG)
 
 ### Beer pairing result with three course meal 
 
-![beer-pairing](Images/screen-shots/beer-pairing.PNG)
+![beer-pairing](Images/plan-results-updated.PNG)
 
 ### Five-beer curated flight option results
 
-![beer-flight](Images/screen-shots/flight-option.PNG)
+![beer-flight](Images/flight-updated.PNG)
+
+## Mobile Screenshots at a Viewport of 375 X 667 
+
+![welcome-mobile](Images/mobile-welcome.PNG)
+
+![mobile-explore](Images/mobile-welcome.PNG)
+
+![mobile-profile](Images/mobile-profile.PNG)
+
+![mobile-flight](Images/mobile-flight.PNG)
+
+
 
 
 
