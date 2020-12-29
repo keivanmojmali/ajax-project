@@ -66,9 +66,9 @@ work on first. This would save me time on building out the code but also on debu
 
 ## Mobile Screenshots at a Viewport of 375 X 667 
 
-![welcome-mobile](Images/mobile-welcome.PNG)
+![mobile-welcome](Images/mobile-welcome.PNG)
 
-![mobile-explore](Images/mobile-welcome.PNG)
+![mobile-explore](Images/mobile-explore.PNG)
 
 ![mobile-profile](Images/mobile-profile.PNG)
 
