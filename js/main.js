@@ -24,6 +24,7 @@ var $edituserForm = document.querySelector('#editUserForm');
 var $editProfileCol = document.querySelector('#editProfileCol');
 var $profileView = document.querySelector('#profileView');
 var $plan = document.querySelector('#plan');
+var mealPlanBoolean = true;
 var random = [];
 var planFeatureHoldArray = [];
 var favNum = 0
@@ -141,7 +142,7 @@ function planFeatureHold() {
 
 function domCreate(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-4 d-flex flex-column justify-content-between align-items-center black-border content-padding');
+  container.setAttribute('class', 'col-lg-4 col-md-6 col-xs-12 d-flex flex-column justify-content-between align-items-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -250,7 +251,7 @@ function loadExplore() {
 
 function profileDom(e) {
   var container = document.createElement('div');
-  container.setAttribute('class', 'col-4 d-flex flex-column justify-content-between align-iitems-center black-border content-padding');
+  container.setAttribute('class', 'col-lg-4 col-sm-6 col-xs-12 d-flex flex-column justify-content-between align-iitems-center black-border content-padding');
   var imgRow = document.createElement('row');
   imgRow.setAttribute('class', 'row');
   container.appendChild(imgRow);
@@ -381,6 +382,9 @@ function profileDom(e) {
 
 
 function mealTonight() {
+  if(mealPlanBoolean === false) {
+    return;
+  }
   var toRender = planFeatureHoldArray[0];
   $planheadlineOne.textContent = "Tonight's Beer"
   $planHeadlineTwo.textContent = 'Paired With:'
@@ -399,7 +403,7 @@ function mealTonight() {
   $eatTonight.appendChild(food3);
   window.scroll(84, 600);
   window.scroll({ behavior: 'smooth' });
-
+  mealPlanBoolean = false;
 }
 
 

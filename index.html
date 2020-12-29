@@ -47,7 +47,7 @@
             <div class="position-absolute welcome-banner">
               <h1>Welcome to Beer Profile</h1>
               <p>The Ultimate Tool for Craft Beer Lovers. Explore Craft Beers. Have a Flight Curated for You or <br>
-                 Let Us Plan the Perfect Night with a Craft Beer and a Three Course Meal</p>
+                Let Us Plan the Perfect Night with a Craft Beer and a Three Course Meal</p>
             </div>
           </div>
         </div>
@@ -115,7 +115,8 @@
             <h1>Explore Craft Beers</h1>
           </div>
           <div class="col text-left">
-            <p>Like What you See? Click "Add To Favorites" and We Will Save it to your Profile. Click the "More Information" Button to See a Breakdown of Detailed Information</p>
+            <p>Like What you See? Click "Add To Favorites" and We Will Save it to your Profile. Click the "More
+              Information" Button to See a Breakdown of Detailed Information</p>
           </div>
         </div>
         <div class="row" id="exploreResults"></div>
@@ -135,10 +136,10 @@
           </div>
         </div>
         <div class="row row-margin">
-          <div class="col-4">
+          <!-- <div class="col-4">
             <img src="./Images/three-friends.jpg" alt="random" class="img-fluid">
-          </div>
-          <div class="col-8 d-flex flex-column center-content">
+          </div> -->
+          <div class="col d-flex flex-column center-content">
             <h3>Tired of choosing what to watch, what to eat and what to do? Same.
               Enjoy a night off from all of that choosing with Plan My Night and Plan My Flight.
             </h3>
@@ -146,7 +147,7 @@
         </div>
         <div class="line"></div>
         <div class="row row-margin">
-          <div class="col-4">
+          <div class="col">
             <p class="text-line-height">Plan My Night produces a curated menu. A beer in our collection paired with a
               three course meal.
               The beer and tasting menu have been specifically chosen to compliment each other.
@@ -155,7 +156,7 @@
             <h1>Give it a Shot!</h1>
             <button id="planForMe" class="btn btn-sm btn-primary">Plan My Meal</button>
           </div>
-          <div class="col-8">
+          <div class="col text-center">
             <h1 id="planHeadlineOne">Results Below!</h1>
             <img class="img-thumbnail " src="./Images/il_794xN.1584591164_kzn1.jpg" alt="" id="imageTonight">
             <h3 id="beerTonight"> </h3>
@@ -169,62 +170,80 @@
 
         </div>
         <div class="row row-margin">
-          <div class="col-9">
+          <div class="col-9r">
             <h1>On the, liquid only diet? Plan My Flight displays Five specially picked beers for the perfect beer
               tasting night. Each beer more special than the next. </h1>
             <button class="btn btn-sm btn-primary" id="planMyFlight">Plan My Flight</button>
           </div>
         </div>
-        <div class="row row-margin">
-          <div class="col d-flex">
-            <div class="d-flex flex-column small-margin">
-              <div class="rem-pic d-flex align-items-center justify-content-center">
-                <img id="imgOne" class="img-fluid" src="./Images/78587psku.jpg" alt="">
-              </div>
-              <div class="fav-height d-flex flex-column justify-content-start ">
-                <h3 id="beerOne"></h3>
-                <p id="descriptionOne"></p>
-              </div>
-            </div>
-            <div class="d-flex flex-column small-margin">
-              <div class="rem-pic d-flex justify-content-center align-items-center">
-                <img id="imgTwo" class="img-fluid" src=" ./Images/78587psku.jpg" alt="">
-              </div>
-              <div class="fav-height d-flex flex-column justify-content-start ">
-                <h3 id="beerTwo"></h3>
-                <p id="descriptionTwo"></p>
+
+        <div class="row row-margin justify-content-center ">
+
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+              <div class="d-flex flex-column small-margin">
+                <div class="rem-pic d-flex align-items-center justify-content-center">
+                  <img id="imgOne" class="img-fluid" src="./Images/78587psku.jpg" alt="">
+                </div>
+                <div class="fav-height d-flex flex-column justify-content-start ">
+                  <h3 id="beerOne"></h3>
+                  <p id="descriptionOne"></p>
+                </div>
               </div>
             </div>
-            <div class="d-flex flex-column small-margin">
-              <div class="rem-pic d-flex justify-content-center align-items-center">
-                <img id="imgThree" class="img-fluid" src="./Images/78587psku.jpg" alt="">
-              </div>
-              <div class="fav-height d-flex flex-column justify-content-start ">
-                <h3 id="beerThree"></h3>
-                <p id="descriptionThree"></p>
-              </div>
-            </div>
-            <div class="d-flex flex-column small-margin">
-              <div class="rem-pic d-flex justify-content-center align-items-center">
-                <img id="imgFour" class="img-fluid" src="./Images/78587psku.jpg" alt="">
-              </div>
-              <div class="fav-height d-flex flex-column justify-content-start ">
-                <h3 id="beerFour"></h3>
-                <p id="descriptionFour"></p>
+
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+              <div class="d-flex flex-column small-margin">
+                <div class="rem-pic d-flex justify-content-center align-items-center">
+                  <img id="imgTwo" class="img-fluid" src=" ./Images/78587psku.jpg" alt="">
+                </div>
+                <div class="fav-height d-flex flex-column justify-content-start ">
+                  <h3 id="beerTwo"></h3>
+                  <p id="descriptionTwo"></p>
+                </div>
               </div>
             </div>
-            <div class="d-flex-flex-column small-margin">
-              <div class="rem-pic d-flex justify-content-center align-items-center">
-                <img id="imgFive" class="img-fluid" src="./Images/78587psku.jpg" alt="">
-              </div>
-              <div class="fav-height d-flex flex-column justify-content-start ">
-                <h3 id="beerFive"></h3>
-                <p id="descriptionFive"></p>
+
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+              <div class="d-flex flex-column small-margin">
+                <div class="rem-pic d-flex justify-content-center align-items-center">
+                  <img id="imgThree" class="img-fluid" src="./Images/78587psku.jpg" alt="">
+                </div>
+                <div class="fav-height d-flex flex-column justify-content-start ">
+                  <h3 id="beerThree"></h3>
+                  <p id="descriptionThree"></p>
+                </div>
               </div>
             </div>
-          </div>
+
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+              <div class="d-flex flex-column small-margin">
+                <div class="rem-pic d-flex justify-content-center align-items-center">
+                  <img id="imgFour" class="img-fluid" src="./Images/78587psku.jpg" alt="">
+                </div>
+                <div class="fav-height d-flex flex-column justify-content-start ">
+                  <h3 id="beerFour"></h3>
+                  <p id="descriptionFour"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-sm-6 col-xs-12">
+              <div class="d-flex-flex-column small-margin">
+                <div class="rem-pic d-flex justify-content-center align-items-center">
+                  <img id="imgFive" class="img-fluid" src="./Images/78587psku.jpg" alt="">
+                </div>
+                <div class="fav-height d-flex flex-column justify-content-start ">
+                  <h3 id="beerFive"></h3>
+                  <p id="descriptionFive"></p>
+                </div>
+              </div>
+            </div>
+
         </div>
       </div>
+
+
+
       <div class="container hidden" id="profile">
         <div class="row row-margin" id="profileView">
           <div class="col-5">
@@ -252,7 +271,8 @@
                     placeholder="Tell Us A Little About Yourself">
                 </div>
                 <div class="form-group small-margin">
-                  <button type="button" id="saveUserChanges" class="btn btn-primary btn-large" type="submit"> Save Changes</button>
+                  <button type="button" id="saveUserChanges" class="btn btn-primary btn-large" type="submit"> Save
+                    Changes</button>
                 </div>
               </form>
             </div>
@@ -269,7 +289,7 @@
       </div>
     </div>
     <div class="container bg-dark" id="footer">
-      <div class="row margin-row">
+      <div class="row row-margin">
         <div class="col-3">
           <ul class="list-group hidden" id="bottomNavLinks">
             <li>
@@ -299,4 +319,5 @@
       <script src="./js/data.js"></script>
       <script src="./js/main.js"></script>
 </body>
+
 </html>
