@@ -407,41 +407,41 @@ function mealTonight() {
 
 
 function flightRender() {
-  var imgOne = document.getElementById('imgOne');
-  var beerOne = document.getElementById('beerOne');
-  var desOne = document.getElementById('descriptionOne');
-  var imgTwo = document.getElementById('imgTwo');
-  var beerTwo = document.getElementById('beerTwo');
-  var desTwo = document.getElementById('descriptionTwo');
-  var imgThree = document.getElementById('imgThree');
-  var beerThree = document.getElementById('beerThree');
-  var desThree = document.getElementById('descriptionThree');
-  var imgFour = document.getElementById('imgFour');
-  var beerFour = document.getElementById('beerFour');
-  var desFour = document.getElementById('descriptionFour');
-  var imgFive = document.getElementById('imgFive');
-  var beerFive = document.getElementById('beerFive');
-  var desFive = document.getElementById('descriptionFive');
-  imgOne.src = planFeatureHoldArray[1].image;
-  imgTwo.src = planFeatureHoldArray[2].image;
-  imgThree.src = planFeatureHoldArray[3].image;
-  imgFour.src = planFeatureHoldArray[4].image;
-  imgFive.src = planFeatureHoldArray[5].image;
-  imgOne.className = 'twenty-img';
-  imgTwo.className = 'twenty-img';
-  imgThree.className = 'twenty-img';
-  imgFour.className = 'twenty-img';
-  imgFive.className = 'twenty-img';
-  beerOne.textContent = planFeatureHoldArray[1].name;
-  beerTwo.textContent = planFeatureHoldArray[2].name;
-  beerThree.textContent = planFeatureHoldArray[3].name;
-  beerFour.textContent = planFeatureHoldArray[4].name;
-  beerFive.textContent = planFeatureHoldArray[5].name;
-  desOne.textContent = planFeatureHoldArray[1].tagline;
-  desTwo.textContent = planFeatureHoldArray[2].tagline;
-  desThree.textContent = planFeatureHoldArray[3].tagline;
-  desFour.textContent = planFeatureHoldArray[4].tagline;
-  desFive.textContent = planFeatureHoldArray[5].tagline;
+  const $imgOne = document.getElementById('imgOne');
+  const $beerOne = document.getElementById('beerOne');
+  const $desOne = document.getElementById('descriptionOne');
+  const $imgTwo = document.getElementById('imgTwo');
+  const $beerTwo = document.getElementById('beerTwo');
+  const $desTwo = document.getElementById('descriptionTwo');
+  const $imgThree = document.getElementById('imgThree');
+  const $beerThree = document.getElementById('beerThree');
+  const $desThree = document.getElementById('descriptionThree');
+  const $imgFour = document.getElementById('imgFour');
+  const $beerFour = document.getElementById('beerFour');
+  const $desFour = document.getElementById('descriptionFour');
+  const $imgFive = document.getElementById('imgFive');
+  const $beerFive = document.getElementById('beerFive');
+  const $desFive = document.getElementById('descriptionFive');
+  $imgOne.src = planFeatureHoldArray[1].image;
+  $imgTwo.src = planFeatureHoldArray[2].image;
+  $imgThree.src = planFeatureHoldArray[3].image;
+  $imgFour.src = planFeatureHoldArray[4].image;
+  $imgFive.src = planFeatureHoldArray[5].image;
+  $imgOne.className = 'twenty-img';
+  $imgTwo.className = 'twenty-img';
+  $imgThree.className = 'twenty-img';
+  $imgFour.className = 'twenty-img';
+  $imgFive.className = 'twenty-img';
+  $beerOne.textContent = planFeatureHoldArray[1].name;
+  $beerTwo.textContent = planFeatureHoldArray[2].name;
+  $beerThree.textContent = planFeatureHoldArray[3].name;
+  $beerFour.textContent = planFeatureHoldArray[4].name;
+  $beerFive.textContent = planFeatureHoldArray[5].name;
+  $desOne.textContent = planFeatureHoldArray[1].tagline;
+  $desTwo.textContent = planFeatureHoldArray[2].tagline;
+  $desThree.textContent = planFeatureHoldArray[3].tagline;
+  $desFour.textContent = planFeatureHoldArray[4].tagline;
+  $desFive.textContent = planFeatureHoldArray[5].tagline;
 
 }
 
@@ -452,13 +452,13 @@ function profileLoad() {
   $profileBio.textContent = user.profile.bio;
   $favPosition.innerHTML = ''
   for (i = 0; i < user.favorites.length; i++) {
-    var append = profileDom(user.favorites[i]);
+    const append = profileDom(user.favorites[i]);
     $favPosition.appendChild(append);
   }
 }
 
 
-window.addEventListener('click', function (e) {
+window.addEventListener('click', (e) => {
 
   if (e.target.id === 'planForMe') {
       window.scroll(84, 557);
@@ -497,10 +497,10 @@ window.addEventListener('click', function (e) {
 
   if (e.target.id === 'saveUserChanges') {
     $editProfileCol.classList.add('hidden');
-    var name = $edituserForm.elements.name.value;
-    var imgUrl = $edituserForm.elements.url.value;
-    var bio = $edituserForm.elements.bio.value;
-    var newInfo = { name, imgUrl, bio };
+    const name = $edituserForm.elements.name.value;
+    const imgUrl = $edituserForm.elements.url.value;
+    const bio = $edituserForm.elements.bio.value;
+    const newInfo = { name, imgUrl, bio };
     user.profile = newInfo;
     $profileImage.src = user.profile.imgUrl;
     $profileName.textContent = user.profile.name;
@@ -510,7 +510,7 @@ window.addEventListener('click', function (e) {
 
 
   if(e.target.dataset.click === 'exploreEdit') {
-    var infoDivExplore = document.getElementById(e.target.dataset.view);
+    const infoDivExplore = document.getElementById(e.target.dataset.view);
     if (infoDivExplore.dataset.boolean === 'false') {
       infoDivExplore.classList.remove('hidden');
       infoDivExplore.dataset.boolean = 'true';
@@ -524,7 +524,7 @@ window.addEventListener('click', function (e) {
 
 
   if (e.target.dataset.click === 'notesEdit') {
-    var infoDiv = document.querySelector('[data-beerId="' + e.target.dataset.view + '"]');
+    const infoDiv = document.querySelector('[data-beerId="' + e.target.dataset.view + '"]');
     if (infoDiv.dataset.boolean === 'false') {
       infoDiv.classList.remove('hidden');
       infoDiv.dataset.boolean = 'true';
@@ -537,7 +537,7 @@ window.addEventListener('click', function (e) {
   }
 
   if (e.target.dataset.star === 'favorite') {
-    var num = e.target.dataset.fav - 1;
+    const num = e.target.dataset.fav - 1;
     user.favorites.push(random[num]);
     user.favorites[favNum].order = favNum;
     random.splice(num,1);
@@ -548,11 +548,11 @@ window.addEventListener('click', function (e) {
 
 
   if (e.target.dataset.edit === 'editMe') {
-    var notesRow = document.querySelectorAll('[data-notes]');
-    var editNotesRow = document.querySelectorAll('[data-input]');
-    var form = document.querySelectorAll('[data-form]');
+    const notesRow = document.querySelectorAll('[data-notes]');
+    const editNotesRow = document.querySelectorAll('[data-input]');
+    const form = document.querySelectorAll('[data-form]');
 
-    for (var i = 0; i < form.length; i++) {
+    for (let i = 0; i < form.length; i++) {
       if (notesRow[i] === e.target.dataset.find)
         notesRow[i].classList.add('hidden');
       editNotesRow[i].classList.remove('hidden');
@@ -561,12 +561,12 @@ window.addEventListener('click', function (e) {
   }
 
   if (e.target.dataset.submit === 'save') {
-    var num = e.target.dataset.sub;
-    var notesRow = document.querySelectorAll('[data-notes]');
-    var editNotesRow = document.querySelectorAll('[data-input]');
-    var updateNotes = document.querySelectorAll('[data-update]');
-    var form = document.querySelectorAll('[data-form]');
-    for (var i = 0; i < notesRow.length; i++) {
+    const num = e.target.dataset.sub;
+    const notesRow = document.querySelectorAll('[data-notes]');
+    const editNotesRow = document.querySelectorAll('[data-input]');
+    const updateNotes = document.querySelectorAll('[data-update]');
+    const form = document.querySelectorAll('[data-form]');
+    for (let i = 0; i < notesRow.length; i++) {
       if (notesRow[i].dataset.notes === e.target.dataset.pick) {
         user.favorites[num].notes = form[i].elements.notes.value;
         notesRow[i].classList.remove('hidden');
