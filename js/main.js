@@ -1,36 +1,35 @@
-var $welcome = document.querySelector('#welcome');
-var $signup = document.querySelector('#signUp');
-var $topBar = document.querySelector('#topBar');
-var $bottomBar = document.querySelector('#bottomBar');
-var $explore = document.querySelector('#explore');
-var $exploreResults = document.querySelector('#exploreResults');
-var $profile = document.querySelector('#profile');
-var $planMeal = document.querySelector('#planMeal');
-var $results = document.querySelector('#results');
-var $joinNow = document.querySelector('#joinNow');
-var $signForm = document.querySelector('#signForm');
-var $profileImage = document.querySelector('#profileImage');
-var $profileName = document.querySelector('#profileName');
-var $profileBio = document.querySelector('#profileBio');
-var $favPosition = document.querySelector('#favorites');
-var $eatTonight = document.querySelector('#eatTonight');
-var $imageTonight = document.querySelector('#imageTonight');
-var $beerTonight = document.querySelector('#beerTonight');
-var $planheadlineOne = document.querySelector('#planHeadlineOne')
-var $planHeadlineTwo = document.querySelector('#planHeadlineTwo');
-var $navLinks = document.querySelector('#navLinks')
-var $bottomNavLinks = document.querySelector('#bottomNavLinks');
-var $edituserForm = document.querySelector('#editUserForm');
-var $editProfileCol = document.querySelector('#editProfileCol');
-var $profileView = document.querySelector('#profileView');
-var $plan = document.querySelector('#plan');
-var mealPlanBoolean = true;
-var random = [];
-var planFeatureHoldArray = [];
-var favNum = 0
-var current = 0;
-var pageCount = 1;
-var beerId = 1;
+const $welcome = document.querySelector('#welcome');
+const $topBar = document.querySelector('#topBar');
+const $bottomBar = document.querySelector('#bottomBar');
+const $explore = document.querySelector('#explore');
+const $exploreResults = document.querySelector('#exploreResults');
+const $planMeal = document.querySelector('#planMeal');
+const $profile = document.querySelector('#profile');
+const $results = document.querySelector('#results');
+const $joinNow = document.querySelector('#joinNow');
+const $signForm = document.querySelector('#signForm');
+const $profileImage = document.querySelector('#profileImage');
+const $profileName = document.querySelector('#profileName');
+const $profileBio = document.querySelector('#profileBio');
+const $favPosition = document.querySelector('#favorites');
+const $eatTonight = document.querySelector('#eatTonight');
+const $imageTonight = document.querySelector('#imageTonight');
+const $beerTonight = document.querySelector('#beerTonight');
+const $planheadlineOne = document.querySelector('#planHeadlineOne')
+const $planHeadlineTwo = document.querySelector('#planHeadlineTwo');
+const $navLinks = document.querySelector('#navLinks')
+const $bottomNavLinks = document.querySelector('#bottomNavLinks');
+const $edituserForm = document.querySelector('#editUserForm');
+const $editProfileCol = document.querySelector('#editProfileCol');
+const $profileView = document.querySelector('#profileView');
+const $plan = document.querySelector('#plan');
+let mealPlanBoolean = true;
+const random = [];
+const planFeatureHoldArray = [];
+let favNum = 0
+let current = 0;
+let pageCount = 1;
+let beerId = 1;
 
 
 function view(e) {
@@ -79,25 +78,25 @@ function randomBeers() {
   if (pageCount > 7) {
     pageCount = 0
   }
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://api.punkapi.com/v2/beers?page=' + pageCount + '&per_page=80');
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', `https://api.punkapi.com/v2/beers?page=${pageCount}&per_page=80`);
   xhr.responseText = 'json';
-  xhr.addEventListener('load', function () {
-    var toRender = JSON.parse(xhr.response);
-    for (var i = 0; i < toRender.length; i++) {
+  xhr.addEventListener('load', () => {
+    const toRender = JSON.parse(xhr.response);
+    for (let i = 0; i < toRender.length; i++) {
       if (toRender[i].image_url !== null && toRender[i].tagline !== null && toRender[i].name !== null
         && toRender[i].ingredients.hops !== null && toRender[i].ingredients.yeast !== null
         && toRender[i].abv !== null && toRender[i].food_pairing !== null && toRender[i].name.length < 16) {
-        var image = toRender[i].image_url;
-        var tagline = toRender[i].tagline;
-        var name = toRender[i].name;
-        var hops = toRender[i].ingredients.hops[0].name;
-        var yeast = toRender[i].ingredients.yeast;
-        var abv = toRender[i].abv;
-        var food = toRender[i].food_pairing;
-        var notes = '';
-        var theId = beerId;
-        var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
+        let image = toRender[i].image_url;
+        let tagline = toRender[i].tagline;
+        let name = toRender[i].name;
+        let hops = toRender[i].ingredients.hops[0].name;
+        let yeast = toRender[i].ingredients.yeast;
+        let abv = toRender[i].abv;
+        let food = toRender[i].food_pairing;
+        let notes = '';
+        let theId = beerId;
+        let singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
         beerId++
         random.push(singleObject);
       }
@@ -110,25 +109,25 @@ function randomBeers() {
 
 
 function planFeatureHold() {
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.open('GET', 'https://api.punkapi.com/v2/beers/random');
   xhr.responseText = 'json';
-  xhr.addEventListener('load', function () {
-    var response = JSON.parse(xhr.response);
-    var toRender = response[0];
+  xhr.addEventListener('load', () => {
+    const response = JSON.parse(xhr.response);
+    const toRender = response[0];
     if (toRender.image_url !== null && toRender.tagline !== null && toRender.name !== null
       && toRender.ingredients.hops!== null && toRender.ingredients.yeast !== null
       && toRender.abv !== null && toRender.food_pairing !== null && toRender.name.length < 16) {
-      var image = toRender.image_url;
-      var tagline = toRender.tagline;
-      var name = toRender.name;
-      var hops = toRender.ingredients.hops[0].name;
-      var yeast = toRender.ingredients.yeast;
-      var abv = toRender.abv;
-      var food = toRender.food_pairing;
-      var notes = '';
-      var theId = beerId;
-      var singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
+      let image = toRender.image_url;
+      let tagline = toRender.tagline;
+      let name = toRender.name;
+      let hops = toRender.ingredients.hops[0].name;
+      let yeast = toRender.ingredients.yeast;
+      let abv = toRender.abv;
+      let food = toRender.food_pairing;
+      let notes = '';
+      let theId = beerId;
+      let singleObject = { image, tagline, name, hops, yeast, abv, food, beerId, notes };
       planFeatureHoldArray.push(singleObject);
     } else {
       planFeatureHold();
@@ -205,31 +204,31 @@ function domCreate(e) {
   hopsCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(hopsCol);
   var hops = document.createElement('p');
-  hops.textContent = 'Hops: ' + e.hops;
+  hops.textContent = `Hops: ${e.hops}`;
   hopsCol.appendChild(hops);
   yeastCol = document.createElement('div');
   yeastCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(yeastCol);
   var yeast = document.createElement('p');
-  yeast.textContent = 'Yeast: ' + e.yeast;
+  yeast.textContent = `Yeast: ${e.yeast}`;
   yeastCol.appendChild(yeast);
   var abvCol = document.createElement('div');
   abvCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(abvCol);
   var abv = document.createElement('p');
-  abv.textContent = 'ABV: ' + e.abv;
+  abv.textContent = `ABV: ${e.abv}`
   abvCol.appendChild(abv);
   var foodCol = document.createElement('div');
   foodCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(foodCol);
   var foodOne = document.createElement('p');
-  foodOne.textContent = 'Food Pairing(s): ' + e.food[0];
+  foodOne.textContent = `Food Pairing(s): ${e.food[0]}`;
   foodCol.appendChild(foodOne);
   var foodTwo = document.createElement('p');
-  foodTwo.textContent = 'Food Pairing(s): ' + e.food[1];
+  foodTwo.textContent = `Food Pairing(s): ${e.food[1]}`;
   foodCol.appendChild(foodTwo);
   var foodThree = document.createElement('p');
-  foodThree.textContent = 'Food Pairing(s): ' + e.food[2];
+  foodThree.textContent = `Food Pairing(s): ${e.food[2]}`;
   foodCol.appendChild(foodThree);
   return container;
 }
@@ -239,8 +238,8 @@ function loadExplore() {
 
   count = current + 25;
 
-  for(i = current; i < count; i++)  {
-    var holdEl = domCreate(random[i]);
+  for(let i = current; i < count; i++)  {
+    const holdEl = domCreate(random[i]);
     $exploreResults.appendChild(holdEl);
   }
   current = current + 25;
@@ -303,31 +302,31 @@ function profileDom(e) {
   hopsCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(hopsCol);
   var hops = document.createElement('p');
-  hops.textContent = 'Hops: ' + e.hops;
+  hops.textContent = `Hops: ${e.hops}`;
   hopsCol.appendChild(hops);
   yeastCol = document.createElement('div');
   yeastCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(yeastCol);
   var yeast = document.createElement('p');
-  yeast.textContent = 'Yeast: ' + e.yeast;
+  yeast.textContent = `Yeast: ${e.yeast} `;
   yeastCol.appendChild(yeast);
   var abvCol = document.createElement('div');
   abvCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(abvCol);
   var abv = document.createElement('p');
-  abv.textContent = 'ABV: ' + e.abv;
+  abv.textContent = `ABV: ${e.abv}`;
   abvCol.appendChild(abv);
   var foodCol = document.createElement('div');
   foodCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(foodCol);
   var foodOne = document.createElement('p');
-  foodOne.textContent = 'Food Pairing(s): ' + e.food[0];
+  foodOne.textContent = `Food Pairing(s): ${e.food[0]}`;
   foodCol.appendChild(foodOne);
   var foodTwo = document.createElement('p');
-  foodTwo.textContent = 'Food Pairing(s): ' + e.food[1];
+  foodTwo.textContent = `Food Pairing(s): ${e.food[1]}`;
   foodCol.appendChild(foodTwo);
   var foodThree = document.createElement('p');
-  foodThree.textContent = 'Food Pairing(s): ' + e.food[2];
+  foodThree.textContent = `Food Pairing(s): ${e.food[2]}`;
   foodCol.appendChild(foodThree);
   var notesBtnRow = document.createElement('div');
   notesBtnRow.setAttribute('class', 'row');
@@ -584,7 +583,7 @@ window.addEventListener('click', function (e) {
 })
 
 
-window.addEventListener('DOMContentLoaded', function (e) {
+window.addEventListener('DOMContentLoaded', (e) => {
 
   if (user.profile.name === '') {
     view('welcome')
@@ -594,7 +593,7 @@ window.addEventListener('DOMContentLoaded', function (e) {
 
   randomBeers();
 
-  for (var i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) {
     planFeatureHold();
   }
 
@@ -606,9 +605,9 @@ window.addEventListener('DOMContentLoaded', function (e) {
 
 document.addEventListener('submit', function (e) {
   e.preventDefault();
-  var imgUrl = $signForm.elements.url.value;
-  var name = $signForm.elements.name.value;
-  var bio = $signForm.elements.bio.value;
+  const imgUrl = $signForm.elements.url.value;
+  const name = $signForm.elements.name.value;
+  const bio = $signForm.elements.bio.value;
   user.profile = { name, imgUrl, bio };
   if (e.target.id === 'signForm') {
     view('explore');
