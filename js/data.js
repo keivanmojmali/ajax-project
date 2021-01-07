@@ -1,7 +1,7 @@
 /* exported data */
 
 
-var user = {
+let user = {
   profile: {
     name: '',
     imgUrl: '',
@@ -18,6 +18,6 @@ if (returningUser !== null) {
   user = JSON.parse(returningUser);
 }
 
-window.addEventListener('beforeunload', function (e) {
+window.addEventListener('beforeunload', (e) => {
   localStorage.setItem('ajax', JSON.stringify(user));
 })
