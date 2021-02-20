@@ -23,6 +23,7 @@ const $edituserForm = document.querySelector('#editUserForm');
 const $editProfileCol = document.querySelector('#editProfileCol');
 const $profileView = document.querySelector('#profileView');
 const $plan = document.querySelector('#plan');
+const $collapseButton = document.querySelector('#collapseButton');
 let mealPlanBoolean = true;
 const random = [];
 const planFeatureHoldArray = [];
@@ -196,10 +197,13 @@ function domCreate(e) {
   addTo.textContent = 'Add Me To Favorites!'
   starCol.appendChild(addTo);
   const moreInfoRow = document.createElement('div');
-  moreInfoRow.setAttribute('class', 'row hidden');
+  moreInfoRow.setAttribute('class', 'row hidden position-relative');
   moreInfoRow.setAttribute('id', e.beerId);
   moreInfoRow.setAttribute('data-boolean', 'false');
-  container.appendChild(moreInfoRow);
+  imgRow.appendChild(moreInfoRow);
+  const absoluteDiv = document.createElement('div');
+  absoluteDiv.setAttribute('class', 'row');
+  moreInfoRow.appendChild(absoluteDiv);
   const hopsCol = document.createElement('div');
   hopsCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(hopsCol);
@@ -219,7 +223,7 @@ function domCreate(e) {
   abv.textContent = `ABV: ${e.abv}`
   abvCol.appendChild(abv);
   const foodCol = document.createElement('div');
-  foodCol.setAttribute('class', 'col');
+  foodCol.setAttribute('class', 'row');
   moreInfoRow.appendChild(foodCol);
   const foodOne = document.createElement('p');
   foodOne.textContent = `Food Pairing(s): ${e.food[0]}`;
@@ -235,7 +239,6 @@ function domCreate(e) {
 
 
 function loadExplore() {
-
   count = current + 25;
 
   for(let i = current; i < count; i++)  {
@@ -245,6 +248,7 @@ function loadExplore() {
   current = current + 25;
   randomBeers();
 }
+
 
 
 
@@ -297,7 +301,10 @@ function profileDom(e) {
   moreInfoRow.setAttribute('class', 'row hidden');
   moreInfoRow.setAttribute('data-beerId', e.beerId);
   moreInfoRow.setAttribute('data-boolean', 'false');
-  container.appendChild(moreInfoRow);
+
+
+
+  imgRow.appendChild(moreInfoRow);
   const hopsCol = document.createElement('div');
   hopsCol.setAttribute('class', 'col');
   moreInfoRow.appendChild(hopsCol);
@@ -317,7 +324,7 @@ function profileDom(e) {
   abv.textContent = `ABV: ${e.abv}`;
   abvCol.appendChild(abv);
   const foodCol = document.createElement('div');
-  foodCol.setAttribute('class', 'col');
+  foodCol.setAttribute('class', 'row');
   moreInfoRow.appendChild(foodCol);
   const foodOne = document.createElement('p');
   foodOne.textContent = `Food Pairing(s): ${e.food[0]}`;
@@ -361,7 +368,7 @@ function profileDom(e) {
   editNotesRow.appendChild(editNotesCol);
   const form = document.createElement('form');
   form.setAttribute('data-form', e.order)
-  form.setAttribute('class','d-flex flex-column');
+  form.setAttribute('class', 'd-flex flex-column');
   editNotesCol.appendChild(form);
   const textField = document.createElement('textarea');
   textField.value = e.notes;
@@ -480,7 +487,9 @@ window.addEventListener('click', (e) => {
 
 
   if (e.target.id === 'loadMoreBeers') {
-
+    if(count > 49) {
+      e.target.classList.add('d-none');
+    }
     loadExplore()
   }
 
