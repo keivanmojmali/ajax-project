@@ -42,7 +42,7 @@ work on first. This would save me time on building out the code but also on debu
 
 ### View detailed information and add to favorites list from explorer page
 
-![more-info](Images/screen-shots/detailed-info.PNG)
+![more-info](Images/more-details.PNG)
 
 ### View profile and saved favorites
 
@@ -72,7 +72,7 @@ work on first. This would save me time on building out the code but also on debu
 
 ![mobile-profile](Images/mobile-profile.PNG)
 
-![mobile-flight](Images/mobile-flight.PNG)
+![mobile-flight](Images/mobile-plan-night.PNG)
 
 
 
