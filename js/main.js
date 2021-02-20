@@ -24,6 +24,8 @@ const $editProfileCol = document.querySelector('#editProfileCol');
 const $profileView = document.querySelector('#profileView');
 const $plan = document.querySelector('#plan');
 const $collapseButton = document.querySelector('#collapseButton');
+const $planDivChangeOne = document.querySelector('#planDivChangeOne');
+const $planDivChangeTwo = document.querySelector('#planDivChangeTwo');
 let mealPlanBoolean = true;
 const random = [];
 const planFeatureHoldArray = [];
@@ -591,8 +593,30 @@ window.addEventListener('click', (e) => {
 
 })
 
+window.addEventListener('resize', (e)=>{
+  if (window.screen.width > 510) {
+    $planDivChangeOne.classList.remove('row');
+    $planDivChangeOne.classList.add('col');
+    $planDivChangeTwo.classList.remove('row');
+    $planDivChangeTwo.classList.add('col');
+  } else {
+    $planDivChangeOne.classList.remove('col');
+    $planDivChangeOne.classList.add('row');
+    $planDivChangeTwo.classList.remove('col');
+    $planDivChangeTwo.classList.add('row');
+  }
+})
 
 window.addEventListener('DOMContentLoaded', (e) => {
+
+  if (window.screen.width > 510) {
+    $planDivChangeOne.classList.remove('row');
+    $planDivChangeOne.classList.add('col');
+    $planDivChangeTwo.classList.remove('row');
+    $planDivChangeTwo.classList.add('col');
+  }
+
+
 
   if (user.profile.name === '') {
     view('welcome')
