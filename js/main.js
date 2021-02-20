@@ -301,9 +301,6 @@ function profileDom(e) {
   moreInfoRow.setAttribute('class', 'row hidden');
   moreInfoRow.setAttribute('data-beerId', e.beerId);
   moreInfoRow.setAttribute('data-boolean', 'false');
-
-
-
   imgRow.appendChild(moreInfoRow);
   const hopsCol = document.createElement('div');
   hopsCol.setAttribute('class', 'col');
@@ -586,9 +583,6 @@ window.addEventListener('click', (e) => {
   }
 
 
-
-
-
 })
 
 
@@ -605,7 +599,6 @@ window.addEventListener('DOMContentLoaded', (e) => {
   for (let i = 0; i < 6; i++) {
     planFeatureHold();
   }
-
 
 })
 
@@ -624,6 +617,5 @@ document.addEventListener('submit', (e) => {
 
   window.scroll(0, 0);
   window.scroll({ behavior: 'smooth' });
-
 
 })
